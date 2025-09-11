@@ -3,7 +3,6 @@
   "package": "archives.tater.dyedvoid.client.mixin",
   "compatibilityLevel": "JAVA_17",
   "client": [
-    "ItemRendererMixin",
     "RenderLayersMixin"
   ],
   "injectors": {

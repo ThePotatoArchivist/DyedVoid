@@ -19,6 +19,6 @@ public class DyedVoidClient implements ClientModInitializer {
     }
 
     public static boolean isPortalRendered(ItemStack itemStack) {
-        return itemStack.isOf(DyedVoidItems.END_VOID) || itemStack.isOf(DyedVoidItems.DUMMY_END_PORTAL) || itemStack.isOf(DyedVoidItems.DUMMY_END_GATEWAY);
+        return itemStack.isOf(DyedVoidItems.END_VOID) ; //|| itemStack.isOf(DyedVoidItems.DUMMY_END_PORTAL) || itemStack.isOf(DyedVoidItems.DUMMY_END_GATEWAY);
     }
 }

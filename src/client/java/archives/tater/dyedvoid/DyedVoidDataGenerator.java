@@ -11,7 +11,7 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 		var pack = fabricDataGenerator.createPack();
 
 		pack.addProvider(ModelGenerator::new);
-		pack.addProvider(RecipeGenerator::new);
+		pack.addProvider(DVRecipeGenerator.Provider::new);
 		pack.addProvider(LangGenerator::new);
 		pack.addProvider(ItemTagGenerator::new);
 		pack.addProvider(BlockTagGenerator::new);

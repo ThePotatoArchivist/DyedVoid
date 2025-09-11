@@ -8,8 +8,8 @@ import net.minecraft.item.GlassBottleItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
@@ -26,9 +26,10 @@ public class GlassBottleItemMixin extends Item {
 
     @Inject(
             method = "use",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/util/TypedActionResult;pass(Ljava/lang/Object;)Lnet/minecraft/util/TypedActionResult;", ordinal = 0),
-            cancellable = true)
-    private void getVoidBottle(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable<TypedActionResult<ItemStack>> cir, @Local BlockHitResult blockHitResult) {
+            at = @At(value = "FIELD", target = "Lnet/minecraft/util/ActionResult;PASS:Lnet/minecraft/util/ActionResult$Pass;", ordinal = 0),
+            cancellable = true
+    )
+    private void getVoidBottle(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable<ActionResult> cir, @Local BlockHitResult blockHitResult) {
         if (blockHitResult.getType() == HitResult.Type.MISS && blockHitResult.getBlockPos().getY() < world.getBottomY()) {
             var stack = user.getStackInHand(hand);
             if (stack.getCount() > 1 || user.isCreative()) {
@@ -40,7 +41,7 @@ public class GlassBottleItemMixin extends Item {
                 user.setStackInHand(hand, new ItemStack(DyedVoidItems.VOID_BOTTLE_ITEM));
             }
             world.playSound(null, user.getX(), user.getY(), user.getZ(), DyedVoidSounds.FILL_VOID_BOTTLE, SoundCategory.NEUTRAL, 1.0F, 1.0F);
-            cir.setReturnValue(TypedActionResult.success(stack));
+            cir.setReturnValue(ActionResult.SUCCESS.withNewHandStack(stack));
         }
     }
 }

@@ -16,7 +16,7 @@ public class RenderLayersMixin {
             at = @At("HEAD"),
             cancellable = true
     )
-    private static void modifyVoidItemLayers(ItemStack stack, boolean direct, CallbackInfoReturnable<RenderLayer> cir) {
+    private static void modifyVoidItemLayers(ItemStack stack, CallbackInfoReturnable<RenderLayer> cir) {
         if (DyedVoidClient.isPortalRendered(stack)) {
             cir.setReturnValue(RenderLayer.getEndPortal());
             return;

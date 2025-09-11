@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class EndGatewayBlockMixin {
     @Inject(
             method = "createTeleportTarget",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/TeleportTarget;<init>(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Vec3d;FFLnet/minecraft/world/TeleportTarget$PostDimensionTransition;)V")
+            at = @At(value = "CONSTANT", args = "classValue=net/minecraft/entity/projectile/thrown/EnderPearlEntity")
     )
     private void craftEndVoid(ServerWorld world, Entity entity, BlockPos pos, CallbackInfoReturnable<TeleportTarget> cir) {
         EndVoidBlock.tryCraft(entity);

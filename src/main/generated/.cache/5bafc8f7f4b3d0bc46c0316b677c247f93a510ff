@@ -1,7 +1,7 @@
-// 1.21.1	2024-12-03T01:52:07.334603625	The Dyed Void/Tags for minecraft:block
-b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/needs_iron_tool.json
+// 1.21.8	-999999999-01-01T00:00:00	The Dyed Void/Tags for minecraft:block
+ddb2d53bf3bf38c51103d55b9fe75022c17816ec data/dyedvoid/tags/block/void_blocks.json
+b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/mineable/axe.json
+b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/mineable/hoe.json
 b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/mineable/pickaxe.json
 b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/mineable/shovel.json
-b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/mineable/hoe.json
-b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/mineable/axe.json
-ddb2d53bf3bf38c51103d55b9fe75022c17816ec data/dyedvoid/tags/block/void_blocks.json
+b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/needs_iron_tool.json

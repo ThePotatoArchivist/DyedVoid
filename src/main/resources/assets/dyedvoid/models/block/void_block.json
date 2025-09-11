@@ -17,7 +17,8 @@
         "west":  { "texture": "#all", "cullface": "west" },
         "east":  { "texture": "#all", "cullface": "east" }
       },
-      "shade": false
+      "shade": false,
+      "light_emission": 15
     }
   ]
 

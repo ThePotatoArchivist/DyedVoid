@@ -18,11 +18,11 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(DyedVoidItems.NO_GRAVITY_TAG).add(
+        valueLookupBuilder(DyedVoidItems.NO_GRAVITY_TAG).add(
                 DyedVoidItems.VOID_BOTTLE_ITEM
         ).add(DyedVoidItems.VOID_BLOCKS);
 
-        getOrCreateTagBuilder(TagKey.of(RegistryKeys.ITEM, Identifier.of("create", "upright_on_belt")))
+        valueLookupBuilder(TagKey.of(RegistryKeys.ITEM, Identifier.of("create", "upright_on_belt")))
                 .add(DyedVoidItems.VOID_BOTTLE_ITEM);
     }
 }

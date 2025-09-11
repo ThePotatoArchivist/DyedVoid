@@ -3,33 +3,15 @@
   "category": "misc",
   "group": "dye_void_block",
   "ingredients": [
-    {
-      "item": "dyedvoid:white_void"
-    },
-    {
-      "item": "dyedvoid:white_void"
-    },
-    {
-      "item": "dyedvoid:white_void"
-    },
-    {
-      "item": "dyedvoid:white_void"
-    },
-    {
-      "item": "minecraft:blue_dye"
-    },
-    {
-      "item": "dyedvoid:white_void"
-    },
-    {
-      "item": "dyedvoid:white_void"
-    },
-    {
-      "item": "dyedvoid:white_void"
-    },
-    {
-      "item": "dyedvoid:white_void"
-    }
+    "dyedvoid:white_void",
+    "dyedvoid:white_void",
+    "dyedvoid:white_void",
+    "dyedvoid:white_void",
+    "minecraft:blue_dye",
+    "dyedvoid:white_void",
+    "dyedvoid:white_void",
+    "dyedvoid:white_void",
+    "dyedvoid:white_void"
   ],
   "result": {
     "count": 8,

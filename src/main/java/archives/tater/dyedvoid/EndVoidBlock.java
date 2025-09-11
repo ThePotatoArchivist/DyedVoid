@@ -19,7 +19,6 @@ public class EndVoidBlock extends Block implements BlockEntityProvider {
         super(settings);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.INVISIBLE;
@@ -38,7 +37,7 @@ public class EndVoidBlock extends Block implements BlockEntityProvider {
         @Override
         public boolean shouldDrawSide(Direction direction) {
             if (world == null) return true;
-            return Block.shouldDrawSide(this.getCachedState(), world, this.getPos(), direction, this.getPos().offset(direction));
+            return Block.shouldDrawSide(this.getCachedState(), this.world.getBlockState(this.getPos().offset(direction)), direction);
         }
     }
 

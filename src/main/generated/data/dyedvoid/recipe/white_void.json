@@ -2,33 +2,15 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "dyedvoid:void"
-    },
-    {
-      "item": "dyedvoid:void"
-    },
-    {
-      "item": "dyedvoid:void"
-    },
-    {
-      "item": "dyedvoid:void"
-    },
-    {
-      "item": "minecraft:glow_ink_sac"
-    },
-    {
-      "item": "dyedvoid:void"
-    },
-    {
-      "item": "dyedvoid:void"
-    },
-    {
-      "item": "dyedvoid:void"
-    },
-    {
-      "item": "dyedvoid:void"
-    }
+    "dyedvoid:void",
+    "dyedvoid:void",
+    "dyedvoid:void",
+    "dyedvoid:void",
+    "minecraft:glow_ink_sac",
+    "dyedvoid:void",
+    "dyedvoid:void",
+    "dyedvoid:void",
+    "dyedvoid:void"
   ],
   "result": {
     "count": 8,
