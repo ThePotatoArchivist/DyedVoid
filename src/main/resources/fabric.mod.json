@@ -9,7 +9,7 @@
 	],
 	"contact": {
 		"homepage": "https://modrinth.com/mod/dyed-void",
-		"sources": "https://github.com/JosiahFu/DyedVoid"
+		"sources": "https://github.com/ThePotatoArchivist/DyedVoid"
 	},
 	"license": "MIT",
 	"icon": "assets/dyedvoid/icon.png",
@@ -25,7 +25,6 @@
 			"archives.tater.dyedvoid.DyedVoidDataGenerator"
 		],
 		"emi": [
-			"archives.tater.dyedvoid.DyedVoidEmiPlugin"
 		]
 	},
 	"mixins": [
@@ -36,8 +35,8 @@
 		}
 	],
 	"depends": {
-		"fabricloader": ">=0.15.11",
-		"minecraft": "~1.21.1",
+		"fabricloader": ">=0.17.2",
+		"minecraft": "~1.21.6",
 		"java": ">=21",
 		"fabric-api": "*"
 	},
