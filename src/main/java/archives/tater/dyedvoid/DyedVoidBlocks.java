@@ -37,7 +37,7 @@ public class DyedVoidBlocks {
                 .luminance(luminant ? state -> 15 : state -> 0)
                 .noBlockBreakParticles();
 
-        return register(colorName == null ? "void" : colorName + "_void", settings);
+        return register(colorName == null ? "void" : colorName + "_void", VoidBlock::new, settings);
     }
 
     private static Block registerVoidBlock(String colorName) {

@@ -14,7 +14,7 @@ import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
 
-public class EndVoidBlock extends Block implements BlockEntityProvider {
+public class EndVoidBlock extends VoidBlock implements BlockEntityProvider {
     public EndVoidBlock(Settings settings) {
         super(settings);
     }
