@@ -1,13 +1,11 @@
 package archives.tater.dyedvoid.client.render;
 
 import archives.tater.dyedvoid.EndVoidBlock.EndVoidBlockEntity;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
-import net.minecraft.client.render.block.entity.EndPortalBlockEntityRenderer;
 
-public class EndVoidBlockEntityRenderer extends EndPortalBlockEntityRenderer<EndVoidBlockEntity> {
-    public EndVoidBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
-        super(ctx);
-    }
+import net.minecraft.client.render.block.entity.AbstractEndPortalBlockEntityRenderer;
+import net.minecraft.client.render.block.entity.state.EndPortalBlockEntityRenderState;
+
+public class EndVoidBlockEntityRenderer extends AbstractEndPortalBlockEntityRenderer<EndVoidBlockEntity, EndPortalBlockEntityRenderState> {
 
     @Override
     protected float getTopYOffset() {
@@ -22,5 +20,10 @@ public class EndVoidBlockEntityRenderer extends EndPortalBlockEntityRenderer<End
     @Override
     public int getRenderDistance() {
         return 256;
+    }
+
+    @Override
+    public EndPortalBlockEntityRenderState createRenderState() {
+        return new EndPortalBlockEntityRenderState();
     }
 }

@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 public class DyedVoidClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        BlockEntityRendererFactories.register(DyedVoidBlocks.END_VOID_BLOCK_ENTITY, EndVoidBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(DyedVoidBlocks.END_VOID_BLOCK_ENTITY, ctx -> new EndVoidBlockEntityRenderer());
     }
 
     public static boolean isFlatRendered(ItemStack itemStack) {
