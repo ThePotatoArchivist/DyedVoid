@@ -19,10 +19,13 @@ public class DyedVoidBlocks {
         var settings = AbstractBlock.Settings.create()
                 .strength(0)
                 .hardness(3)
-                .emissiveLighting((state, world, pos) -> true)
                 .sounds(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
-                .luminance(luminant ? state -> 15 : state -> 0)
                 .noBlockBreakParticles();
+
+        if (luminant)
+            settings
+                    .emissiveLighting((state, world, pos) -> true)
+                    .luminance(state -> 15);
 
         return register(colorName == null ? "void" : colorName + "_void", new VoidBlock(settings));
     }
