@@ -16,6 +16,8 @@
     "dyedvoid:purple_void",
     "dyedvoid:magenta_void",
     "dyedvoid:pink_void",
+    "dyedvoid:shadow_void",
+    "dyedvoid:inverted_shadow_void",
     "dyedvoid:end_void"
   ]
 }

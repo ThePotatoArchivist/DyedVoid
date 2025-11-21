@@ -63,6 +63,9 @@ public class DyedVoidItems {
     public static final Item MAGENTA_VOID = registerBlockItem(DyedVoidBlocks.MAGENTA_VOID);
     public static final Item PINK_VOID = registerBlockItem(DyedVoidBlocks.PINK_VOID);
 
+    public static final Item SHADOW_VOID = registerBlockItem(DyedVoidBlocks.SHADOW_VOID);
+    public static final Item INVERTED_SHADOW_VOID = registerBlockItem(DyedVoidBlocks.INVERTED_SHADOW_VOID);
+
     public static final Item END_VOID = registerBlockItem(DyedVoidBlocks.END_VOID);
 
     public static final Item[] VOID_BLOCKS = {
@@ -82,6 +85,8 @@ public class DyedVoidItems {
             PURPLE_VOID,
             MAGENTA_VOID,
             PINK_VOID,
+            SHADOW_VOID,
+            INVERTED_SHADOW_VOID,
             END_VOID
     };
 

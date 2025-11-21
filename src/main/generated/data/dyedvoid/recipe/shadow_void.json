@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "dyedvoid:void",
+    "$": "dyedvoid:white_void"
+  },
+  "pattern": [
+    "$#$",
+    "###",
+    "$#$"
+  ],
+  "result": {
+    "count": 4,
+    "id": "dyedvoid:shadow_void"
+  }
+}

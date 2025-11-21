@@ -35,6 +35,8 @@ public class LangGenerator extends FabricLanguageProvider {
         translationBuilder.add(DyedVoidItems.PURPLE_VOID, "Purple Void Block");
         translationBuilder.add(DyedVoidItems.MAGENTA_VOID, "Magenta Void Block");
         translationBuilder.add(DyedVoidItems.PINK_VOID, "Pink Void Block");
+        translationBuilder.add(DyedVoidItems.SHADOW_VOID, "Shadow Void Block");
+        translationBuilder.add(DyedVoidItems.INVERTED_SHADOW_VOID, "Inverted Shadow Void Block");
         translationBuilder.add(DyedVoidItems.END_VOID, "End Void Block");
         translationBuilder.add("itemGroup.dyedvoid.group", "The Dyed Void");
         translationBuilder.add(createTranslationKey("subtitles", DyedVoidSounds.FILL_VOID_BOTTLE.id()), "Bottle truly empties");

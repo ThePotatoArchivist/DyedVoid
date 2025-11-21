@@ -29,25 +29,20 @@ public class DyedVoidBlocks {
         return register(path, Block::new, settings);
     }
 
-    private static Block registerVoidBlock(@Nullable String colorName, boolean luminant) {
+    private static Block registerVoidBlock(@Nullable String colorName) {
         var settings = AbstractBlock.Settings.create()
                 .strength(0)
                 .hardness(3)
                 .sounds(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
-                .luminance(luminant ? state -> 15 : state -> 0)
                 .noBlockBreakParticles();
 
         return register(colorName == null ? "void" : colorName + "_void", VoidBlock::new, settings);
     }
 
-    private static Block registerVoidBlock(String colorName) {
-        return registerVoidBlock(colorName, true);
-    }
-
     public static final Block WHITE_VOID = registerVoidBlock("white");
     public static final Block LIGHT_GRAY_VOID = registerVoidBlock("light_gray");
     public static final Block GRAY_VOID = registerVoidBlock("gray");
-    public static final Block BLACK_VOID = registerVoidBlock(null, false);
+    public static final Block BLACK_VOID = registerVoidBlock(null);
     public static final Block BROWN_VOID = registerVoidBlock("brown");
     public static final Block RED_VOID = registerVoidBlock("red");
     public static final Block ORANGE_VOID = registerVoidBlock("orange");
@@ -60,6 +55,9 @@ public class DyedVoidBlocks {
     public static final Block PURPLE_VOID = registerVoidBlock("purple");
     public static final Block MAGENTA_VOID = registerVoidBlock("magenta");
     public static final Block PINK_VOID = registerVoidBlock("pink");
+
+    public static final Block SHADOW_VOID = registerVoidBlock("shadow");
+    public static final Block INVERTED_SHADOW_VOID = registerVoidBlock("inverted_shadow");
 
     public static final Block END_VOID = register("end_void", EndVoidBlock::new, AbstractBlock.Settings.create()
             .strength(0)
@@ -90,6 +88,8 @@ public class DyedVoidBlocks {
             PURPLE_VOID,
             MAGENTA_VOID,
             PINK_VOID,
+            SHADOW_VOID,
+            INVERTED_SHADOW_VOID,
             END_VOID
     };
 

@@ -63,6 +63,24 @@ public class DVRecipeGenerator extends RecipeGenerator {
                 .input(DyedVoidItems.BLACK_VOID, 4)
                 .criterion(hasItem(DyedVoidItems.BLACK_VOID), conditionsFromItem(DyedVoidItems.BLACK_VOID))
                 .offerTo(exporter);
+
+        createShaped(RecipeCategory.DECORATIONS, DyedVoidItems.SHADOW_VOID, 4)
+                .pattern("$#$")
+                .pattern("###")
+                .pattern("$#$")
+                .input('#', DyedVoidItems.BLACK_VOID)
+                .input('$', DyedVoidItems.WHITE_VOID)
+                .criterion(hasItem(DyedVoidItems.WHITE_VOID), conditionsFromItem(DyedVoidItems.WHITE_VOID))
+                .offerTo(exporter);
+
+        createShaped(RecipeCategory.DECORATIONS, DyedVoidItems.INVERTED_SHADOW_VOID, 4)
+                .pattern("$#$")
+                .pattern("###")
+                .pattern("$#$")
+                .input('#', DyedVoidItems.WHITE_VOID)
+                .input('$', DyedVoidItems.BLACK_VOID)
+                .criterion(hasItem(DyedVoidItems.WHITE_VOID), conditionsFromItem(DyedVoidItems.WHITE_VOID))
+                .offerTo(exporter);
     }
 
     public static class Provider extends FabricRecipeProvider {
