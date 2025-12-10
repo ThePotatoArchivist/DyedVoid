@@ -1,4 +1,4 @@
-// 1.21.10	-999999999-01-01T00:00:00	The Dyed Void/Block Loot Tables
+// 1.21.11	-999999999-01-01T00:00:00	The Dyed Void/Block Loot Tables
 6e7da72278599b8ad4cace203fade75f0ab8f4c8 data/dyedvoid/loot_table/blocks/blue_void.json
 5d7a6887f6960ada3c64fb9776be941635f6a580 data/dyedvoid/loot_table/blocks/brown_void.json
 a0bd0f293b821f44ac0f380eb9c8f637dba033f9 data/dyedvoid/loot_table/blocks/cyan_void.json
