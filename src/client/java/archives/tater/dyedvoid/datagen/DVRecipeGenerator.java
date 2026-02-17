@@ -4,19 +4,18 @@ import archives.tater.dyedvoid.DyedVoidBlocks;
 import archives.tater.dyedvoid.DyedVoidItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.recipe.RecipeExporter;
-import net.minecraft.data.recipe.RecipeGenerator;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.RegistryWrapper;
-
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import static java.util.Map.entry;
 
-public class DVRecipeGenerator extends RecipeGenerator {
+public class DVRecipeGenerator extends RecipeProvider {
     Map<Item, Item> dyes = Map.ofEntries(
             entry(DyedVoidItems.ORANGE_VOID, Items.ORANGE_DYE),
             entry(DyedVoidItems.MAGENTA_VOID, Items.MAGENTA_DYE),
@@ -34,63 +33,63 @@ public class DVRecipeGenerator extends RecipeGenerator {
             entry(DyedVoidItems.RED_VOID, Items.RED_DYE)
     );
 
-    protected DVRecipeGenerator(RegistryWrapper.WrapperLookup registries, RecipeExporter exporter) {
+    protected DVRecipeGenerator(HolderLookup.Provider registries, RecipeOutput exporter) {
         super(registries, exporter);
     }
 
 
     @Override
-    public void generate() {
-        dyes.forEach((voidItem, dyeItem) -> createShapeless(RecipeCategory.DECORATIONS, voidItem, 8)
-                .input(DyedVoidItems.WHITE_VOID, 4)
+    public void buildRecipes() {
+        dyes.forEach((voidItem, dyeItem) -> shapeless(RecipeCategory.DECORATIONS, voidItem, 8)
+                .requires(DyedVoidItems.WHITE_VOID, 4)
                 .input(dyeItem)
                 .input(DyedVoidItems.WHITE_VOID, 4)
-                .criterion(hasItem(DyedVoidItems.WHITE_VOID), conditionsFromItem(DyedVoidItems.WHITE_VOID))
+                .criterion(getHasName(DyedVoidItems.WHITE_VOID), has(DyedVoidItems.WHITE_VOID))
                 .group("dye_void_block")
-                .offerTo(exporter)
+                .offerTo(output)
         );
 
-        createShaped(RecipeCategory.DECORATIONS, DyedVoidBlocks.BLACK_VOID, 4)
+        shaped(RecipeCategory.DECORATIONS, DyedVoidBlocks.BLACK_VOID, 4)
                 .pattern("##")
                 .pattern("##")
                 .input('#', DyedVoidItems.VOID_BOTTLE_ITEM)
-                .criterion(hasItem(DyedVoidItems.VOID_BOTTLE_ITEM), conditionsFromItem(DyedVoidItems.VOID_BOTTLE_ITEM))
-                .offerTo(exporter);
+                .criterion(getHasName(DyedVoidItems.VOID_BOTTLE_ITEM), has(DyedVoidItems.VOID_BOTTLE_ITEM))
+                .offerTo(output);
 
-        createShapeless(RecipeCategory.DECORATIONS, DyedVoidItems.WHITE_VOID, 8)
+        shapeless(RecipeCategory.DECORATIONS, DyedVoidItems.WHITE_VOID, 8)
                 .input(DyedVoidItems.BLACK_VOID, 4)
                 .input(Items.GLOW_INK_SAC)
                 .input(DyedVoidItems.BLACK_VOID, 4)
-                .criterion(hasItem(DyedVoidItems.BLACK_VOID), conditionsFromItem(DyedVoidItems.BLACK_VOID))
-                .offerTo(exporter);
+                .criterion(getHasName(DyedVoidItems.BLACK_VOID), has(DyedVoidItems.BLACK_VOID))
+                .offerTo(output);
 
-        createShaped(RecipeCategory.DECORATIONS, DyedVoidItems.SHADOW_VOID, 4)
+        shaped(RecipeCategory.DECORATIONS, DyedVoidItems.SHADOW_VOID, 4)
                 .pattern("$#$")
                 .pattern("###")
                 .pattern("$#$")
                 .input('#', DyedVoidItems.BLACK_VOID)
                 .input('$', DyedVoidItems.WHITE_VOID)
-                .criterion(hasItem(DyedVoidItems.WHITE_VOID), conditionsFromItem(DyedVoidItems.WHITE_VOID))
-                .offerTo(exporter);
+                .criterion(getHasName(DyedVoidItems.WHITE_VOID), has(DyedVoidItems.WHITE_VOID))
+                .offerTo(output);
 
-        createShaped(RecipeCategory.DECORATIONS, DyedVoidItems.INVERTED_SHADOW_VOID, 4)
+        shaped(RecipeCategory.DECORATIONS, DyedVoidItems.INVERTED_SHADOW_VOID, 4)
                 .pattern("$#$")
                 .pattern("###")
                 .pattern("$#$")
                 .input('#', DyedVoidItems.WHITE_VOID)
                 .input('$', DyedVoidItems.BLACK_VOID)
-                .criterion(hasItem(DyedVoidItems.WHITE_VOID), conditionsFromItem(DyedVoidItems.WHITE_VOID))
-                .offerTo(exporter);
+                .criterion(getHasName(DyedVoidItems.WHITE_VOID), has(DyedVoidItems.WHITE_VOID))
+                .offerTo(output);
     }
 
     public static class Provider extends FabricRecipeProvider {
 
-        public Provider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+        public Provider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, registriesFuture);
         }
 
         @Override
-        protected RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup wrapperLookup, RecipeExporter recipeExporter) {
+        protected RecipeProvider createRecipeProvider(HolderLookup.Provider wrapperLookup, RecipeOutput recipeExporter) {
             return new DVRecipeGenerator(wrapperLookup, recipeExporter);
         }
 

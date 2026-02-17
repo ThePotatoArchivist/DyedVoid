@@ -4,20 +4,19 @@ import archives.tater.dyedvoid.DyedVoidItems;
 import archives.tater.dyedvoid.DyedVoidSounds;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.minecraft.registry.RegistryWrapper.WrapperLookup;
-
+import net.minecraft.core.HolderLookup.Provider;
 import java.util.concurrent.CompletableFuture;
 
-import static net.minecraft.util.Util.createTranslationKey;
+import static net.minecraft.util.Util.makeDescriptionId;
 
 public class LangGenerator extends FabricLanguageProvider {
 
-    public LangGenerator(FabricDataOutput dataOutput, CompletableFuture<WrapperLookup> registryLookup) {
+    public LangGenerator(FabricDataOutput dataOutput, CompletableFuture<Provider> registryLookup) {
         super(dataOutput, registryLookup);
     }
 
     @Override
-    public void generateTranslations(WrapperLookup registriesLookup, TranslationBuilder translationBuilder) {
+    public void generateTranslations(Provider registriesLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add(DyedVoidItems.VOID_BOTTLE_ITEM, "Bottle of Void");
         translationBuilder.add(DyedVoidItems.BLACK_VOID, "Void Block");
         translationBuilder.add(DyedVoidItems.WHITE_VOID, "Luminous Void Block");
@@ -39,6 +38,6 @@ public class LangGenerator extends FabricLanguageProvider {
         translationBuilder.add(DyedVoidItems.INVERTED_SHADOW_VOID, "Inverted Shadow Void Block");
         translationBuilder.add(DyedVoidItems.END_VOID, "End Void Block");
         translationBuilder.add("itemGroup.dyedvoid.group", "The Dyed Void");
-        translationBuilder.add(createTranslationKey("subtitles", DyedVoidSounds.FILL_VOID_BOTTLE.id()), "Bottle truly empties");
+        translationBuilder.add(makeDescriptionId("subtitles", DyedVoidSounds.FILL_VOID_BOTTLE.id()), "Bottle truly empties");
     }
 }
