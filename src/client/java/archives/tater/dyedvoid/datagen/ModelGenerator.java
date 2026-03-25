@@ -3,6 +3,7 @@ package archives.tater.dyedvoid.datagen;
 import archives.tater.dyedvoid.DyedVoid;
 import archives.tater.dyedvoid.DyedVoidBlocks;
 import archives.tater.dyedvoid.DyedVoidItems;
+import archives.tater.dyedvoid.client.render.VoidBlockSpecialRenderer;
 
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -10,7 +11,9 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.*;
+import net.minecraft.client.renderer.item.SpecialModelWrapper;
 import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 
 import java.util.Optional;
@@ -26,6 +29,8 @@ public class ModelGenerator extends FabricModelProvider {
 
     private static final TextureSlot OUTLINE = TextureSlot.create("outline");
     private static final ModelTemplate OUTLINE_BLOCK_MODEL = new ModelTemplate(Optional.of(DyedVoid.id("block/outline_block")), Optional.empty(), TextureSlot.TEXTURE, OUTLINE);
+
+    private static final Identifier BLOCK_BASE = Identifier.withDefaultNamespace("block/block");
 
     private static final Block[] NORMAL_VOID_BLOCKS = {
             DyedVoidBlocks.BLACK_VOID,
@@ -62,7 +67,7 @@ public class ModelGenerator extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
-        for (Block block : NORMAL_VOID_BLOCKS) {
+        for (var block : NORMAL_VOID_BLOCKS) {
             blockStateModelGenerator.createTrivialBlock(block, VOID_BLOCK_FACTORY);
         }
         blockStateModelGenerator.createAirLikeBlock(DyedVoidBlocks.END_VOID, new Material(DyedVoid.id("block/empty")));
@@ -72,10 +77,18 @@ public class ModelGenerator extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
+        for (var block : NORMAL_VOID_BLOCKS) {
+            itemModelGenerator.itemModelOutput.accept(block.asItem(), new SpecialModelWrapper.Unbaked(
+                    BLOCK_BASE,
+                    Optional.empty(),
+                    new VoidBlockSpecialRenderer.Unbaked(TextureMapping.getBlockTexture(block).sprite())
+            ));
+        }
+
         itemModelGenerator.itemModelOutput.accept(DyedVoidItems.END_VOID, ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(DyedVoidBlocks.BLACK_VOID)));
 
-//        Models.GENERATED.upload(ModelIds.getItemModelId(DyedVoidItems.DUMMY_END_PORTAL), TextureMap.layer0(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.writer);
-//        Models.CUBE_ALL.upload(ModelIds.getItemModelId(DyedVoidItems.DUMMY_END_GATEWAY), TextureMap.all(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.writer);
+        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DyedVoidItems.DUMMY_END_PORTAL), TextureMapping.layer0(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.modelOutput);
+        ModelTemplates.CUBE_ALL.create(ModelLocationUtils.getModelLocation(DyedVoidItems.DUMMY_END_GATEWAY), TextureMapping.cube(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.modelOutput);
 
         itemModelGenerator.generateFlatItem(DyedVoidItems.VOID_BOTTLE_ITEM, ModelTemplates.FLAT_ITEM);
     }

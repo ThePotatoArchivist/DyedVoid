@@ -1,6 +1,10 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "dyedvoid:block/lime_void"
+    "type": "minecraft:special",
+    "base": "minecraft:block/block",
+    "model": {
+      "type": "dyedvoid:void_block",
+      "texture": "dyedvoid:block/lime_void"
+    }
   }
 }
