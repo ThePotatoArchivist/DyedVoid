@@ -3,24 +3,21 @@ package archives.tater.dyedvoid.datagen;
 import archives.tater.dyedvoid.DyedVoid;
 import archives.tater.dyedvoid.DyedVoidBlocks;
 import archives.tater.dyedvoid.DyedVoidItems;
+
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.minecraft.client.data.*;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.model.ItemModelUtils;
-import net.minecraft.client.data.models.model.ModelLocationUtils;
-import net.minecraft.client.data.models.model.ModelTemplate;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TextureMapping;
-import net.minecraft.client.data.models.model.TextureSlot;
-import net.minecraft.client.data.models.model.TexturedModel;
+import net.minecraft.client.data.models.model.*;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.world.level.block.Block;
+
 import java.util.Optional;
 
 public class ModelGenerator extends FabricModelProvider {
 
-    public ModelGenerator(FabricDataOutput output) {
+    public ModelGenerator(FabricPackOutput output) {
         super(output);
     }
 
@@ -68,7 +65,7 @@ public class ModelGenerator extends FabricModelProvider {
         for (Block block : NORMAL_VOID_BLOCKS) {
             blockStateModelGenerator.createTrivialBlock(block, VOID_BLOCK_FACTORY);
         }
-        blockStateModelGenerator.createAirLikeBlock(DyedVoidBlocks.END_VOID, DyedVoid.id("block/empty"));
+        blockStateModelGenerator.createAirLikeBlock(DyedVoidBlocks.END_VOID, new Material(DyedVoid.id("block/empty")));
         registerOutlineBlock(blockStateModelGenerator, DyedVoidBlocks.SHADOW_VOID, DyedVoidBlocks.BLACK_VOID, DyedVoidBlocks.WHITE_VOID);
         registerOutlineBlock(blockStateModelGenerator, DyedVoidBlocks.INVERTED_SHADOW_VOID, DyedVoidBlocks.WHITE_VOID, DyedVoidBlocks.BLACK_VOID);
     }

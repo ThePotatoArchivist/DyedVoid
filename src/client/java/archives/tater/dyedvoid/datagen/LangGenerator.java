@@ -2,7 +2,7 @@ package archives.tater.dyedvoid.datagen;
 
 import archives.tater.dyedvoid.DyedVoidItems;
 import archives.tater.dyedvoid.DyedVoidSounds;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup.Provider;
 import java.util.concurrent.CompletableFuture;
@@ -11,7 +11,7 @@ import static net.minecraft.util.Util.makeDescriptionId;
 
 public class LangGenerator extends FabricLanguageProvider {
 
-    public LangGenerator(FabricDataOutput dataOutput, CompletableFuture<Provider> registryLookup) {
+    public LangGenerator(FabricPackOutput dataOutput, CompletableFuture<Provider> registryLookup) {
         super(dataOutput, registryLookup);
     }
 
@@ -38,6 +38,6 @@ public class LangGenerator extends FabricLanguageProvider {
         translationBuilder.add(DyedVoidItems.INVERTED_SHADOW_VOID, "Inverted Shadow Void Block");
         translationBuilder.add(DyedVoidItems.END_VOID, "End Void Block");
         translationBuilder.add("itemGroup.dyedvoid.group", "The Dyed Void");
-        translationBuilder.add(makeDescriptionId("subtitles", DyedVoidSounds.FILL_VOID_BOTTLE.id()), "Bottle truly empties");
+        translationBuilder.add(makeDescriptionId("subtitles", DyedVoidSounds.FILL_VOID_BOTTLE.location()), "Bottle truly empties");
     }
 }

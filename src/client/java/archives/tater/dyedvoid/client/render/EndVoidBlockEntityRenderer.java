@@ -1,19 +1,19 @@
 package archives.tater.dyedvoid.client.render;
 
 import archives.tater.dyedvoid.EndVoidBlock.EndVoidBlockEntity;
+
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.AbstractEndPortalRenderer;
 import net.minecraft.client.renderer.blockentity.state.EndPortalRenderState;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
 
 public class EndVoidBlockEntityRenderer extends AbstractEndPortalRenderer<EndVoidBlockEntity, EndPortalRenderState> {
 
     @Override
-    protected float getOffsetUp() {
-        return 1.0F;
-    }
-
-    @Override
-    protected float getOffsetDown() {
-        return 0.0F;
+    public void submit(EndPortalRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
+        submitCube(state.facesToShow, RenderTypes.endGateway(), poseStack, submitNodeCollector);
     }
 
     @Override

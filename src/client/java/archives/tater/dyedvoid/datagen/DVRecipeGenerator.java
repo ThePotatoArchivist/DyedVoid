@@ -2,7 +2,7 @@ package archives.tater.dyedvoid.datagen;
 
 import archives.tater.dyedvoid.DyedVoidBlocks;
 import archives.tater.dyedvoid.DyedVoidItems;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -42,49 +42,49 @@ public class DVRecipeGenerator extends RecipeProvider {
     public void buildRecipes() {
         dyes.forEach((voidItem, dyeItem) -> shapeless(RecipeCategory.DECORATIONS, voidItem, 8)
                 .requires(DyedVoidItems.WHITE_VOID, 4)
-                .input(dyeItem)
-                .input(DyedVoidItems.WHITE_VOID, 4)
-                .criterion(getHasName(DyedVoidItems.WHITE_VOID), has(DyedVoidItems.WHITE_VOID))
+                .requires(dyeItem)
+                .requires(DyedVoidItems.WHITE_VOID, 4)
+                .unlockedBy(getHasName(DyedVoidItems.WHITE_VOID), has(DyedVoidItems.WHITE_VOID))
                 .group("dye_void_block")
-                .offerTo(output)
+                .save(output)
         );
 
         shaped(RecipeCategory.DECORATIONS, DyedVoidBlocks.BLACK_VOID, 4)
                 .pattern("##")
                 .pattern("##")
-                .input('#', DyedVoidItems.VOID_BOTTLE_ITEM)
-                .criterion(getHasName(DyedVoidItems.VOID_BOTTLE_ITEM), has(DyedVoidItems.VOID_BOTTLE_ITEM))
-                .offerTo(output);
+                .define('#', DyedVoidItems.VOID_BOTTLE_ITEM)
+                .unlockedBy(getHasName(DyedVoidItems.VOID_BOTTLE_ITEM), has(DyedVoidItems.VOID_BOTTLE_ITEM))
+                .save(output);
 
         shapeless(RecipeCategory.DECORATIONS, DyedVoidItems.WHITE_VOID, 8)
-                .input(DyedVoidItems.BLACK_VOID, 4)
-                .input(Items.GLOW_INK_SAC)
-                .input(DyedVoidItems.BLACK_VOID, 4)
-                .criterion(getHasName(DyedVoidItems.BLACK_VOID), has(DyedVoidItems.BLACK_VOID))
-                .offerTo(output);
+                .requires(DyedVoidItems.BLACK_VOID, 4)
+                .requires(Items.GLOW_INK_SAC)
+                .requires(DyedVoidItems.BLACK_VOID, 4)
+                .unlockedBy(getHasName(DyedVoidItems.BLACK_VOID), has(DyedVoidItems.BLACK_VOID))
+                .save(output);
 
         shaped(RecipeCategory.DECORATIONS, DyedVoidItems.SHADOW_VOID, 4)
                 .pattern("$#$")
                 .pattern("###")
                 .pattern("$#$")
-                .input('#', DyedVoidItems.BLACK_VOID)
-                .input('$', DyedVoidItems.WHITE_VOID)
-                .criterion(getHasName(DyedVoidItems.WHITE_VOID), has(DyedVoidItems.WHITE_VOID))
-                .offerTo(output);
+                .define('#', DyedVoidItems.BLACK_VOID)
+                .define('$', DyedVoidItems.WHITE_VOID)
+                .unlockedBy(getHasName(DyedVoidItems.WHITE_VOID), has(DyedVoidItems.WHITE_VOID))
+                .save(output);
 
         shaped(RecipeCategory.DECORATIONS, DyedVoidItems.INVERTED_SHADOW_VOID, 4)
                 .pattern("$#$")
                 .pattern("###")
                 .pattern("$#$")
-                .input('#', DyedVoidItems.WHITE_VOID)
-                .input('$', DyedVoidItems.BLACK_VOID)
-                .criterion(getHasName(DyedVoidItems.WHITE_VOID), has(DyedVoidItems.WHITE_VOID))
-                .offerTo(output);
+                .define('#', DyedVoidItems.WHITE_VOID)
+                .define('$', DyedVoidItems.BLACK_VOID)
+                .unlockedBy(getHasName(DyedVoidItems.WHITE_VOID), has(DyedVoidItems.WHITE_VOID))
+                .save(output);
     }
 
     public static class Provider extends FabricRecipeProvider {
 
-        public Provider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+        public Provider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
             super(output, registriesFuture);
         }
 

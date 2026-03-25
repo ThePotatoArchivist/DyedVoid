@@ -2,12 +2,13 @@ package archives.tater.dyedvoid;
 
 import archives.tater.dyedvoid.consumeeffect.ExhaustConsumeEffect;
 import archives.tater.dyedvoid.consumeeffect.SetAirConsumeEffect;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+
+import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
+
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.item.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -15,15 +16,12 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUseAnimation;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+
 import java.util.List;
 import java.util.function.Function;
 
@@ -43,11 +41,11 @@ public class DyedVoidItems {
     }
 
     private static Item registerBlockItem(Block block) {
-        return Items.registerBlock(block);
+        return registerBlockItem(BuiltInRegistries.BLOCK.getKey(block), block);
     }
 
     private static Item registerBlockItem(Identifier identifier, Block block) {
-        return register(identifier, settings -> new BlockItem(block, settings), new Item.Properties());
+        return register(identifier, settings -> new BlockItem(block, settings), new Item.Properties().useBlockDescriptionPrefix());
     }
 
     public static final Item WHITE_VOID = registerBlockItem(DyedVoidBlocks.WHITE_VOID);
@@ -105,37 +103,37 @@ public class DyedVoidItems {
             )))
     );
 
-    public static final CreativeModeTab ITEM_GROUP = FabricItemGroup.builder()
+    public static final CreativeModeTab ITEM_GROUP = FabricCreativeModeTab.builder()
             .icon(() -> new ItemStack(RED_VOID))
             .title(Component.translatable("itemGroup.dyedvoid.group"))
-            .displayItems((context, entries) -> {
-                entries.accept(VOID_BOTTLE_ITEM);
-                entries.accept(WHITE_VOID);
-                entries.accept(LIGHT_GRAY_VOID);
-                entries.accept(GRAY_VOID);
-                entries.accept(BLACK_VOID);
-                entries.accept(BROWN_VOID);
-                entries.accept(RED_VOID);
-                entries.accept(ORANGE_VOID);
-                entries.accept(YELLOW_VOID);
-                entries.accept(LIME_VOID);
-                entries.accept(GREEN_VOID);
-                entries.accept(CYAN_VOID);
-                entries.accept(LIGHT_BLUE_VOID);
-                entries.accept(BLUE_VOID);
-                entries.accept(PURPLE_VOID);
-                entries.accept(MAGENTA_VOID);
-                entries.accept(PINK_VOID);
-                entries.accept(END_VOID);
+            .displayItems((_, output) -> {
+                output.accept(VOID_BOTTLE_ITEM);
+                output.accept(WHITE_VOID);
+                output.accept(LIGHT_GRAY_VOID);
+                output.accept(GRAY_VOID);
+                output.accept(BLACK_VOID);
+                output.accept(BROWN_VOID);
+                output.accept(RED_VOID);
+                output.accept(ORANGE_VOID);
+                output.accept(YELLOW_VOID);
+                output.accept(LIME_VOID);
+                output.accept(GREEN_VOID);
+                output.accept(CYAN_VOID);
+                output.accept(LIGHT_BLUE_VOID);
+                output.accept(BLUE_VOID);
+                output.accept(PURPLE_VOID);
+                output.accept(MAGENTA_VOID);
+                output.accept(PINK_VOID);
+                output.accept(END_VOID);
             })
             .build();
 
-//    public static final Item DUMMY_END_PORTAL = registerBlockItem(Identifier.ofVanilla("dyedvoid/dummy/end_portal"), Blocks.END_PORTAL);
-//    public static final Item DUMMY_END_GATEWAY = registerBlockItem(Identifier.ofVanilla("dyedvoid/dummy/end_gateway"), Blocks.END_GATEWAY);
+    public static final Item DUMMY_END_PORTAL = registerBlockItem(Identifier.withDefaultNamespace("dyedvoid/dummy/end_portal"), Blocks.END_PORTAL);
+    public static final Item DUMMY_END_GATEWAY = registerBlockItem(Identifier.withDefaultNamespace("dyedvoid/dummy/end_gateway"), Blocks.END_GATEWAY);
 
     public static final TagKey<Item> NO_GRAVITY_TAG = TagKey.create(Registries.ITEM, DyedVoid.id("no_gravity"));
 
-    public static void initalize() {
+    public static void init() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, DyedVoid.id("item_group"), DyedVoidItems.ITEM_GROUP);
 
         Registry.register(BuiltInRegistries.CONSUME_EFFECT_TYPE, DyedVoid.id("set_air"), SetAirConsumeEffect.TYPE);

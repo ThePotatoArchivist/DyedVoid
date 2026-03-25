@@ -95,5 +95,5 @@ public class DyedVoidBlocks {
 
     public static final TagKey<Block> VOID_BLOCKS_TAG = TagKey.create(Registries.BLOCK, DyedVoid.id("void_blocks"));
 
-    public static void initialize() {}
+    public static void init() {}
 }

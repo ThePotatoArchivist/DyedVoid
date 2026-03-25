@@ -24,9 +24,9 @@ public class DyedVoid implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
-		DyedVoidSounds.initialize();
-		DyedVoidBlocks.initialize();
-		DyedVoidItems.initalize();
+		DyedVoidSounds.init();
+		DyedVoidBlocks.init();
+		DyedVoidItems.init();
 
 		ResourceManagerHelper.registerBuiltinResourcePack(
 				id("whitespace"),

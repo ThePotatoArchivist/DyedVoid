@@ -27,5 +27,5 @@ public class DyedVoidSounds {
             SoundEvents.EMPTY
     );
 
-    public static void initialize() {}
+    public static void init() {}
 }
