@@ -1,0 +1,9 @@
+{
+  "type": "rrv:world_interaction",
+  "left": "dyedvoid:void",
+  "right": [
+    "dyedvoid:dummy/end_portal",
+    "dyedvoid:dummy/end_gateway"
+  ],
+  "result": "dyedvoid:end_void"
+}
