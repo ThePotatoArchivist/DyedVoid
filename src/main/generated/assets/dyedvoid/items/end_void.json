@@ -1,6 +1,10 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "dyedvoid:block/void"
+    "type": "minecraft:special",
+    "base": "minecraft:block/block",
+    "model": {
+      "type": "minecraft:end_cube",
+      "effect": "portal"
+    }
   }
 }

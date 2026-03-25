@@ -11,12 +11,14 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.*;
-import net.minecraft.client.renderer.item.SpecialModelWrapper;
+import net.minecraft.client.renderer.special.EndCubeSpecialRenderer;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 
 import java.util.Optional;
+
+import static net.minecraft.client.data.models.model.ItemModelUtils.specialModel;
 
 public class ModelGenerator extends FabricModelProvider {
 
@@ -77,18 +79,17 @@ public class ModelGenerator extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
-        for (var block : NORMAL_VOID_BLOCKS) {
-            itemModelGenerator.itemModelOutput.accept(block.asItem(), new SpecialModelWrapper.Unbaked(
+        for (var block : DyedVoidBlocks.VOID_BLOCKS) {
+            itemModelGenerator.itemModelOutput.accept(block.asItem(), specialModel(
                     BLOCK_BASE,
-                    Optional.empty(),
-                    new VoidBlockSpecialRenderer.Unbaked(TextureMapping.getBlockTexture(block).sprite())
+                    block == DyedVoidBlocks.END_VOID ? new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.PORTAL) : new VoidBlockSpecialRenderer.Unbaked(block)
             ));
         }
 
-        itemModelGenerator.itemModelOutput.accept(DyedVoidItems.END_VOID, ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(DyedVoidBlocks.BLACK_VOID)));
-
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DyedVoidItems.DUMMY_END_PORTAL), TextureMapping.layer0(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.modelOutput);
-        ModelTemplates.CUBE_ALL.create(ModelLocationUtils.getModelLocation(DyedVoidItems.DUMMY_END_GATEWAY), TextureMapping.cube(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.modelOutput);
+
+        itemModelGenerator.itemModelOutput.accept(DyedVoidItems.DUMMY_END_GATEWAY, specialModel(BLOCK_BASE, new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.GATEWAY)));
+        itemModelGenerator.itemModelOutput.accept(DyedVoidItems.DUMMY_END_PORTAL, specialModel(Identifier.withDefaultNamespace("item/generated"), new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.GATEWAY)));
 
         itemModelGenerator.generateFlatItem(DyedVoidItems.VOID_BOTTLE_ITEM, ModelTemplates.FLAT_ITEM);
     }

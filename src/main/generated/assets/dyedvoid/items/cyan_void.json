@@ -4,7 +4,7 @@
     "base": "minecraft:block/block",
     "model": {
       "type": "dyedvoid:void_block",
-      "texture": "dyedvoid:block/cyan_void"
+      "block": "dyedvoid:cyan_void"
     }
   }
 }
