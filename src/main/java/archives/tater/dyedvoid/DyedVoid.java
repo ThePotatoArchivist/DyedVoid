@@ -1,10 +1,12 @@
 package archives.tater.dyedvoid;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
+import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
+
 import net.minecraft.resources.Identifier;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,10 +30,10 @@ public class DyedVoid implements ModInitializer {
 		DyedVoidBlocks.init();
 		DyedVoidItems.init();
 
-		ResourceManagerHelper.registerBuiltinResourcePack(
+		ResourceLoader.registerBuiltinPack(
 				id("whitespace"),
-				FabricLoader.getInstance().getModContainer(MOD_ID).get(),
-				ResourcePackActivationType.NORMAL
+				FabricLoader.getInstance().getModContainer(MOD_ID).orElseThrow(),
+				PackActivationType.NORMAL
 		);
 	}
 }

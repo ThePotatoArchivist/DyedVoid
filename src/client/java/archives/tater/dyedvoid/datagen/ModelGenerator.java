@@ -86,8 +86,6 @@ public class ModelGenerator extends FabricModelProvider {
             ));
         }
 
-        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DyedVoidItems.DUMMY_END_PORTAL), TextureMapping.layer0(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.modelOutput);
-
         itemModelGenerator.itemModelOutput.accept(DyedVoidItems.DUMMY_END_GATEWAY, specialModel(BLOCK_BASE, new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.GATEWAY)));
         itemModelGenerator.itemModelOutput.accept(DyedVoidItems.DUMMY_END_PORTAL, specialModel(Identifier.withDefaultNamespace("item/generated"), new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.GATEWAY)));
 

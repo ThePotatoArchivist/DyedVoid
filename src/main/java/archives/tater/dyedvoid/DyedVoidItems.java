@@ -128,8 +128,8 @@ public class DyedVoidItems {
             })
             .build();
 
-    public static final Item DUMMY_END_PORTAL = registerBlockItem(Identifier.withDefaultNamespace("dyedvoid/dummy/end_portal"), Blocks.END_PORTAL);
-    public static final Item DUMMY_END_GATEWAY = registerBlockItem(Identifier.withDefaultNamespace("dyedvoid/dummy/end_gateway"), Blocks.END_GATEWAY);
+    public static final Item DUMMY_END_PORTAL = register("dummy/end_portal", DummyVanillaItem::new, new Item.Properties().overrideDescription(Blocks.END_PORTAL.getDescriptionId()));
+    public static final Item DUMMY_END_GATEWAY = register("dummy/end_gateway", DummyVanillaItem::new, new Item.Properties().overrideDescription(Blocks.END_GATEWAY.getDescriptionId()));
 
     public static final TagKey<Item> NO_GRAVITY_TAG = TagKey.create(Registries.ITEM, DyedVoid.id("no_gravity"));
 
