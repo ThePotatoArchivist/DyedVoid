@@ -29,6 +29,7 @@ public class DyedVoid implements ModInitializer {
 		DyedVoidSounds.init();
 		DyedVoidBlocks.init();
 		DyedVoidItems.init();
+		DyedVoidEnvironmentAttributes.init();
 
 		ResourceLoader.registerBuiltinPack(
 				id("whitespace"),

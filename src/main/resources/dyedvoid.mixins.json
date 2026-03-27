@@ -6,7 +6,8 @@
     "EndGatewayBlockMixin",
     "EndPortalBlockMixin",
     "GlassBottleItemMixin",
-    "ItemEntityMixin"
+    "ItemEntityMixin",
+    "LevelMixin"
   ],
   "injectors": {
     "defaultRequire": 1
