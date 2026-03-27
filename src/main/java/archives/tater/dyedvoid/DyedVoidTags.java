@@ -4,6 +4,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.dimension.DimensionType;
 
 public class DyedVoidTags {
@@ -12,4 +13,5 @@ public class DyedVoidTags {
     }
 
     public static final TagKey<DimensionType> NO_WEATHER = of(Registries.DIMENSION_TYPE, "no_weather");
+    public static final TagKey<Biome> END_CITY_ANY_HEIGHT = of(Registries.BIOME, "end_city_any_height");
 }

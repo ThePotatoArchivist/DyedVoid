@@ -3,6 +3,7 @@
   "package": "archives.tater.dyedvoid.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "EndCityStructureMixin",
     "EndGatewayBlockMixin",
     "EndPortalBlockMixin",
     "GlassBottleItemMixin",
@@ -13,5 +14,8 @@
   ],
   "injectors": {
     "defaultRequire": 1
+  },
+  "mixinextras": {
+    "minVersion": "0.5.0"
   }
 }
