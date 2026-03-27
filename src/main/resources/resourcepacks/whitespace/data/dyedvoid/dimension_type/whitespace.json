@@ -1,24 +1,32 @@
 {
-  "ultrawarm": false,
-  "natural": false,
-  "piglin_safe": false,
-  "respawn_anchor_works": false,
-  "bed_works": true,
-  "has_raids": false,
-  "has_skylight": true,
-  "has_ceiling": true,
-  "coordinate_scale": 1,
-  "fixed_time": 6000,
-  "ambient_light": 1,
-  "logical_height": 384,
-  "effects": "minecraft:the_nether",
-  "infiniburn": "#minecraft:infiniburn_overworld",
-  "min_y": -64,
-  "height": 384,
-  "monster_spawn_light_level": {
-    "type": "minecraft:uniform",
-    "min_inclusive": 0,
-    "max_inclusive": 7
+  "attributes": {
+    "minecraft:gameplay/bed_rule": {
+      "can_sleep": "never",
+      "can_set_spawn": "never",
+      "explodes": true
+    },
+    "minecraft:gameplay/respawn_anchor_works": false,
+    "minecraft:gameplay/can_pillager_patrol_spawn": false,
+    "minecraft:gameplay/can_start_raid": false,
+    "minecraft:gameplay/piglins_zombify": false,
+    "minecraft:gameplay/nether_portal_spawns_piglin": false,
+    "minecraft:gameplay/creaking_active": false,
+    "minecraft:audio/music_volume": 0,
+    "minecraft:visual/sky_color": "#ffffff",
+    "minecraft:visual/fog_color": "#ffffff"
   },
+  "timelines": "#dyedvoid:in_whitespace",
+  "has_skylight": true,
+  "has_ceiling": false,
+  "has_ender_dragon_fight": false,
+  "coordinate_scale": 1,
+  "ambient_light": 1,
+  "logical_height": 256,
+  "skybox": "none",
+  "cardinal_light": "default",
+  "infiniburn": "#minecraft:infiniburn_overworld",
+  "min_y": 0,
+  "height": 256,
+  "monster_spawn_light_level": 0,
   "monster_spawn_block_light_limit": 0
 }
