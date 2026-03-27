@@ -14,7 +14,11 @@ public class DyedVoidEnvironmentAttributes {
         return register(path, attribute.build());
     }
 
-    public static final EnvironmentAttribute<Boolean> STRUCTURE_MOB_SPAWN = register("gameplay/structure_mob_spawn", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN)
+    public static final EnvironmentAttribute<Boolean> WORLDGEN_MOB_SPAWN = register("gameplay/worldgen_mob_spawn", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN)
+            .defaultValue(true)
+    );
+
+    public static final EnvironmentAttribute<Boolean> NATURAL_MOB_SPAWN = register("gameplay/natural_mob_spawn", EnvironmentAttribute.builder(AttributeTypes.BOOLEAN)
             .defaultValue(true)
     );
 

@@ -15,7 +15,9 @@
     "minecraft:visual/sky_color": "#ffffff",
     "minecraft:visual/fog_color": "#ffffff",
     "minecraft:visual/fog_end_distance": 256,
-    "minecraft:visual/fog_start_distance": 0
+    "minecraft:visual/fog_start_distance": 0,
+    "dyedvoid:gameplay/worldgen_mob_spawn": false,
+    "dyedvoid:gameplay/natural_mob_spawn": false
   },
   "timelines": "#dyedvoid:in_whitespace",
   "has_skylight": true,
