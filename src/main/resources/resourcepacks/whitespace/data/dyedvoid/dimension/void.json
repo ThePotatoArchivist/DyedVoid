@@ -1,0 +1,17 @@
+{
+  "type": "dyedvoid:void",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "dyedvoid:whitespace",
+      "lakes": false,
+      "features": false,
+      "layers": [
+        {
+          "block": "dyedvoid:void",
+          "height": 64
+        }
+      ]
+    }
+  }
+}
