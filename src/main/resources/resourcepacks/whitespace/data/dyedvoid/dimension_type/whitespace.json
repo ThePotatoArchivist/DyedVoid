@@ -13,7 +13,9 @@
     "minecraft:gameplay/creaking_active": false,
     "minecraft:audio/music_volume": 0,
     "minecraft:visual/sky_color": "#ffffff",
-    "minecraft:visual/fog_color": "#ffffff"
+    "minecraft:visual/fog_color": "#ffffff",
+    "minecraft:visual/fog_end_distance": 256,
+    "minecraft:visual/fog_start_distance": 0
   },
   "timelines": "#dyedvoid:in_whitespace",
   "has_skylight": true,
