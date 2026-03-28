@@ -12,6 +12,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.jetbrains.annotations.Nullable;
@@ -34,13 +35,19 @@ public class DyedVoidBlocks {
     }
 
     private static Block registerVoidBlock(@Nullable String colorName) {
-        var settings = BlockBehaviour.Properties.of()
-                .strength(0)
-                .destroyTime(3)
+        return register(colorName == null ? "void" : colorName + "_void", VoidBlock::new, BlockBehaviour.Properties.of()
+                .strength(3, 0)
                 .sound(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
-                .noTerrainParticles();
+                .noTerrainParticles()
+        );
+    }
 
-        return register(colorName == null ? "void" : colorName + "_void", VoidBlock::new, settings);
+    private static Block registerVoidPlate(@Nullable String colorName) {
+        return register(colorName == null ? "void_plate" : colorName + "_void_plate", MultifaceBlock::new, BlockBehaviour.Properties.of()
+                .strength(3, 0)
+                .sound(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
+                .noTerrainParticles()
+        );
     }
 
     public static final Block WHITE_VOID = registerVoidBlock("white");
@@ -59,6 +66,23 @@ public class DyedVoidBlocks {
     public static final Block PURPLE_VOID = registerVoidBlock("purple");
     public static final Block MAGENTA_VOID = registerVoidBlock("magenta");
     public static final Block PINK_VOID = registerVoidBlock("pink");
+
+    public static final Block WHITE_VOID_PLATE = registerVoidPlate("white");
+    public static final Block LIGHT_GRAY_VOID_PLATE = registerVoidPlate("light_gray");
+    public static final Block GRAY_VOID_PLATE = registerVoidPlate("gray");
+    public static final Block BLACK_VOID_PLATE = registerVoidPlate(null);
+    public static final Block BROWN_VOID_PLATE = registerVoidPlate("brown");
+    public static final Block RED_VOID_PLATE = registerVoidPlate("red");
+    public static final Block ORANGE_VOID_PLATE = registerVoidPlate("orange");
+    public static final Block YELLOW_VOID_PLATE = registerVoidPlate("yellow");
+    public static final Block LIME_VOID_PLATE = registerVoidPlate("lime");
+    public static final Block GREEN_VOID_PLATE = registerVoidPlate("green");
+    public static final Block CYAN_VOID_PLATE = registerVoidPlate("cyan");
+    public static final Block LIGHT_BLUE_VOID_PLATE = registerVoidPlate("light_blue");
+    public static final Block BLUE_VOID_PLATE = registerVoidPlate("blue");
+    public static final Block PURPLE_VOID_PLATE = registerVoidPlate("purple");
+    public static final Block MAGENTA_VOID_PLATE = registerVoidPlate("magenta");
+    public static final Block PINK_VOID_PLATE = registerVoidPlate("pink");
 
     public static final Block SHADOW_VOID = registerVoidBlock("shadow");
     public static final Block INVERTED_SHADOW_VOID = registerVoidBlock("inverted_shadow");
@@ -97,7 +121,28 @@ public class DyedVoidBlocks {
             END_VOID
     };
 
+    public static final Block[] VOID_PLATES = {
+            BLACK_VOID_PLATE,
+            WHITE_VOID_PLATE,
+            LIGHT_GRAY_VOID_PLATE,
+            GRAY_VOID_PLATE,
+            BROWN_VOID_PLATE,
+            RED_VOID_PLATE,
+            ORANGE_VOID_PLATE,
+            YELLOW_VOID_PLATE,
+            LIME_VOID_PLATE,
+            GREEN_VOID_PLATE,
+            CYAN_VOID_PLATE,
+            LIGHT_BLUE_VOID_PLATE,
+            BLUE_VOID_PLATE,
+            PURPLE_VOID_PLATE,
+            MAGENTA_VOID_PLATE,
+            PINK_VOID_PLATE
+    };
+
     public static final TagKey<Block> VOID_BLOCKS_TAG = TagKey.create(Registries.BLOCK, DyedVoid.id("void_blocks"));
+    public static final TagKey<Block> VOID_PLATES_TAG = TagKey.create(Registries.BLOCK, DyedVoid.id("void_plates"));
+    public static final TagKey<Block> ALL_VOID_BLOCKS_TAG = TagKey.create(Registries.BLOCK, DyedVoid.id("all_void_blocks"));
 
     public static void init() {}
 }

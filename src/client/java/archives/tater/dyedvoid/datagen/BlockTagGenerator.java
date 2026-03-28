@@ -19,11 +19,15 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider arg) {
         valueLookupBuilder(DyedVoidBlocks.VOID_BLOCKS_TAG).add(DyedVoidBlocks.VOID_BLOCKS);
+        valueLookupBuilder(DyedVoidBlocks.VOID_PLATES_TAG).add(DyedVoidBlocks.VOID_PLATES);
+        valueLookupBuilder(DyedVoidBlocks.ALL_VOID_BLOCKS_TAG)
+                .addTag(DyedVoidBlocks.VOID_BLOCKS_TAG)
+                .addTag(DyedVoidBlocks.VOID_PLATES_TAG);
 
-        valueLookupBuilder(BlockTags.NEEDS_IRON_TOOL).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
-        valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
-        valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
-        valueLookupBuilder(BlockTags.MINEABLE_WITH_SHOVEL).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
-        valueLookupBuilder(BlockTags.MINEABLE_WITH_HOE).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
+        valueLookupBuilder(BlockTags.NEEDS_IRON_TOOL).addTag(DyedVoidBlocks.ALL_VOID_BLOCKS_TAG);
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE).addTag(DyedVoidBlocks.ALL_VOID_BLOCKS_TAG);
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE).addTag(DyedVoidBlocks.ALL_VOID_BLOCKS_TAG);
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_SHOVEL).addTag(DyedVoidBlocks.ALL_VOID_BLOCKS_TAG);
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_HOE).addTag(DyedVoidBlocks.ALL_VOID_BLOCKS_TAG);
     }
 }

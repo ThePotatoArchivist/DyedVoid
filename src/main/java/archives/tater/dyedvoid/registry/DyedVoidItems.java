@@ -72,6 +72,23 @@ public class DyedVoidItems {
 
     public static final Item END_VOID = registerBlockItem(DyedVoidBlocks.END_VOID);
 
+    public static final Item WHITE_VOID_PLATE = registerBlockItem(DyedVoidBlocks.WHITE_VOID_PLATE);
+    public static final Item LIGHT_GRAY_VOID_PLATE = registerBlockItem(DyedVoidBlocks.LIGHT_GRAY_VOID_PLATE);
+    public static final Item GRAY_VOID_PLATE = registerBlockItem(DyedVoidBlocks.GRAY_VOID_PLATE);
+    public static final Item BLACK_VOID_PLATE = registerBlockItem(DyedVoidBlocks.BLACK_VOID_PLATE);
+    public static final Item BROWN_VOID_PLATE = registerBlockItem(DyedVoidBlocks.BROWN_VOID_PLATE);
+    public static final Item RED_VOID_PLATE = registerBlockItem(DyedVoidBlocks.RED_VOID_PLATE);
+    public static final Item ORANGE_VOID_PLATE = registerBlockItem(DyedVoidBlocks.ORANGE_VOID_PLATE);
+    public static final Item YELLOW_VOID_PLATE = registerBlockItem(DyedVoidBlocks.YELLOW_VOID_PLATE);
+    public static final Item LIME_VOID_PLATE = registerBlockItem(DyedVoidBlocks.LIME_VOID_PLATE);
+    public static final Item GREEN_VOID_PLATE = registerBlockItem(DyedVoidBlocks.GREEN_VOID_PLATE);
+    public static final Item CYAN_VOID_PLATE = registerBlockItem(DyedVoidBlocks.CYAN_VOID_PLATE);
+    public static final Item LIGHT_BLUE_VOID_PLATE = registerBlockItem(DyedVoidBlocks.LIGHT_BLUE_VOID_PLATE);
+    public static final Item BLUE_VOID_PLATE = registerBlockItem(DyedVoidBlocks.BLUE_VOID_PLATE);
+    public static final Item PURPLE_VOID_PLATE = registerBlockItem(DyedVoidBlocks.PURPLE_VOID_PLATE);
+    public static final Item MAGENTA_VOID_PLATE = registerBlockItem(DyedVoidBlocks.MAGENTA_VOID_PLATE);
+    public static final Item PINK_VOID_PLATE = registerBlockItem(DyedVoidBlocks.PINK_VOID_PLATE);
+
     public static final Item[] VOID_BLOCKS = {
             BLACK_VOID,
             WHITE_VOID,
@@ -91,7 +108,23 @@ public class DyedVoidItems {
             PINK_VOID,
             SHADOW_VOID,
             INVERTED_SHADOW_VOID,
-            END_VOID
+            END_VOID,
+            BLACK_VOID_PLATE,
+            WHITE_VOID_PLATE,
+            LIGHT_GRAY_VOID_PLATE,
+            GRAY_VOID_PLATE,
+            BROWN_VOID_PLATE,
+            RED_VOID_PLATE,
+            ORANGE_VOID_PLATE,
+            YELLOW_VOID_PLATE,
+            LIME_VOID_PLATE,
+            GREEN_VOID_PLATE,
+            CYAN_VOID_PLATE,
+            LIGHT_BLUE_VOID_PLATE,
+            BLUE_VOID_PLATE,
+            PURPLE_VOID_PLATE,
+            MAGENTA_VOID_PLATE,
+            PINK_VOID_PLATE
     };
 
     public static final Item VOID_BOTTLE_ITEM = register("void_bottle", new Item.Properties()
@@ -127,6 +160,22 @@ public class DyedVoidItems {
                 output.accept(MAGENTA_VOID);
                 output.accept(PINK_VOID);
                 output.accept(END_VOID);
+                output.accept(WHITE_VOID_PLATE);
+                output.accept(LIGHT_GRAY_VOID_PLATE);
+                output.accept(GRAY_VOID_PLATE);
+                output.accept(BLACK_VOID_PLATE);
+                output.accept(BROWN_VOID_PLATE);
+                output.accept(RED_VOID_PLATE);
+                output.accept(ORANGE_VOID_PLATE);
+                output.accept(YELLOW_VOID_PLATE);
+                output.accept(LIME_VOID_PLATE);
+                output.accept(GREEN_VOID_PLATE);
+                output.accept(CYAN_VOID_PLATE);
+                output.accept(LIGHT_BLUE_VOID_PLATE);
+                output.accept(BLUE_VOID_PLATE);
+                output.accept(PURPLE_VOID_PLATE);
+                output.accept(MAGENTA_VOID_PLATE);
+                output.accept(PINK_VOID_PLATE);
             })
             .build();
 

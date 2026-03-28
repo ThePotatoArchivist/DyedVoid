@@ -17,15 +17,4 @@ public class DyedVoidClient implements ClientModInitializer {
 
         SpecialModelRenderers.ID_MAPPER.put(DyedVoid.id("void_block"), VoidBlockSpecialRenderer.Unbaked.CODEC);
     }
-
-    public static boolean isFlatRendered(ItemStack itemStack) {
-        for (var item : DyedVoidItems.VOID_BLOCKS) {
-            if (item != DyedVoidItems.END_VOID && itemStack.is(item)) return true;
-        }
-        return false;
-    }
-
-    public static boolean isPortalRendered(ItemStack itemStack) {
-        return itemStack.is(DyedVoidItems.END_VOID) ; //|| itemStack.isOf(DyedVoidItems.DUMMY_END_PORTAL) || itemStack.isOf(DyedVoidItems.DUMMY_END_GATEWAY);
-    }
 }

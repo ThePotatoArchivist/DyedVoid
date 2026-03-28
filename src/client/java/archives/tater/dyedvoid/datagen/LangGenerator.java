@@ -38,6 +38,22 @@ public class LangGenerator extends FabricLanguageProvider {
         translationBuilder.add(DyedVoidBlocks.SHADOW_VOID, "Shadow Void Block");
         translationBuilder.add(DyedVoidBlocks.INVERTED_SHADOW_VOID, "Inverted Shadow Void Block");
         translationBuilder.add(DyedVoidBlocks.END_VOID, "End Void Block");
+        translationBuilder.add(DyedVoidBlocks.BLACK_VOID_PLATE, "Void Plate");
+        translationBuilder.add(DyedVoidBlocks.WHITE_VOID_PLATE, "Luminous Void Plate");
+        translationBuilder.add(DyedVoidBlocks.LIGHT_GRAY_VOID_PLATE, "Light Gray Void Plate");
+        translationBuilder.add(DyedVoidBlocks.GRAY_VOID_PLATE, "Gray Void Plate");
+        translationBuilder.add(DyedVoidBlocks.BROWN_VOID_PLATE, "Brown Void Plate");
+        translationBuilder.add(DyedVoidBlocks.RED_VOID_PLATE, "Red Void Plate");
+        translationBuilder.add(DyedVoidBlocks.ORANGE_VOID_PLATE, "Orange Void Plate");
+        translationBuilder.add(DyedVoidBlocks.YELLOW_VOID_PLATE, "Yellow Void Plate");
+        translationBuilder.add(DyedVoidBlocks.LIME_VOID_PLATE, "Lime Void Plate");
+        translationBuilder.add(DyedVoidBlocks.GREEN_VOID_PLATE, "Green Void Plate");
+        translationBuilder.add(DyedVoidBlocks.CYAN_VOID_PLATE, "Cyan Void Plate");
+        translationBuilder.add(DyedVoidBlocks.LIGHT_BLUE_VOID_PLATE, "Light Blue Void Plate");
+        translationBuilder.add(DyedVoidBlocks.BLUE_VOID_PLATE, "Blue Void Plate");
+        translationBuilder.add(DyedVoidBlocks.PURPLE_VOID_PLATE, "Purple Void Plate");
+        translationBuilder.add(DyedVoidBlocks.MAGENTA_VOID_PLATE, "Magenta Void Plate");
+        translationBuilder.add(DyedVoidBlocks.PINK_VOID_PLATE, "Pink Void Plate");
         translationBuilder.add("itemGroup.dyedvoid.group", "The Dyed Void");
         translationBuilder.add(makeDescriptionId("subtitles", DyedVoidSounds.FILL_VOID_BOTTLE.location()), "Bottle truly empties");
     }

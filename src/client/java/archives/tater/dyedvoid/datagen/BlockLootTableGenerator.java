@@ -19,5 +19,7 @@ public class BlockLootTableGenerator extends FabricBlockLootSubProvider {
     @Override
     public void generate() {
         Arrays.stream(DyedVoidBlocks.VOID_BLOCKS).forEach(this::dropSelf);
+        for (var block : DyedVoidBlocks.VOID_PLATES)
+            add(block, createMultifaceBlockDrops(block));
     }
 }

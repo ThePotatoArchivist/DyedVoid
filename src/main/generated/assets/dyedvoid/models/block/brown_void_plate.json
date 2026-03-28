@@ -1,0 +1,6 @@
+{
+  "parent": "dyedvoid:block/template_void_plate",
+  "textures": {
+    "all": "dyedvoid:block/brown_void"
+  }
+}
