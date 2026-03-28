@@ -1,4 +1,6 @@
-package archives.tater.dyedvoid;
+package archives.tater.dyedvoid.registry;
+
+import archives.tater.dyedvoid.DyedVoid;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;

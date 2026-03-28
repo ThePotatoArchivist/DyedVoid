@@ -1,6 +1,6 @@
 package archives.tater.dyedvoid.mixin;
 
-import archives.tater.dyedvoid.DyedVoidItems;
+import archives.tater.dyedvoid.registry.DyedVoidItems;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;

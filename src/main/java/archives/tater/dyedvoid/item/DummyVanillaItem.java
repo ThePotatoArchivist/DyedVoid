@@ -1,4 +1,4 @@
-package archives.tater.dyedvoid;
+package archives.tater.dyedvoid.item;
 
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;

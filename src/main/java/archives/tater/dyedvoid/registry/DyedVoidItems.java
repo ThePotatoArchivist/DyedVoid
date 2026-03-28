@@ -1,5 +1,7 @@
-package archives.tater.dyedvoid;
+package archives.tater.dyedvoid.registry;
 
+import archives.tater.dyedvoid.item.DummyVanillaItem;
+import archives.tater.dyedvoid.DyedVoid;
 import archives.tater.dyedvoid.consumeeffect.ExhaustConsumeEffect;
 import archives.tater.dyedvoid.consumeeffect.SetAirConsumeEffect;
 

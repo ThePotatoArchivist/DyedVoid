@@ -1,6 +1,6 @@
 package archives.tater.dyedvoid.client.render;
 
-import archives.tater.dyedvoid.EndVoidBlock.EndVoidBlockEntity;
+import archives.tater.dyedvoid.block.EndVoidBlock.EndVoidBlockEntity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.SubmitNodeCollector;

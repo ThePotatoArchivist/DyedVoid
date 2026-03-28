@@ -1,6 +1,6 @@
 package archives.tater.dyedvoid.datagen;
 
-import archives.tater.dyedvoid.DyedVoidItems;
+import archives.tater.dyedvoid.registry.DyedVoidItems;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;

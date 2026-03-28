@@ -1,5 +1,9 @@
 package archives.tater.dyedvoid;
 
+import archives.tater.dyedvoid.registry.DyedVoidBlocks;
+import archives.tater.dyedvoid.registry.DyedVoidItems;
+import archives.tater.dyedvoid.registry.DyedVoidSounds;
+
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
 import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;

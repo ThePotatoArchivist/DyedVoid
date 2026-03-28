@@ -1,4 +1,8 @@
-package archives.tater.dyedvoid;
+package archives.tater.dyedvoid.registry;
+
+import archives.tater.dyedvoid.DyedVoid;
+import archives.tater.dyedvoid.block.VoidBlock;
+import archives.tater.dyedvoid.block.EndVoidBlock;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Registry;

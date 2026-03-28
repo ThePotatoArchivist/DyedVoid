@@ -2,6 +2,8 @@ package archives.tater.dyedvoid;
 
 import archives.tater.dyedvoid.client.render.EndVoidBlockEntityRenderer;
 import archives.tater.dyedvoid.client.render.VoidBlockSpecialRenderer;
+import archives.tater.dyedvoid.registry.DyedVoidBlocks;
+import archives.tater.dyedvoid.registry.DyedVoidItems;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;

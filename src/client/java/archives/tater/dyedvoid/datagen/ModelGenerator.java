@@ -1,8 +1,8 @@
 package archives.tater.dyedvoid.datagen;
 
 import archives.tater.dyedvoid.DyedVoid;
-import archives.tater.dyedvoid.DyedVoidBlocks;
-import archives.tater.dyedvoid.DyedVoidItems;
+import archives.tater.dyedvoid.registry.DyedVoidBlocks;
+import archives.tater.dyedvoid.registry.DyedVoidItems;
 import archives.tater.dyedvoid.client.render.VoidBlockSpecialRenderer;
 
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;

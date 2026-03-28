@@ -1,8 +1,8 @@
 package archives.tater.dyedvoid.datagen;
 
-import archives.tater.dyedvoid.DyedVoidBlocks;
-import archives.tater.dyedvoid.DyedVoidItems;
-import archives.tater.dyedvoid.DyedVoidSounds;
+import archives.tater.dyedvoid.registry.DyedVoidBlocks;
+import archives.tater.dyedvoid.registry.DyedVoidItems;
+import archives.tater.dyedvoid.registry.DyedVoidSounds;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup.Provider;

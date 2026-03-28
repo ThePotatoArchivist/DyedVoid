@@ -1,4 +1,7 @@
-package archives.tater.dyedvoid;
+package archives.tater.dyedvoid.block;
+
+import archives.tater.dyedvoid.registry.DyedVoidBlocks;
+import archives.tater.dyedvoid.registry.DyedVoidItems;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
