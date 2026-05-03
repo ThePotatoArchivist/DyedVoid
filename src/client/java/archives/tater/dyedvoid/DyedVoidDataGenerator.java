@@ -13,9 +13,10 @@ public class DyedVoidDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModelGenerator::new);
 		pack.addProvider(DVRecipeGenerator.Provider::new);
 		pack.addProvider(LangGenerator::new);
-		pack.addProvider(ItemTagGenerator::new);
-		pack.addProvider(BlockTagGenerator::new);
+		var blockTagGenerator = pack.addProvider(BlockTagGenerator::new);
+		pack.addProvider((output, registriesFuture) -> new ItemTagGenerator(output, registriesFuture, blockTagGenerator));
 		pack.addProvider(BlockLootTableGenerator::new);
+		pack.addProvider(SulfurCubeArchetypeGenerator::new);
 	}
 
 }

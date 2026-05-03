@@ -9,7 +9,10 @@ import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
 import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.SulfurCubeArchetype;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +27,8 @@ public class DyedVoid implements ModInitializer {
 	public static Identifier id(String path) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, path);
 	}
+
+	public static final ResourceKey<SulfurCubeArchetype> SULFUR_CUBE_ARCHETYPE_NO_GRAVITY = ResourceKey.create(Registries.SULFUR_CUBE_ARCHETYPE, id("no_gravity"));
 
 	@Override
 	public void onInitialize() {

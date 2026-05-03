@@ -8,10 +8,11 @@ import net.minecraft.world.item.Item;
 
 public class DyedVoidItemTags {
 
-    private static TagKey<Item> createTag(String path) {
+    private static TagKey<Item> create(String path) {
         return TagKey.create(Registries.ITEM, DyedVoid.id(path));
     }
 
-    public static final TagKey<Item> NO_GRAVITY = createTag("no_gravity");
-    public static final TagKey<Item> END_VOID_INGREDIENT = createTag("end_void_ingredient");
+    public static final TagKey<Item> NO_GRAVITY = create("no_gravity");
+    public static final TagKey<Item> END_VOID_INGREDIENT = create("end_void_ingredient");
+    public static final TagKey<Item> SULFUR_CUBE_ARCHETYPE_NO_GRAVITY = create("sulfur_cube_archetype/no_gravity");
 }
