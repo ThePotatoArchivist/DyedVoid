@@ -2,6 +2,7 @@ package archives.tater.dyedvoid.mixin;
 
 import archives.tater.dyedvoid.DyedVoid;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,6 +19,9 @@ public abstract class EntityMixin {
 
     @Shadow
     public abstract Level level();
+
+    @Shadow
+    protected abstract double getEffectiveGravity();
 
     @SuppressWarnings("ConstantValue")
     @ModifyReturnValue(
@@ -40,4 +44,12 @@ public abstract class EntityMixin {
                 : original;
     }
 
+
+    @ModifyExpressionValue(
+            method = "checkFallDamage",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;isInWater()Z")
+    )
+    private boolean noFallDamageGravity(boolean original) {
+        return original || getEffectiveGravity() == 0;
+    }
 }
