@@ -1,7 +1,0 @@
-{
-  "parent": "dyedvoid:block/outline_block",
-  "textures": {
-    "outline": "dyedvoid:block/void",
-    "texture": "dyedvoid:block/white_void"
-  }
-}

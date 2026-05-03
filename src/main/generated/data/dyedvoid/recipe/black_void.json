@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "#": "dyedvoid:void_bottle"
   },
@@ -10,6 +9,6 @@
   ],
   "result": {
     "count": 4,
-    "id": "dyedvoid:void"
+    "id": "dyedvoid:black_void"
   }
 }

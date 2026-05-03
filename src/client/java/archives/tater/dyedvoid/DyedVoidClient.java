@@ -20,7 +20,7 @@ import java.util.Optional;
 
 public class DyedVoidClient implements ClientModInitializer {
     public static void initBuiltinBlockModels(BuiltInBlockModels.Builder builder) {
-        for (var block : DyedVoidBlocks.VOID_BLOCKS)
+        for (var block : DyedVoidBlocks.ALL_VOID_BLOCKS)
             builder.put((BuiltInBlockModels.ModelFactory) (_, _) ->
                     new SpecialBlockModelWrapper.Unbaked<>(getModel(block), Optional.empty()), block);
     }

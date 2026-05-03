@@ -4,7 +4,6 @@ import archives.tater.dyedvoid.DyedVoid;
 import archives.tater.dyedvoid.DyedVoidClient;
 import archives.tater.dyedvoid.registry.DyedVoidBlocks;
 import archives.tater.dyedvoid.registry.DyedVoidItems;
-import archives.tater.dyedvoid.client.render.VoidBlockSpecialRenderer;
 
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -14,7 +13,6 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.special.EndCubeSpecialRenderer;
 import net.minecraft.client.resources.model.sprite.Material;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 
@@ -36,25 +34,6 @@ public class ModelGenerator extends FabricModelProvider {
 
     private static final Identifier BLOCK_BASE = Identifier.withDefaultNamespace("block/block");
 
-    private static final Block[] NORMAL_VOID_BLOCKS = {
-            DyedVoidBlocks.BLACK_VOID,
-            DyedVoidBlocks.WHITE_VOID,
-            DyedVoidBlocks.LIGHT_GRAY_VOID,
-            DyedVoidBlocks.GRAY_VOID,
-            DyedVoidBlocks.BROWN_VOID,
-            DyedVoidBlocks.RED_VOID,
-            DyedVoidBlocks.ORANGE_VOID,
-            DyedVoidBlocks.YELLOW_VOID,
-            DyedVoidBlocks.LIME_VOID,
-            DyedVoidBlocks.GREEN_VOID,
-            DyedVoidBlocks.CYAN_VOID,
-            DyedVoidBlocks.LIGHT_BLUE_VOID,
-            DyedVoidBlocks.BLUE_VOID,
-            DyedVoidBlocks.PURPLE_VOID,
-            DyedVoidBlocks.MAGENTA_VOID,
-            DyedVoidBlocks.PINK_VOID,
-    };
-
     private static void registerOutlineBlock(BlockModelGenerators modelGenerator, Block block, Block texture, Block outline) {
         var textures = new TextureMapping();
         textures.put(TextureSlot.TEXTURE, TextureMapping.getBlockTexture(texture));
@@ -71,17 +50,15 @@ public class ModelGenerator extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
-        for (var block : NORMAL_VOID_BLOCKS) {
+        for (var block : DyedVoidBlocks.VOID.asList()) {
             blockStateModelGenerator.createTrivialBlock(block, VOID_BLOCK_FACTORY);
         }
         blockStateModelGenerator.createAirLikeBlock(DyedVoidBlocks.END_VOID, new Material(DyedVoid.id("block/empty")));
-        registerOutlineBlock(blockStateModelGenerator, DyedVoidBlocks.SHADOW_VOID, DyedVoidBlocks.BLACK_VOID, DyedVoidBlocks.WHITE_VOID);
-        registerOutlineBlock(blockStateModelGenerator, DyedVoidBlocks.INVERTED_SHADOW_VOID, DyedVoidBlocks.WHITE_VOID, DyedVoidBlocks.BLACK_VOID);
     }
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
-        for (var block : DyedVoidBlocks.VOID_BLOCKS) {
+        for (var block : DyedVoidBlocks.ALL_VOID_BLOCKS) {
             itemModelGenerator.itemModelOutput.accept(block.asItem(), specialModel(
                     BLOCK_BASE,
                     DyedVoidClient.getModel(block)

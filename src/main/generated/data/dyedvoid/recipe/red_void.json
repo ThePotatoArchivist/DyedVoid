@@ -1,7 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "dye_void_block",
+  "group": "dyedvoid:dye_void_block",
   "ingredients": [
     "dyedvoid:white_void",
     "dyedvoid:white_void",

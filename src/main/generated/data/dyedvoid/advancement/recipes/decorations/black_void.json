@@ -3,15 +3,15 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dyedvoid:inverted_shadow_void"
+        "recipe": "dyedvoid:black_void"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_white_void": {
+    "has_void_bottle": {
       "conditions": {
         "items": [
           {
-            "items": "dyedvoid:white_void"
+            "items": "dyedvoid:void_bottle"
           }
         ]
       },
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_white_void"
+      "has_void_bottle"
     ]
   ],
   "rewards": {
     "recipes": [
-      "dyedvoid:inverted_shadow_void"
+      "dyedvoid:black_void"
     ]
   }
 }

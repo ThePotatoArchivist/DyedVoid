@@ -1,6 +1,6 @@
 package archives.tater.dyedvoid.mixin;
 
-import archives.tater.dyedvoid.registry.DyedVoidItems;
+import archives.tater.dyedvoid.registry.DyedVoidItemTags;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -25,7 +25,7 @@ public abstract class ItemEntityMixin extends Entity {
 			at = @At("TAIL")
 	)
 	private void checkNoGravityTag(Level level, double x, double y, double z, ItemStack itemStack, double deltaX, double deltaY, double deltaZ, CallbackInfo ci) {
-		if (itemStack.is(DyedVoidItems.NO_GRAVITY_TAG))
+		if (itemStack.is(DyedVoidItemTags.NO_GRAVITY))
 			setNoGravity(true);
 	}
 
@@ -34,7 +34,7 @@ public abstract class ItemEntityMixin extends Entity {
 			at = @At("TAIL")
 	)
 	private void checkNoGravityTag(Level level, double x, double y, double z, ItemStack itemStack, CallbackInfo ci) {
-		if (itemStack.is(DyedVoidItems.NO_GRAVITY_TAG))
+		if (itemStack.is(DyedVoidItemTags.NO_GRAVITY))
 			setNoGravity(true);
 	}
 }

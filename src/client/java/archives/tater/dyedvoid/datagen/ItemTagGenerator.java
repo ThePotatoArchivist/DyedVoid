@@ -1,6 +1,8 @@
 package archives.tater.dyedvoid.datagen;
 
-import archives.tater.dyedvoid.registry.DyedVoidItems;
+import archives.tater.dyedvoid.registry.DyedVoidBlockItemIds;
+import archives.tater.dyedvoid.registry.DyedVoidItemIds;
+import archives.tater.dyedvoid.registry.DyedVoidItemTags;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
@@ -20,11 +22,14 @@ public class ItemTagGenerator extends FabricTagsProvider.ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider arg) {
-        valueLookupBuilder(DyedVoidItems.NO_GRAVITY_TAG).add(
-                DyedVoidItems.VOID_BOTTLE_ITEM
-        ).add(DyedVoidItems.VOID_BLOCKS);
+        builder(DyedVoidItemTags.NO_GRAVITY)
+                .add(DyedVoidItemIds.VOID_BOTTLE)
+                .add(DyedVoidBlockItemIds.ALL_VOID_BLOCKS);
 
-        valueLookupBuilder(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("create", "upright_on_belt")))
-                .add(DyedVoidItems.VOID_BOTTLE_ITEM);
+        builder(DyedVoidItemTags.END_VOID_INGREDIENT)
+                .add(DyedVoidBlockItemIds.VOID.black());
+
+        builder(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("create", "upright_on_belt")))
+                .add(DyedVoidItemIds.VOID_BOTTLE);
     }
 }
