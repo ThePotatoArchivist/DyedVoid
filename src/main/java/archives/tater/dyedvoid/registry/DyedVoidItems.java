@@ -59,12 +59,32 @@ public class DyedVoidItems {
             )))
     );
 
+    private static final List<DyeColor> COLOR_ORDER = List.of(
+            DyeColor.WHITE,
+            DyeColor.LIGHT_GRAY,
+            DyeColor.GRAY,
+            DyeColor.BLACK,
+            DyeColor.BROWN,
+            DyeColor.RED,
+            DyeColor.ORANGE,
+            DyeColor.YELLOW,
+            DyeColor.LIME,
+            DyeColor.GREEN,
+            DyeColor.CYAN,
+            DyeColor.LIGHT_BLUE,
+            DyeColor.BLUE,
+            DyeColor.PURPLE,
+            DyeColor.MAGENTA,
+            DyeColor.PINK
+    );
+
     public static final CreativeModeTab ITEM_GROUP = FabricCreativeModeTab.builder()
             .icon(() -> new ItemStack(VOID.red()))
             .title(Component.translatable("itemGroup.dyedvoid.group"))
             .displayItems((_, output) -> {
                 output.accept(VOID_BOTTLE_ITEM);
-                VOID.forEach(output::accept);
+                for (var color : COLOR_ORDER)
+                    output.accept(VOID.pick(color));
                 output.accept(END_VOID);
             })
             .build();
