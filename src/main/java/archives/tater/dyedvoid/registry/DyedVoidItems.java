@@ -25,7 +25,6 @@ import net.minecraft.world.level.block.ColorCollection;
 
 import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Stream;
 
 public class DyedVoidItems {
 
@@ -48,11 +47,6 @@ public class DyedVoidItems {
     );
 
     public static final Item END_VOID = registerBlockItem(DyedVoidBlockItemIds.END_VOID, DyedVoidBlocks.END_VOID);
-
-    public static final List<Item> VOID_BLOCKS = Stream.concat(
-            VOID.asList().stream(),
-            Stream.of(END_VOID)
-    ).toList();
 
     public static final Item VOID_BOTTLE_ITEM = register(DyedVoidItemIds.VOID_BOTTLE, new Item.Properties()
             .stacksTo(16)
