@@ -13,7 +13,7 @@ public class EndVoidBlockEntityRenderer extends AbstractEndPortalRenderer<EndVoi
 
     @Override
     public void submit(EndPortalRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
-        submitCube(state.facesToShow, RenderTypes.endGateway(), poseStack, submitNodeCollector);
+        submitCube(state.facesToShow, RenderTypes.endPortal(), poseStack, submitNodeCollector);
     }
 
     @Override

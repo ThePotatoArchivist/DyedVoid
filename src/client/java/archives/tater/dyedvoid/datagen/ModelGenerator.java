@@ -1,6 +1,7 @@
 package archives.tater.dyedvoid.datagen;
 
 import archives.tater.dyedvoid.DyedVoid;
+import archives.tater.dyedvoid.DyedVoidClient;
 import archives.tater.dyedvoid.registry.DyedVoidBlocks;
 import archives.tater.dyedvoid.registry.DyedVoidItems;
 import archives.tater.dyedvoid.client.render.VoidBlockSpecialRenderer;
@@ -13,6 +14,7 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.special.EndCubeSpecialRenderer;
 import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 
@@ -82,7 +84,7 @@ public class ModelGenerator extends FabricModelProvider {
         for (var block : DyedVoidBlocks.VOID_BLOCKS) {
             itemModelGenerator.itemModelOutput.accept(block.asItem(), specialModel(
                     BLOCK_BASE,
-                    block == DyedVoidBlocks.END_VOID ? new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.PORTAL) : new VoidBlockSpecialRenderer.Unbaked(block)
+                    DyedVoidClient.getModel(block)
             ));
         }
 

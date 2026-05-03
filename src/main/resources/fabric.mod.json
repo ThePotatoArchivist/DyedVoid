@@ -34,6 +34,7 @@
 			"environment": "client"
 		}
 	],
+	"accessWidener": "dyedvoid.classtweaker",
 	"depends": {
 		"fabricloader": ">=0.18.4",
 		"minecraft": ">=26.1",

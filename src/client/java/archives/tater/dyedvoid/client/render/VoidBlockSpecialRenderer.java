@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.block.MovingBlockRenderState;
 import net.minecraft.client.renderer.special.NoDataSpecialModelRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.level.CardinalLighting;
 import net.minecraft.world.level.block.Block;
 
 import org.joml.Vector3fc;
@@ -15,6 +16,8 @@ import org.joml.Vector3fc;
 import java.util.function.Consumer;
 
 public record VoidBlockSpecialRenderer(MovingBlockRenderState state) implements NoDataSpecialModelRenderer {
+
+    public static CardinalLighting MAX = new CardinalLighting(1f, 1f, 1f, 1f, 1f, 1f);
 
     @Override
     public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, int overlayCoords, boolean hasFoil, int outlineColor) {
@@ -35,6 +38,7 @@ public record VoidBlockSpecialRenderer(MovingBlockRenderState state) implements 
         public SpecialModelRenderer<Void> bake(BakingContext context) {
             var state = new MovingBlockRenderState();
             state.blockState = block.defaultBlockState();
+            state.cardinalLighting = MAX;
             return new VoidBlockSpecialRenderer(state);
         }
 

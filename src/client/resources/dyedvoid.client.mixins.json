@@ -3,6 +3,7 @@
   "package": "archives.tater.dyedvoid.client.mixin",
   "compatibilityLevel": "JAVA_25",
   "client": [
+    "BuiltinBlockModelsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

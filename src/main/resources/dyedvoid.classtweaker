@@ -1,0 +1,5 @@
+classTweaker v1 official
+accessible class net/minecraft/client/renderer/block/BuiltInBlockModels$Builder
+accessible class net/minecraft/client/renderer/block/BuiltInBlockModels$ModelFactory
+accessible method net/minecraft/client/renderer/block/BuiltInBlockModels$Builder put (Lnet/minecraft/client/renderer/block/model/BlockModel$Unbaked;Lnet/minecraft/world/level/block/Block;)V
+accessible method net/minecraft/client/renderer/block/BuiltInBlockModels$Builder put (Lnet/minecraft/client/renderer/block/BuiltInBlockModels$ModelFactory;Lnet/minecraft/world/level/block/Block;)V
