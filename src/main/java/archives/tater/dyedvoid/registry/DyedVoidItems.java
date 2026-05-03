@@ -15,7 +15,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
@@ -132,8 +131,6 @@ public class DyedVoidItems {
 
     public static final Item DUMMY_END_PORTAL = register("dummy/end_portal", DummyVanillaItem::new, new Item.Properties().overrideDescription(Blocks.END_PORTAL.getDescriptionId()));
     public static final Item DUMMY_END_GATEWAY = register("dummy/end_gateway", DummyVanillaItem::new, new Item.Properties().overrideDescription(Blocks.END_GATEWAY.getDescriptionId()));
-
-    public static final TagKey<Item> NO_GRAVITY_TAG = TagKey.create(Registries.ITEM, DyedVoid.id("no_gravity"));
 
     public static void init() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, DyedVoid.id("item_group"), DyedVoidItems.ITEM_GROUP);

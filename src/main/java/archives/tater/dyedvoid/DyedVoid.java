@@ -1,6 +1,7 @@
 package archives.tater.dyedvoid;
 
 import archives.tater.dyedvoid.registry.DyedVoidBlocks;
+import archives.tater.dyedvoid.registry.DyedVoidItemTags;
 import archives.tater.dyedvoid.registry.DyedVoidItems;
 import archives.tater.dyedvoid.registry.DyedVoidSounds;
 
@@ -10,6 +11,7 @@ import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.LivingEntity;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +25,10 @@ public class DyedVoid implements ModInitializer {
 
 	public static Identifier id(String path) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, path);
+	}
+
+	public static boolean canPlaceInAir(LivingEntity livingEntity) {
+		return livingEntity.getMainHandItem().is(DyedVoidItemTags.PLACEABLE_IN_AIR) || livingEntity.getOffhandItem().is(DyedVoidItemTags.PLACEABLE_IN_AIR);
 	}
 
 	@Override
