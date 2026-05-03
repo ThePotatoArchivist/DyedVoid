@@ -5,6 +5,7 @@
   "mixins": [
     "EndGatewayBlockMixin",
     "EndPortalBlockMixin",
+    "EntityMixin",
     "GlassBottleItemMixin",
     "ItemEntityMixin"
   ],

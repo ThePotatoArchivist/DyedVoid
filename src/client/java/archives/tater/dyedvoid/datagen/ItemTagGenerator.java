@@ -35,6 +35,9 @@ public class ItemTagGenerator extends FabricTagsProvider.ItemTagsProvider {
         builder(DyedVoidItemTags.END_VOID_INGREDIENT)
                 .add(DyedVoidBlockItemIds.VOID.black());
 
+        builder(DyedVoidItemTags.PLACEABLE_IN_AIR)
+                .addTag(DyedVoidBlockItemTags.VOID_BLOCKS.item());
+
         builder(DyedVoidItemTags.SULFUR_CUBE_ARCHETYPE_NO_GRAVITY)
                 .addTag(DyedVoidBlockItemTags.VOID_BLOCKS.item());
 

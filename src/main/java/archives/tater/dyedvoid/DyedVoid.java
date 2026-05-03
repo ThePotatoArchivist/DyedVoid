@@ -1,6 +1,7 @@
 package archives.tater.dyedvoid;
 
 import archives.tater.dyedvoid.registry.DyedVoidBlocks;
+import archives.tater.dyedvoid.registry.DyedVoidItemTags;
 import archives.tater.dyedvoid.registry.DyedVoidItems;
 import archives.tater.dyedvoid.registry.DyedVoidSounds;
 
@@ -12,6 +13,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SulfurCubeArchetype;
 
 import org.slf4j.Logger;
@@ -29,6 +31,10 @@ public class DyedVoid implements ModInitializer {
 	}
 
 	public static final ResourceKey<SulfurCubeArchetype> SULFUR_CUBE_ARCHETYPE_NO_GRAVITY = ResourceKey.create(Registries.SULFUR_CUBE_ARCHETYPE, id("no_gravity"));
+
+	public static boolean canPlaceInAir(LivingEntity livingEntity) {
+		return livingEntity.getMainHandItem().is(DyedVoidItemTags.PLACEABLE_IN_AIR) || livingEntity.getOffhandItem().is(DyedVoidItemTags.PLACEABLE_IN_AIR);
+	}
 
 	@Override
 	public void onInitialize() {
