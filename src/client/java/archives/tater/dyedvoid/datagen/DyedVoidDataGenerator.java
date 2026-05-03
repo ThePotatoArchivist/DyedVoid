@@ -1,6 +1,5 @@
-package archives.tater.dyedvoid;
+package archives.tater.dyedvoid.datagen;
 
-import archives.tater.dyedvoid.datagen.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 

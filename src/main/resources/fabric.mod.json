@@ -19,10 +19,10 @@
 			"archives.tater.dyedvoid.DyedVoid"
 		],
 		"client": [
-			"archives.tater.dyedvoid.DyedVoidClient"
+          "archives.tater.dyedvoid.client.DyedVoidClient"
 		],
 		"fabric-datagen": [
-			"archives.tater.dyedvoid.DyedVoidDataGenerator"
+			"archives.tater.dyedvoid.datagen.DyedVoidDataGenerator"
 		],
 		"emi": [
 		]

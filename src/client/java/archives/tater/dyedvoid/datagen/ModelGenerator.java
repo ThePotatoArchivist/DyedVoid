@@ -1,7 +1,7 @@
 package archives.tater.dyedvoid.datagen;
 
 import archives.tater.dyedvoid.DyedVoid;
-import archives.tater.dyedvoid.DyedVoidClient;
+import archives.tater.dyedvoid.client.DyedVoidClient;
 import archives.tater.dyedvoid.registry.DyedVoidBlocks;
 import archives.tater.dyedvoid.registry.DyedVoidItems;
 

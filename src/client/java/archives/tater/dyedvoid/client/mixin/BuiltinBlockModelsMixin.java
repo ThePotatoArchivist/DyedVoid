@@ -1,6 +1,6 @@
 package archives.tater.dyedvoid.client.mixin;
 
-import archives.tater.dyedvoid.DyedVoidClient;
+import archives.tater.dyedvoid.client.DyedVoidClient;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

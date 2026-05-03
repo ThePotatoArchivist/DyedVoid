@@ -1,5 +1,6 @@
-package archives.tater.dyedvoid;
+package archives.tater.dyedvoid.client;
 
+import archives.tater.dyedvoid.DyedVoid;
 import archives.tater.dyedvoid.client.render.EndVoidBlockEntityRenderer;
 import archives.tater.dyedvoid.client.render.VoidBlockSpecialRenderer;
 import archives.tater.dyedvoid.registry.DyedVoidBlocks;
