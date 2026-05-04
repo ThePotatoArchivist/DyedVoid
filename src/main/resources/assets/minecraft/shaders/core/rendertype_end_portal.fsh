@@ -62,7 +62,7 @@ float pfloor(float value) {
 out vec4 fragColor;
 
 void main() {
-    vec4 texProj0_a = projection_from_position(ProjMat * ModelViewMat * vec4(pfloor(texProj0.x), pfloor(texProj0.y), pfloor(texProj0.z), texProj0.w));
+    vec4 texProj0_a = projection_from_position(ProjMat * ModelViewMat * (vec4(pfloor(texProj0.x), pfloor(texProj0.y), pfloor(texProj0.z), texProj0.w) + vec4(CameraOffset, 0.0)));
 //    vec4 texProj0_a = projection_from_position(ProjMat * texProj0);
 
     vec3 color = textureProj(Sampler0, texProj0_a).rgb * COLORS[0];
