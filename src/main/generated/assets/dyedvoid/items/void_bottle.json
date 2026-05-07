@@ -1,6 +1,28 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "dyedvoid:item/void_bottle"
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "dyedvoid:item/void_bottle"
+        },
+        "when": "gui"
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:composite",
+      "models": [
+        {
+          "type": "minecraft:model",
+          "model": "minecraft:item/glass_bottle"
+        },
+        {
+          "type": "minecraft:model",
+          "model": "dyedvoid:item/void_bottle_inside_out"
+        }
+      ]
+    },
+    "property": "minecraft:display_context"
   }
 }

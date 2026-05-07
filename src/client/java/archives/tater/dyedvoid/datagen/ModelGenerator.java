@@ -11,14 +11,17 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.*;
+import net.minecraft.client.renderer.item.properties.select.DisplayContext;
 import net.minecraft.client.renderer.special.EndCubeSpecialRenderer;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 
 import java.util.Optional;
 
-import static net.minecraft.client.data.models.model.ItemModelUtils.specialModel;
+import static net.minecraft.client.data.models.model.ItemModelUtils.*;
 
 public class ModelGenerator extends FabricModelProvider {
 
@@ -68,6 +71,17 @@ public class ModelGenerator extends FabricModelProvider {
         itemModelGenerator.itemModelOutput.accept(DyedVoidItems.DUMMY_END_GATEWAY, specialModel(BLOCK_BASE, new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.GATEWAY)));
         itemModelGenerator.itemModelOutput.accept(DyedVoidItems.DUMMY_END_PORTAL, specialModel(Identifier.withDefaultNamespace("item/generated"), new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.PORTAL)));
 
-        itemModelGenerator.generateFlatItem(DyedVoidItems.VOID_BOTTLE_ITEM, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.itemModelOutput.accept(DyedVoidItems.VOID_BOTTLE_ITEM, select(
+                new DisplayContext(),
+                composite(
+                        plainModel(ModelLocationUtils.getModelLocation(Items.GLASS_BOTTLE)),
+                        plainModel(ModelLocationUtils.getModelLocation(DyedVoidItems.VOID_BOTTLE_ITEM, "_inside_out"))
+                ),
+                when(ItemDisplayContext.GUI, plainModel(itemModelGenerator.generateLayeredItem(
+                        DyedVoidItems.VOID_BOTTLE_ITEM,
+                        TextureMapping.getItemTexture(Items.GLASS_BOTTLE),
+                        TextureMapping.getItemTexture(DyedVoidItems.VOID_BOTTLE_ITEM, "_overlay")
+                )))
+        ));
     }
 }
