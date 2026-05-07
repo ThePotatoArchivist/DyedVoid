@@ -1,0 +1,19 @@
+{
+  "parent": "item/generated",
+  "gui_light": "front",
+  "textures": {
+    "all": "dyedvoid:item/void_bottle_overlay",
+    "particle": "#all"
+  },
+  "elements": [
+    {
+      "from": [ 0, 0, 8.5 ],
+      "to": [ 16, 16, 7.5 ],
+      "faces": {
+        "north": { "texture": "#all", "uv": [16, 0, 0, 16]},
+        "south": { "texture": "#all" }
+      }
+    }
+  ]
+
+}
