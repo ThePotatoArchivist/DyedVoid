@@ -37,5 +37,9 @@
       "operation": "add_multiplied_total"
     }
   ],
-  "items": "#dyedvoid:sulfur_cube_archetype/no_gravity"
+  "items": "#dyedvoid:sulfur_cube_archetype/no_gravity",
+  "knockback_modifiers": {
+    "horizontal_power": 0.33,
+    "vertical_power": 0.06
+  }
 }

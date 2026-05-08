@@ -21,7 +21,7 @@ public record VoidBlockSpecialRenderer(MovingBlockRenderState state) implements 
 
     @Override
     public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, int overlayCoords, boolean hasFoil, int outlineColor) {
-        submitNodeCollector.submitMovingBlock(poseStack, state);
+        submitNodeCollector.submitMovingBlock(poseStack, state, outlineColor);
     }
 
     @Override

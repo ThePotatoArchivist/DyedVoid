@@ -42,7 +42,9 @@ public class SulfurCubeArchetypeGenerator extends FabricDynamicRegistryProvider 
                         multiply(Attributes.AIR_DRAG_MODIFIER, 0.05, key)
                 ),
                 false,
-                Optional.empty()
+                Optional.empty(),
+                Optional.empty(),
+                SulfurCubeArchetype.DEFAULT_KNOCKBACK_MODIFIERS
         ));
     }
 
