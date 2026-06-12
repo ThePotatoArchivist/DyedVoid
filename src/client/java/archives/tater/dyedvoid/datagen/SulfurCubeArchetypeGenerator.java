@@ -50,7 +50,7 @@ public class SulfurCubeArchetypeGenerator extends FabricDynamicRegistryProvider 
                 Optional.empty(),
                 Optional.empty(),
                 SulfurCubeArchetype.DEFAULT_KNOCKBACK_MODIFIERS,
-                new SulfurCubeArchetype.SoundSettings(EMPTY, EMPTY, 0, 0)
+                new SulfurCubeArchetype.SoundSettings(EMPTY, EMPTY, 0, 1)
         ));
     }
 
