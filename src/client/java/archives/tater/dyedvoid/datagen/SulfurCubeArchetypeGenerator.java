@@ -8,7 +8,10 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.SulfurCubeArchetype;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 
@@ -29,6 +32,8 @@ public class SulfurCubeArchetypeGenerator extends FabricDynamicRegistryProvider 
         return entries.add(key, factory.apply(key));
     }
 
+    private static final Holder<SoundEvent> EMPTY = BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.EMPTY);
+
     @Override
     protected void configure(HolderLookup.Provider registries, Entries entries) {
         register(entries, DyedVoid.SULFUR_CUBE_ARCHETYPE_NO_GRAVITY, key -> new SulfurCubeArchetype(
@@ -44,7 +49,8 @@ public class SulfurCubeArchetypeGenerator extends FabricDynamicRegistryProvider 
                 false,
                 Optional.empty(),
                 Optional.empty(),
-                SulfurCubeArchetype.DEFAULT_KNOCKBACK_MODIFIERS
+                SulfurCubeArchetype.DEFAULT_KNOCKBACK_MODIFIERS,
+                new SulfurCubeArchetype.SoundSettings(EMPTY, EMPTY, 0, 0)
         ));
     }
 

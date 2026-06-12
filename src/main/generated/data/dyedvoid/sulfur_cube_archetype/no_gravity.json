@@ -41,5 +41,11 @@
   "knockback_modifiers": {
     "horizontal_power": 0.33,
     "vertical_power": 0.06
+  },
+  "sound_settings": {
+    "hit_sound": "minecraft:intentionally_empty",
+    "push_sound": "minecraft:intentionally_empty",
+    "push_sound_cooldown": 0.0,
+    "push_sound_impulse_threshold": 0.0
   }
 }
