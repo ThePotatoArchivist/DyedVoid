@@ -1,6 +1,6 @@
 package archives.tater.dyedvoid.datagen;
 
-import archives.tater.dyedvoid.registry.DyedVoidBlocks;
+import archives.tater.dyedvoid.registry.DyedVoidBlockTags;
 import archives.tater.dyedvoid.registry.DyedVoidItemTags;
 import archives.tater.dyedvoid.registry.DyedVoidItems;
 
@@ -24,7 +24,7 @@ public class ItemTagGenerator extends FabricTagsProvider.ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider arg) {
-        copy(DyedVoidBlocks.VOID_BLOCKS_TAG, DyedVoidItemTags.VOID_BLOCKS);
+        copy(DyedVoidBlockTags.VOID_BLOCKS, DyedVoidItemTags.VOID_BLOCKS);
 
         valueLookupBuilder(DyedVoidItemTags.NO_GRAVITY)
                 .add(DyedVoidItems.VOID_BOTTLE_ITEM)

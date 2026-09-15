@@ -10,7 +10,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -96,8 +95,6 @@ public class DyedVoidBlocks {
             INVERTED_SHADOW_VOID,
             END_VOID
     };
-
-    public static final TagKey<Block> VOID_BLOCKS_TAG = TagKey.create(Registries.BLOCK, DyedVoid.id("void_blocks"));
 
     public static void init() {}
 }
