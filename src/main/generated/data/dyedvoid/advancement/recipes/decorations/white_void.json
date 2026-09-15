@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dyedvoid:white_void"
+        "recipes": "dyedvoid:white_void"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

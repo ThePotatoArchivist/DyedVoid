@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "dyedvoid:lime_void"
+        "recipes": "dyedvoid:lime_void"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

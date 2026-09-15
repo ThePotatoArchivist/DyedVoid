@@ -1,18 +1,18 @@
-// 26.2-rc-1	-999999999-01-01T00:00:00	The Dyed Void/Block Loot Tables
-de81a46abe3326cb0ee65128405b18e21a2be973 data/dyedvoid/loot_table/blocks/black_void.json
-c82c930a04445639d1af7a8a6b13c366e5a1d6e7 data/dyedvoid/loot_table/blocks/blue_void.json
-86f5e043ebeef00a36e960e343d1d15a6eb6ced4 data/dyedvoid/loot_table/blocks/brown_void.json
-3bbee1fa3755c43d7454fda231c822e15b6b02e1 data/dyedvoid/loot_table/blocks/cyan_void.json
-bafe066e534c737ebcc11c95fdb7335528717d79 data/dyedvoid/loot_table/blocks/end_void.json
-f33458abe25888b4f52194875fe6f5787e094a39 data/dyedvoid/loot_table/blocks/gray_void.json
-fa0ab84dfb724bbbe42fca1d057fc4db3af7f41f data/dyedvoid/loot_table/blocks/green_void.json
-a627246eab8e8cd06222bb4018464926fad761d3 data/dyedvoid/loot_table/blocks/light_blue_void.json
-cba9983d710c969f8ad3251c288e2a7eb4b3c232 data/dyedvoid/loot_table/blocks/light_gray_void.json
-489ae854e24c73420827042bdb973114d3ef5fb4 data/dyedvoid/loot_table/blocks/lime_void.json
-4d59969a50da62bcbdd29a6f5e202a2a7d7984ac data/dyedvoid/loot_table/blocks/magenta_void.json
-869a8a4080ea5d446696dd140ed3982abf768744 data/dyedvoid/loot_table/blocks/orange_void.json
-39db68d28ac07d7fafa3160ff0c0f099af13108b data/dyedvoid/loot_table/blocks/pink_void.json
-5e2fad1fd890b57c5eec844a1626a0b364f10d81 data/dyedvoid/loot_table/blocks/purple_void.json
-838ead3dc010985a6e94abc90c254baa977f0bd7 data/dyedvoid/loot_table/blocks/red_void.json
-bd5945c64483d1901956cf5d46d50a92af9f1037 data/dyedvoid/loot_table/blocks/white_void.json
-e3a7889da85dc0a314a39373ecb9ebbe34f9a401 data/dyedvoid/loot_table/blocks/yellow_void.json
+// 26.3-rc-3	-999999999-01-01T00:00:00	The Dyed Void/Block Loot Tables
+604802107ba7d409d70904713b68da7e882ac208 data/dyedvoid/loot_table/blocks/black_void.json
+bea32b91a924c6585c7a307a1f871a9aaf83094f data/dyedvoid/loot_table/blocks/blue_void.json
+255ffc3d75c839cbec4051ec6d132c66043e89d6 data/dyedvoid/loot_table/blocks/brown_void.json
+f947183a50179f6f370304a244aadac4988626b2 data/dyedvoid/loot_table/blocks/cyan_void.json
+6c53135d859ddd81df1eb93e318934a349f67590 data/dyedvoid/loot_table/blocks/end_void.json
+03e0482915a2b7ab35720acdf1f5873d6cce834c data/dyedvoid/loot_table/blocks/gray_void.json
+d5d445c091b11ace710e72259fdf9dcb411288eb data/dyedvoid/loot_table/blocks/green_void.json
+349fb4557d8d6ec7ca4935eb3cce41ad7b45cb0b data/dyedvoid/loot_table/blocks/light_blue_void.json
+14ca4b2af5e4dc050ac54fc7794d6d274011ec15 data/dyedvoid/loot_table/blocks/light_gray_void.json
+3362923303bac8246c773c7a3bf82a6b68e6de53 data/dyedvoid/loot_table/blocks/lime_void.json
+6db9b573b80f4ddac68de2505e9900e44e461ffc data/dyedvoid/loot_table/blocks/magenta_void.json
+bcc32614ffdfb7a6b330affbd4c2aff37538708d data/dyedvoid/loot_table/blocks/orange_void.json
+0751b25b0ff8ebde9aa46c4e1ae65605e6f8122e data/dyedvoid/loot_table/blocks/pink_void.json
+c91580a077c9b138900fccf25e254a8102382d58 data/dyedvoid/loot_table/blocks/purple_void.json
+88f2e8c051550fa83c08abfab11e84a19b0a373e data/dyedvoid/loot_table/blocks/red_void.json
+117d859b176c0ea3a5d64fb232323f659ac22bbb data/dyedvoid/loot_table/blocks/white_void.json
+f49aca3513a63fbacf4dc0512aefd7986ea86bfa data/dyedvoid/loot_table/blocks/yellow_void.json
