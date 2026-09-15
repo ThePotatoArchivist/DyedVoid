@@ -1,4 +1,5 @@
 // 26.2	-999999999-01-01T00:00:00	The Dyed Void/Tags for minecraft:block
+b496498abca635098ecd9081b93f769d5c8fc50c data/dyedvoid/tags/block/hidden_outline.json
 38fd81bcb9463b534543b65e6f6a4934f16699ee data/dyedvoid/tags/block/void_blocks.json
 b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/mineable/axe.json
 b496498abca635098ecd9081b93f769d5c8fc50c data/minecraft/tags/block/mineable/hoe.json

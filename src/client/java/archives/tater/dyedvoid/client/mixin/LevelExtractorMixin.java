@@ -1,8 +1,8 @@
 package archives.tater.dyedvoid.client.mixin;
 
 import archives.tater.dyedvoid.DyedVoid;
+import archives.tater.dyedvoid.client.DyedVoidClient;
 
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import org.spongepowered.asm.mixin.Mixin;
@@ -20,12 +20,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 @Mixin(LevelExtractor.class)
 public class LevelExtractorMixin {
-    @ModifyExpressionValue(
+    @WrapOperation(
             method = "extractBlockOutline",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;isAir()Z")
     )
-    private boolean outlinePlaceInAir(boolean original, Camera camera) {
-        return original && !(camera.entity() instanceof LivingEntity livingEntity && DyedVoid.canPlaceInAir(livingEntity));
+    private boolean outlinePlaceInAir(BlockState instance, Operation<Boolean> original, Camera camera) {
+        return original.call(instance) && !(camera.entity() instanceof LivingEntity livingEntity && DyedVoid.canPlaceInAir(livingEntity))
+                || DyedVoidClient.isHiddenOutline(instance) && !(camera.entity() instanceof LivingEntity livingEntity && DyedVoidClient.seesHiddenOutlines(livingEntity));
     }
 
     @WrapOperation(

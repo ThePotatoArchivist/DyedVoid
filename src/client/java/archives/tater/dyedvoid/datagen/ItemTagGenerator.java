@@ -11,6 +11,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.tags.BlockItemTagId;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 
@@ -26,7 +27,8 @@ public class ItemTagGenerator extends FabricTagsProvider.ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider arg) {
-        copy(DyedVoidBlockItemTags.VOID_BLOCKS.block(), DyedVoidBlockItemTags.VOID_BLOCKS.item());
+        copy(DyedVoidBlockItemTags.VOID_BLOCKS);
+        copy(DyedVoidBlockItemTags.HIDDEN_OUTLINE);
 
         builder(DyedVoidItemTags.NO_GRAVITY)
                 .add(DyedVoidItemIds.VOID_BOTTLE)
@@ -46,5 +48,9 @@ public class ItemTagGenerator extends FabricTagsProvider.ItemTagsProvider {
 
         builder(TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("create", "upright_on_belt")))
                 .add(DyedVoidItemIds.VOID_BOTTLE);
+    }
+
+    private void copy(BlockItemTagId tag) {
+        copy(tag.block(), tag.item());
     }
 }

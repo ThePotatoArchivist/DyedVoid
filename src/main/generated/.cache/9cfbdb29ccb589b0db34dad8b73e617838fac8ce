@@ -1,6 +1,7 @@
 // 26.2	-999999999-01-01T00:00:00	The Dyed Void/Tags for minecraft:item
 4be09ab0a62558c38863ebca752cb3b6f623c5a5 data/create/tags/item/upright_on_belt.json
 7040b8e9bb77214c23cfc56319a0023944df64e0 data/dyedvoid/tags/item/end_void_ingredient.json
+b496498abca635098ecd9081b93f769d5c8fc50c data/dyedvoid/tags/item/hidden_outline.json
 a1e5d096ac2a8058af57a5d5f4d74c6e5f18e582 data/dyedvoid/tags/item/no_gravity.json
 b496498abca635098ecd9081b93f769d5c8fc50c data/dyedvoid/tags/item/placeable_in_air.json
 b496498abca635098ecd9081b93f769d5c8fc50c data/dyedvoid/tags/item/sulfur_cube_archetype/no_gravity.json
