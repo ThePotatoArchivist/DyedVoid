@@ -25,6 +25,7 @@ public class ItemTagGenerator extends FabricTagsProvider.ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider arg) {
         copy(DyedVoidBlockTags.VOID_BLOCKS, DyedVoidItemTags.VOID_BLOCKS);
+        copy(DyedVoidBlockTags.HIDDEN_OUTLINE, DyedVoidItemTags.HIDDEN_OUTLINE);
 
         valueLookupBuilder(DyedVoidItemTags.NO_GRAVITY)
                 .add(DyedVoidItems.VOID_BOTTLE_ITEM)

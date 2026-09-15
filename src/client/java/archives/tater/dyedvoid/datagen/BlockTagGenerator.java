@@ -21,6 +21,8 @@ public class BlockTagGenerator extends FabricTagsProvider.BlockTagsProvider {
     protected void addTags(HolderLookup.Provider arg) {
         valueLookupBuilder(DyedVoidBlockTags.VOID_BLOCKS).add(DyedVoidBlocks.VOID_BLOCKS);
 
+        valueLookupBuilder(DyedVoidBlockTags.HIDDEN_OUTLINE).addTag(DyedVoidBlockTags.VOID_BLOCKS);
+
         valueLookupBuilder(BlockTags.NEEDS_IRON_TOOL).addTag(DyedVoidBlockTags.VOID_BLOCKS);
         valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE).addTag(DyedVoidBlockTags.VOID_BLOCKS);
         valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE).addTag(DyedVoidBlockTags.VOID_BLOCKS);

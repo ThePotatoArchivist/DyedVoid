@@ -2,7 +2,9 @@ package archives.tater.dyedvoid;
 
 import archives.tater.dyedvoid.client.render.EndVoidBlockEntityRenderer;
 import archives.tater.dyedvoid.client.render.VoidBlockSpecialRenderer;
+import archives.tater.dyedvoid.registry.DyedVoidBlockTags;
 import archives.tater.dyedvoid.registry.DyedVoidBlocks;
+import archives.tater.dyedvoid.registry.DyedVoidItemTags;
 
 import net.fabricmc.api.ClientModInitializer;
 
@@ -12,7 +14,9 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.special.EndCubeSpecialRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderers;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 
 import org.jspecify.annotations.NonNull;
 
@@ -29,6 +33,14 @@ public class DyedVoidClient implements ClientModInitializer {
         return block == DyedVoidBlocks.END_VOID
                 ? new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.PORTAL)
                 : new VoidBlockSpecialRenderer.Unbaked(block);
+    }
+
+    public static boolean isHiddenOutline(BlockState state) {
+        return state.is(DyedVoidBlockTags.HIDDEN_OUTLINE);
+    }
+
+    public static boolean seesHiddenOutlines(LivingEntity entity) {
+        return entity.getMainHandItem().is(DyedVoidItemTags.HIDDEN_OUTLINE) || entity.getOffhandItem().is(DyedVoidItemTags.HIDDEN_OUTLINE);
     }
 
     @Override
