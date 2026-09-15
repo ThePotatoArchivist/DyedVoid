@@ -1,4 +1,4 @@
-// 26.2-rc-1	-999999999-01-01T00:00:00	The Dyed Void/Block Loot Tables
+// 26.2	-999999999-01-01T00:00:00	The Dyed Void/Block Loot Tables
 de81a46abe3326cb0ee65128405b18e21a2be973 data/dyedvoid/loot_table/blocks/black_void.json
 c82c930a04445639d1af7a8a6b13c366e5a1d6e7 data/dyedvoid/loot_table/blocks/blue_void.json
 86f5e043ebeef00a36e960e343d1d15a6eb6ced4 data/dyedvoid/loot_table/blocks/brown_void.json
