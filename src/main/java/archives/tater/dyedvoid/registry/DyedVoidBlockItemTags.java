@@ -11,4 +11,5 @@ public class DyedVoidBlockItemTags {
     }
 
     public static final BlockItemTagId VOID_BLOCKS = create("void_blocks");
+    public static final BlockItemTagId HIDDEN_OUTLINE = create("hidden_outline");
 }
