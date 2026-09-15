@@ -13,5 +13,6 @@ public class DyedVoidItemTags {
 
     public static final TagKey<Item> VOID_BLOCKS = create("void_blocks");
     public static final TagKey<Item> NO_GRAVITY = create("no_gravity");
+    public static final TagKey<Item> END_VOID_INGREDIENT = create("end_void_ingredient");
     public static final TagKey<Item> PLACEABLE_IN_AIR = create("placeable_in_air");
 }

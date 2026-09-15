@@ -30,6 +30,9 @@ public class ItemTagGenerator extends FabricTagsProvider.ItemTagsProvider {
                 .add(DyedVoidItems.VOID_BOTTLE_ITEM)
                 .addTag(DyedVoidItemTags.VOID_BLOCKS);
 
+        valueLookupBuilder(DyedVoidItemTags.END_VOID_INGREDIENT)
+                .add(DyedVoidItems.BLACK_VOID);
+
         valueLookupBuilder(DyedVoidItemTags.PLACEABLE_IN_AIR)
             .addTag(DyedVoidItemTags.VOID_BLOCKS);
 

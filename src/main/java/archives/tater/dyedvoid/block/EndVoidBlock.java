@@ -1,6 +1,7 @@
 package archives.tater.dyedvoid.block;
 
 import archives.tater.dyedvoid.registry.DyedVoidBlocks;
+import archives.tater.dyedvoid.registry.DyedVoidItemTags;
 import archives.tater.dyedvoid.registry.DyedVoidItems;
 
 import net.minecraft.core.BlockPos;
@@ -47,7 +48,7 @@ public class EndVoidBlock extends VoidBlock implements EntityBlock {
     public static void tryCraft(Entity entity) {
         if (!(entity instanceof ItemEntity itemEntity)) return;
         var stack = itemEntity.getItem();
-        if (!stack.is(DyedVoidItems.BLACK_VOID)) return;
+        if (!stack.is(DyedVoidItemTags.END_VOID_INGREDIENT)) return;
         itemEntity.setItem(new ItemStack(DyedVoidItems.END_VOID, stack.getCount()));
     }
 }
