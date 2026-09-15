@@ -1,0 +1,18 @@
+// 26.2-rc-1	-999999999-01-01T00:00:00	The Dyed Void/Block Loot Tables
+de81a46abe3326cb0ee65128405b18e21a2be973 data/dyedvoid/loot_table/blocks/black_void.json
+c82c930a04445639d1af7a8a6b13c366e5a1d6e7 data/dyedvoid/loot_table/blocks/blue_void.json
+86f5e043ebeef00a36e960e343d1d15a6eb6ced4 data/dyedvoid/loot_table/blocks/brown_void.json
+3bbee1fa3755c43d7454fda231c822e15b6b02e1 data/dyedvoid/loot_table/blocks/cyan_void.json
+bafe066e534c737ebcc11c95fdb7335528717d79 data/dyedvoid/loot_table/blocks/end_void.json
+f33458abe25888b4f52194875fe6f5787e094a39 data/dyedvoid/loot_table/blocks/gray_void.json
+fa0ab84dfb724bbbe42fca1d057fc4db3af7f41f data/dyedvoid/loot_table/blocks/green_void.json
+a627246eab8e8cd06222bb4018464926fad761d3 data/dyedvoid/loot_table/blocks/light_blue_void.json
+cba9983d710c969f8ad3251c288e2a7eb4b3c232 data/dyedvoid/loot_table/blocks/light_gray_void.json
+489ae854e24c73420827042bdb973114d3ef5fb4 data/dyedvoid/loot_table/blocks/lime_void.json
+4d59969a50da62bcbdd29a6f5e202a2a7d7984ac data/dyedvoid/loot_table/blocks/magenta_void.json
+869a8a4080ea5d446696dd140ed3982abf768744 data/dyedvoid/loot_table/blocks/orange_void.json
+39db68d28ac07d7fafa3160ff0c0f099af13108b data/dyedvoid/loot_table/blocks/pink_void.json
+5e2fad1fd890b57c5eec844a1626a0b364f10d81 data/dyedvoid/loot_table/blocks/purple_void.json
+838ead3dc010985a6e94abc90c254baa977f0bd7 data/dyedvoid/loot_table/blocks/red_void.json
+bd5945c64483d1901956cf5d46d50a92af9f1037 data/dyedvoid/loot_table/blocks/white_void.json
+e3a7889da85dc0a314a39373ecb9ebbe34f9a401 data/dyedvoid/loot_table/blocks/yellow_void.json
