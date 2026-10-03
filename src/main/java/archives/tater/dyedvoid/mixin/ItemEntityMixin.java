@@ -1,6 +1,7 @@
 package archives.tater.dyedvoid.mixin;
 
-import archives.tater.dyedvoid.registry.DyedVoidItems;
+import archives.tater.dyedvoid.registry.DyedVoidItemTags;
+
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -23,7 +24,7 @@ public abstract class ItemEntityMixin extends Entity {
 			at = @At("TAIL")
 	)
 	private void checkNoGravityTag(Level world, double x, double y, double z, ItemStack stack, double velocityX, double velocityY, double velocityZ, CallbackInfo ci) {
-		if (stack.is(DyedVoidItems.NO_GRAVITY_TAG))
+		if (stack.is(DyedVoidItemTags.NO_GRAVITY))
 			setNoGravity(true);
 	}
 }

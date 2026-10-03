@@ -1,5 +1,6 @@
 package archives.tater.dyedvoid.datagen;
 
+import archives.tater.dyedvoid.registry.DyedVoidBlockTags;
 import archives.tater.dyedvoid.registry.DyedVoidBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -15,12 +16,14 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider arg) {
-        getOrCreateTagBuilder(DyedVoidBlocks.VOID_BLOCKS_TAG).add(DyedVoidBlocks.VOID_BLOCKS);
+        getOrCreateTagBuilder(DyedVoidBlockTags.VOID_BLOCKS).add(DyedVoidBlocks.VOID_BLOCKS);
 
-        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE).forceAddTag(DyedVoidBlocks.VOID_BLOCKS_TAG);
+        getOrCreateTagBuilder(DyedVoidBlockTags.HIDDEN_OUTLINE).addTag(DyedVoidBlockTags.VOID_BLOCKS);
+
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL).addTag(DyedVoidBlockTags.VOID_BLOCKS);
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE).addTag(DyedVoidBlockTags.VOID_BLOCKS);
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE).addTag(DyedVoidBlockTags.VOID_BLOCKS);
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL).addTag(DyedVoidBlockTags.VOID_BLOCKS);
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE).addTag(DyedVoidBlockTags.VOID_BLOCKS);
     }
 }

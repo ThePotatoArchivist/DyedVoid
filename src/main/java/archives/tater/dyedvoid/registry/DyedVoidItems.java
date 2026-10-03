@@ -6,10 +6,8 @@ import archives.tater.dyedvoid.item.VoidBottleItem;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -107,8 +105,6 @@ public class DyedVoidItems {
 
     public static final Item DUMMY_END_PORTAL = register(Identifier.withDefaultNamespace("dyedvoid/dummy/end_portal"), new BlockItem(Blocks.END_PORTAL, new Item.Properties()));
     public static final Item DUMMY_END_GATEWAY = register(Identifier.withDefaultNamespace("dyedvoid/dummy/end_gateway"), new BlockItem(Blocks.END_GATEWAY, new Item.Properties()));
-
-    public static final TagKey<Item> NO_GRAVITY_TAG = TagKey.create(Registries.ITEM, DyedVoid.id("no_gravity"));
 
     public static void initalize() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, DyedVoid.id("item_group"), DyedVoidItems.ITEM_GROUP);
