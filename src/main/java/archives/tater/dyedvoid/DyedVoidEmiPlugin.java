@@ -5,8 +5,6 @@ import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiWorldInteractionRecipe;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
-import net.minecraft.util.Identifier;
-
 import java.util.List;
 
 public class DyedVoidEmiPlugin implements EmiPlugin {

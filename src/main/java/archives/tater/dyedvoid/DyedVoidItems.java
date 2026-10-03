@@ -1,32 +1,36 @@
 package archives.tater.dyedvoid;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.item.*;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 
 public class DyedVoidItems {
 
     private static Item register(Identifier identifier, Item item) {
-        return Registry.register(Registries.ITEM, identifier, item);
+        return Registry.register(BuiltInRegistries.ITEM, identifier, item);
     }
 
     private static Item register(String path, Item item) {
         return register(DyedVoid.id(path), item);
     }
 
-    private static Item registerBlockItem(Block block, Item.Settings settings) {
-        return Registry.register(Registries.ITEM, Registries.BLOCK.getId(block), new BlockItem(block, settings));
+    private static Item registerBlockItem(Block block, Item.Properties settings) {
+        return Registry.register(BuiltInRegistries.ITEM, BuiltInRegistries.BLOCK.getKey(block), new BlockItem(block, settings));
     }
 
     private static Item registerBlockItem(Block block) {
-        return registerBlockItem(block, new Item.Settings());
+        return registerBlockItem(block, new Item.Properties());
     }
 
     public static final Item WHITE_VOID = registerBlockItem(DyedVoidBlocks.WHITE_VOID);
@@ -68,42 +72,42 @@ public class DyedVoidItems {
             END_VOID
     };
 
-    public static final Item VOID_BOTTLE_ITEM = register("void_bottle", new VoidBottleItem(new Item.Settings()
-            .maxCount(16)
-            .recipeRemainder(Items.GLASS_BOTTLE)
+    public static final Item VOID_BOTTLE_ITEM = register("void_bottle", new VoidBottleItem(new Item.Properties()
+            .stacksTo(16)
+            .craftRemainder(Items.GLASS_BOTTLE)
     ));
 
-    public static final ItemGroup ITEM_GROUP = FabricItemGroup.builder()
+    public static final CreativeModeTab ITEM_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(RED_VOID))
-            .displayName(Text.translatable("itemGroup.dyedvoid.group"))
-            .entries((context, entries) -> {
-                entries.add(VOID_BOTTLE_ITEM);
-                entries.add(WHITE_VOID);
-                entries.add(LIGHT_GRAY_VOID);
-                entries.add(GRAY_VOID);
-                entries.add(BLACK_VOID);
-                entries.add(BROWN_VOID);
-                entries.add(RED_VOID);
-                entries.add(ORANGE_VOID);
-                entries.add(YELLOW_VOID);
-                entries.add(LIME_VOID);
-                entries.add(GREEN_VOID);
-                entries.add(CYAN_VOID);
-                entries.add(LIGHT_BLUE_VOID);
-                entries.add(BLUE_VOID);
-                entries.add(PURPLE_VOID);
-                entries.add(MAGENTA_VOID);
-                entries.add(PINK_VOID);
-                entries.add(END_VOID);
+            .title(Component.translatable("itemGroup.dyedvoid.group"))
+            .displayItems((context, entries) -> {
+                entries.accept(VOID_BOTTLE_ITEM);
+                entries.accept(WHITE_VOID);
+                entries.accept(LIGHT_GRAY_VOID);
+                entries.accept(GRAY_VOID);
+                entries.accept(BLACK_VOID);
+                entries.accept(BROWN_VOID);
+                entries.accept(RED_VOID);
+                entries.accept(ORANGE_VOID);
+                entries.accept(YELLOW_VOID);
+                entries.accept(LIME_VOID);
+                entries.accept(GREEN_VOID);
+                entries.accept(CYAN_VOID);
+                entries.accept(LIGHT_BLUE_VOID);
+                entries.accept(BLUE_VOID);
+                entries.accept(PURPLE_VOID);
+                entries.accept(MAGENTA_VOID);
+                entries.accept(PINK_VOID);
+                entries.accept(END_VOID);
             })
             .build();
 
-    public static final Item DUMMY_END_PORTAL = register(Identifier.ofVanilla("dyedvoid/dummy/end_portal"), new BlockItem(Blocks.END_PORTAL, new Item.Settings()));
-    public static final Item DUMMY_END_GATEWAY = register(Identifier.ofVanilla("dyedvoid/dummy/end_gateway"), new BlockItem(Blocks.END_GATEWAY, new Item.Settings()));
+    public static final Item DUMMY_END_PORTAL = register(Identifier.withDefaultNamespace("dyedvoid/dummy/end_portal"), new BlockItem(Blocks.END_PORTAL, new Item.Properties()));
+    public static final Item DUMMY_END_GATEWAY = register(Identifier.withDefaultNamespace("dyedvoid/dummy/end_gateway"), new BlockItem(Blocks.END_GATEWAY, new Item.Properties()));
 
-    public static final TagKey<Item> NO_GRAVITY_TAG = TagKey.of(RegistryKeys.ITEM, DyedVoid.id("no_gravity"));
+    public static final TagKey<Item> NO_GRAVITY_TAG = TagKey.create(Registries.ITEM, DyedVoid.id("no_gravity"));
 
     public static void initalize() {
-        Registry.register(Registries.ITEM_GROUP, DyedVoid.id("item_group"), DyedVoidItems.ITEM_GROUP);
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, DyedVoid.id("item_group"), DyedVoidItems.ITEM_GROUP);
     }
 }

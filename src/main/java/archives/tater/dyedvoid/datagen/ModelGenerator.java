@@ -5,9 +5,15 @@ import archives.tater.dyedvoid.DyedVoidBlocks;
 import archives.tater.dyedvoid.DyedVoidItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.block.Block;
-import net.minecraft.data.client.*;
-
+import net.minecraft.data.models.BlockModelGenerators;
+import net.minecraft.data.models.ItemModelGenerators;
+import net.minecraft.data.models.model.ModelLocationUtils;
+import net.minecraft.data.models.model.ModelTemplate;
+import net.minecraft.data.models.model.ModelTemplates;
+import net.minecraft.data.models.model.TextureMapping;
+import net.minecraft.data.models.model.TextureSlot;
+import net.minecraft.data.models.model.TexturedModel;
+import net.minecraft.world.level.block.Block;
 import java.util.Optional;
 
 public class ModelGenerator extends FabricModelProvider {
@@ -16,24 +22,24 @@ public class ModelGenerator extends FabricModelProvider {
         super(output);
     }
 
-    private static final Model VOID_BLOCK_MODEL = new Model(Optional.of(DyedVoid.id("block/void_block")), Optional.empty(), TextureKey.ALL);
-    private static final TexturedModel.Factory VOID_BLOCK_FACTORY = TexturedModel.makeFactory(TextureMap::all, VOID_BLOCK_MODEL);
+    private static final ModelTemplate VOID_BLOCK_MODEL = new ModelTemplate(Optional.of(DyedVoid.id("block/void_block")), Optional.empty(), TextureSlot.ALL);
+    private static final TexturedModel.Provider VOID_BLOCK_FACTORY = TexturedModel.createDefault(TextureMapping::cube, VOID_BLOCK_MODEL);
 
     @Override
-    public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+    public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
         for (Block block : DyedVoidBlocks.VOID_BLOCKS) {
             if (block == DyedVoidBlocks.END_VOID) continue; // Skip
-            blockStateModelGenerator.registerSingleton(block, VOID_BLOCK_FACTORY);
+            blockStateModelGenerator.createTrivialBlock(block, VOID_BLOCK_FACTORY);
         }
-        blockStateModelGenerator.registerBuiltinWithParticle(DyedVoidBlocks.END_VOID, DyedVoid.id("block/empty"));
+        blockStateModelGenerator.createAirLikeBlock(DyedVoidBlocks.END_VOID, DyedVoid.id("block/empty"));
     }
 
     @Override
-    public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        Models.CUBE_ALL.upload(ModelIds.getItemModelId(DyedVoidItems.END_VOID), TextureMap.all(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.writer);
-        Models.GENERATED.upload(ModelIds.getItemModelId(DyedVoidItems.DUMMY_END_PORTAL), TextureMap.layer0(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.writer);
-        Models.CUBE_ALL.upload(ModelIds.getItemModelId(DyedVoidItems.DUMMY_END_GATEWAY), TextureMap.all(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.writer);
+    public void generateItemModels(ItemModelGenerators itemModelGenerator) {
+        ModelTemplates.CUBE_ALL.create(ModelLocationUtils.getModelLocation(DyedVoidItems.END_VOID), TextureMapping.cube(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.output);
+        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(DyedVoidItems.DUMMY_END_PORTAL), TextureMapping.layer0(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.output);
+        ModelTemplates.CUBE_ALL.create(ModelLocationUtils.getModelLocation(DyedVoidItems.DUMMY_END_GATEWAY), TextureMapping.cube(DyedVoidBlocks.BLACK_VOID), itemModelGenerator.output);
 
-        itemModelGenerator.register(DyedVoidItems.VOID_BOTTLE_ITEM, Models.GENERATED);
+        itemModelGenerator.generateFlatItem(DyedVoidItems.VOID_BOTTLE_ITEM, ModelTemplates.FLAT_ITEM);
     }
 }

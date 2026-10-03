@@ -1,31 +1,31 @@
 package archives.tater.dyedvoid;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.jetbrains.annotations.Nullable;
 
 public class DyedVoidBlocks {
 
     private static Block register(String name, Block block) {
-        return Registry.register(Registries.BLOCK, DyedVoid.id(name), block);
+        return Registry.register(BuiltInRegistries.BLOCK, DyedVoid.id(name), block);
     }
 
     private static Block registerVoidBlock(@Nullable String colorName, boolean luminant) {
-        var settings = AbstractBlock.Settings.create()
+        var settings = BlockBehaviour.Properties.of()
                 .strength(0)
-                .hardness(3)
-                .sounds(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
-                .noBlockBreakParticles();
+                .destroyTime(3)
+                .sound(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
+                .noTerrainParticles();
 
         if (luminant)
             settings
-                    .emissiveLighting((state, world, pos) -> true)
-                    .luminance(state -> 15);
+                    .emissiveRendering((state, world, pos) -> true)
+                    .lightLevel(state -> 15);
 
         return register(colorName == null ? "void" : colorName + "_void", new VoidBlock(settings));
     }
@@ -51,16 +51,16 @@ public class DyedVoidBlocks {
     public static final Block MAGENTA_VOID = registerVoidBlock("magenta");
     public static final Block PINK_VOID = registerVoidBlock("pink");
 
-    public static final Block END_VOID = register("end_void", new EndVoidBlock(AbstractBlock.Settings.create()
+    public static final Block END_VOID = register("end_void", new EndVoidBlock(BlockBehaviour.Properties.of()
             .strength(0)
-            .hardness(3)
-            .sounds(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
-            .noBlockBreakParticles()
+            .destroyTime(3)
+            .sound(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
+            .noTerrainParticles()
     ));
     public static final BlockEntityType<EndVoidBlock.EndVoidBlockEntity> END_VOID_BLOCK_ENTITY = Registry.register(
-            Registries.BLOCK_ENTITY_TYPE,
+            BuiltInRegistries.BLOCK_ENTITY_TYPE,
             DyedVoid.id("end_void"),
-            BlockEntityType.Builder.create(EndVoidBlock.EndVoidBlockEntity::new, END_VOID).build()
+            BlockEntityType.Builder.of(EndVoidBlock.EndVoidBlockEntity::new, END_VOID).build()
     );
 
     public static final Block[] VOID_BLOCKS = {
@@ -83,7 +83,7 @@ public class DyedVoidBlocks {
             END_VOID
     };
 
-    public static final TagKey<Block> VOID_BLOCKS_TAG = TagKey.of(RegistryKeys.BLOCK, DyedVoid.id("void_blocks"));
+    public static final TagKey<Block> VOID_BLOCKS_TAG = TagKey.create(Registries.BLOCK, DyedVoid.id("void_blocks"));
 
     public static void initialize() {}
 }

@@ -1,11 +1,11 @@
 package archives.tater.dyedvoid.mixin;
 
 import archives.tater.dyedvoid.EndVoidBlock;
-import net.minecraft.block.EndGatewayBlock;
-import net.minecraft.entity.Entity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.TeleportTarget;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.block.EndGatewayBlock;
+import net.minecraft.world.level.portal.DimensionTransition;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -14,10 +14,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(EndGatewayBlock.class)
 public class EndGatewayBlockMixin {
     @Inject(
-            method = "createTeleportTarget",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/TeleportTarget;<init>(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/Vec3d;Lnet/minecraft/util/math/Vec3d;FFLnet/minecraft/world/TeleportTarget$PostDimensionTransition;)V")
+            method = "getPortalDestination",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/portal/DimensionTransition;<init>(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;FFLnet/minecraft/world/level/portal/DimensionTransition$PostDimensionTransition;)V")
     )
-    private void craftEndVoid(ServerWorld world, Entity entity, BlockPos pos, CallbackInfoReturnable<TeleportTarget> cir) {
+    private void craftEndVoid(ServerLevel world, Entity entity, BlockPos pos, CallbackInfoReturnable<DimensionTransition> cir) {
         EndVoidBlock.tryCraft(entity);
     }
 }

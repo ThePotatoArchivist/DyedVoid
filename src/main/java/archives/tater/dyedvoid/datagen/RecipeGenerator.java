@@ -4,14 +4,13 @@ import archives.tater.dyedvoid.DyedVoidBlocks;
 import archives.tater.dyedvoid.DyedVoidItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.RegistryWrapper;
-
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
@@ -35,33 +34,33 @@ public class RecipeGenerator extends FabricRecipeProvider {
             entry(DyedVoidItems.RED_VOID, Items.RED_DYE)
     );
 
-    public RecipeGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+    public RecipeGenerator(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
     @Override
-    public void generate(RecipeExporter exporter) {
-        dyes.forEach((voidItem, dyeItem) -> ShapelessRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, voidItem, 8)
-                .input(DyedVoidItems.WHITE_VOID, 4)
-                .input(dyeItem)
-                .input(DyedVoidItems.WHITE_VOID, 4)
-                .criterion(hasItem(DyedVoidItems.WHITE_VOID), conditionsFromItem(DyedVoidItems.WHITE_VOID))
+    public void buildRecipes(RecipeOutput exporter) {
+        dyes.forEach((voidItem, dyeItem) -> ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, voidItem, 8)
+                .requires(DyedVoidItems.WHITE_VOID, 4)
+                .requires(dyeItem)
+                .requires(DyedVoidItems.WHITE_VOID, 4)
+                .unlockedBy(getHasName(DyedVoidItems.WHITE_VOID), has(DyedVoidItems.WHITE_VOID))
                 .group("dye_void_block")
-                .offerTo(exporter)
+                .save(exporter)
         );
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, DyedVoidBlocks.BLACK_VOID, 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, DyedVoidBlocks.BLACK_VOID, 4)
                 .pattern("##")
                 .pattern("##")
-                .input('#', DyedVoidItems.VOID_BOTTLE_ITEM)
-                .criterion(hasItem(DyedVoidItems.VOID_BOTTLE_ITEM), conditionsFromItem(DyedVoidItems.VOID_BOTTLE_ITEM))
-                .offerTo(exporter);
+                .define('#', DyedVoidItems.VOID_BOTTLE_ITEM)
+                .unlockedBy(getHasName(DyedVoidItems.VOID_BOTTLE_ITEM), has(DyedVoidItems.VOID_BOTTLE_ITEM))
+                .save(exporter);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, DyedVoidItems.WHITE_VOID, 8)
-                .input(DyedVoidItems.BLACK_VOID, 4)
-                .input(Items.GLOW_INK_SAC)
-                .input(DyedVoidItems.BLACK_VOID, 4)
-                .criterion(hasItem(DyedVoidItems.BLACK_VOID), conditionsFromItem(DyedVoidItems.BLACK_VOID))
-                .offerTo(exporter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, DyedVoidItems.WHITE_VOID, 8)
+                .requires(DyedVoidItems.BLACK_VOID, 4)
+                .requires(Items.GLOW_INK_SAC)
+                .requires(DyedVoidItems.BLACK_VOID, 4)
+                .unlockedBy(getHasName(DyedVoidItems.BLACK_VOID), has(DyedVoidItems.BLACK_VOID))
+                .save(exporter);
     }
 }
