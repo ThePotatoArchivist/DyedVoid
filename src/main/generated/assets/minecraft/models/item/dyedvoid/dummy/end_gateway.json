@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "dyedvoid:block/void"
-  }
+  "parent": "dyedvoid:item/template_void"
 }

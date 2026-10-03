@@ -1,5 +1,5 @@
 {
-  "parent": "dyedvoid:block/void_block",
+  "parent": "dyedvoid:block/template_void",
   "textures": {
     "all": "dyedvoid:block/blue_void"
   }

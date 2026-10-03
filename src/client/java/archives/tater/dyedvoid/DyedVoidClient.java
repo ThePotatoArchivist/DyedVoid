@@ -1,27 +1,25 @@
 package archives.tater.dyedvoid;
 
 import archives.tater.dyedvoid.client.render.EndVoidBlockEntityRenderer;
+import archives.tater.dyedvoid.client.render.VoidBlockItemRenderer;
 import archives.tater.dyedvoid.registry.DyedVoidBlocks;
 import archives.tater.dyedvoid.registry.DyedVoidItems;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
+
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.BlockItem;
 
 public class DyedVoidClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockEntityRenderers.register(DyedVoidBlocks.END_VOID_BLOCK_ENTITY, EndVoidBlockEntityRenderer::new);
-    }
 
-    public static boolean isFlatRendered(ItemStack itemStack) {
-        for (var item : DyedVoidItems.VOID_BLOCKS) {
-            if (item != DyedVoidItems.END_VOID && itemStack.is(item)) return true;
-        }
-        return false;
-    }
-
-    public static boolean isPortalRendered(ItemStack itemStack) {
-        return itemStack.is(DyedVoidItems.END_VOID) || itemStack.is(DyedVoidItems.DUMMY_END_PORTAL) || itemStack.is(DyedVoidItems.DUMMY_END_GATEWAY);
+        var portal = new VoidBlockItemRenderer(DyedVoidBlocks.BLACK_VOID.defaultBlockState(), true);
+        for (var item : DyedVoidItems.VOID_BLOCKS)
+            BuiltinItemRendererRegistry.INSTANCE.register(item, item == DyedVoidItems.END_VOID ? portal : new VoidBlockItemRenderer(((BlockItem) item).getBlock().defaultBlockState()));
+        BuiltinItemRendererRegistry.INSTANCE.register(DyedVoidItems.DUMMY_END_GATEWAY, portal);
+        BuiltinItemRendererRegistry.INSTANCE.register(DyedVoidItems.DUMMY_END_PORTAL, portal);
     }
 }
