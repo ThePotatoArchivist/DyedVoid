@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "night=false": {
+      "model": "dyedvoid:block/sky_void"
+    },
+    "night=true": {
+      "model": "dyedvoid:block/sky_void_night"
+    }
+  }
+}

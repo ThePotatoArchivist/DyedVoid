@@ -1,6 +1,7 @@
 package archives.tater.dyedvoid.datagen;
 
 import archives.tater.dyedvoid.DyedVoid;
+import archives.tater.dyedvoid.block.SkyVoidBlock;
 import archives.tater.dyedvoid.registry.DyedVoidBlocks;
 import archives.tater.dyedvoid.registry.DyedVoidItems;
 
@@ -13,6 +14,9 @@ import net.minecraft.data.models.model.*;
 import net.minecraft.world.level.block.Block;
 
 import java.util.Optional;
+
+import static net.minecraft.data.models.BlockModelGenerators.createBooleanModelDispatch;
+import static net.minecraft.data.models.blockstates.MultiVariantGenerator.multiVariant;
 
 public class ModelGenerator extends FabricModelProvider {
 
@@ -27,10 +31,16 @@ public class ModelGenerator extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockStateModelGenerator) {
         for (Block block : DyedVoidBlocks.VOID_BLOCKS) {
-            if (block == DyedVoidBlocks.END_VOID) continue; // Skip
+            if (block == DyedVoidBlocks.END_VOID || block == DyedVoidBlocks.SKY_VOID) continue; // Skip
             blockStateModelGenerator.createTrivialBlock(block, VOID_BLOCK_FACTORY);
         }
         blockStateModelGenerator.createAirLikeBlock(DyedVoidBlocks.END_VOID, DyedVoid.id("block/empty"));
+
+        blockStateModelGenerator.blockStateOutput.accept(multiVariant(DyedVoidBlocks.SKY_VOID).with(createBooleanModelDispatch(
+                SkyVoidBlock.NIGHT,
+                blockStateModelGenerator.createSuffixedVariant(DyedVoidBlocks.SKY_VOID, "_night", VOID_BLOCK_MODEL, TextureMapping::cube),
+                VOID_BLOCK_FACTORY.create(DyedVoidBlocks.SKY_VOID, blockStateModelGenerator.modelOutput)
+        )));
     }
 
     @Override

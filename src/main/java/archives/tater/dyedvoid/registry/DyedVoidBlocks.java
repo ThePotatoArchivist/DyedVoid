@@ -2,11 +2,13 @@ package archives.tater.dyedvoid.registry;
 
 import archives.tater.dyedvoid.DyedVoid;
 import archives.tater.dyedvoid.block.EndVoidBlock;
+import archives.tater.dyedvoid.block.SkyVoidBlock;
 import archives.tater.dyedvoid.block.VoidBlock;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.jetbrains.annotations.Nullable;
@@ -26,7 +28,7 @@ public class DyedVoidBlocks {
 
         if (luminant)
             settings
-                    .emissiveRendering((state, world, pos) -> true)
+                    .emissiveRendering(Blocks::always)
                     .lightLevel(state -> 15);
 
         return register(colorName == null ? "void" : colorName + "_void", new VoidBlock(settings));
@@ -65,6 +67,15 @@ public class DyedVoidBlocks {
             BlockEntityType.Builder.of(EndVoidBlock.EndVoidBlockEntity::new, END_VOID).build()
     );
 
+    public static final Block SKY_VOID = register("sky_void", new SkyVoidBlock(BlockBehaviour.Properties.of()
+            .strength(0)
+            .destroyTime(3)
+            .sound(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
+            .noTerrainParticles()
+            .emissiveRendering(Blocks::always)
+            .lightLevel(state -> state.getValue(SkyVoidBlock.NIGHT) ? 0 : 15)
+    ));
+
     public static final Block[] VOID_BLOCKS = {
             BLACK_VOID,
             WHITE_VOID,
@@ -82,7 +93,8 @@ public class DyedVoidBlocks {
             PURPLE_VOID,
             MAGENTA_VOID,
             PINK_VOID,
-            END_VOID
+            END_VOID,
+            SKY_VOID
     };
 
     public static void initialize() {}
