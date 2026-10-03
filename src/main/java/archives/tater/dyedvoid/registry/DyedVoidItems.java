@@ -1,4 +1,7 @@
-package archives.tater.dyedvoid;
+package archives.tater.dyedvoid.registry;
+
+import archives.tater.dyedvoid.DyedVoid;
+import archives.tater.dyedvoid.item.VoidBottleItem;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;

@@ -1,6 +1,6 @@
 package archives.tater.dyedvoid.mixin;
 
-import archives.tater.dyedvoid.EndVoidBlock;
+import archives.tater.dyedvoid.block.EndVoidBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;

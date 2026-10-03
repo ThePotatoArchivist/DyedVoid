@@ -1,4 +1,4 @@
-package archives.tater.dyedvoid;
+package archives.tater.dyedvoid.item;
 
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;

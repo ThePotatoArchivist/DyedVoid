@@ -1,4 +1,4 @@
-package archives.tater.dyedvoid;
+package archives.tater.dyedvoid.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;

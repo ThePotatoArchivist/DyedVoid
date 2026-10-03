@@ -1,7 +1,7 @@
 package archives.tater.dyedvoid.mixin;
 
-import archives.tater.dyedvoid.DyedVoidItems;
-import archives.tater.dyedvoid.DyedVoidSounds;
+import archives.tater.dyedvoid.registry.DyedVoidItems;
+import archives.tater.dyedvoid.registry.DyedVoidSounds;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;

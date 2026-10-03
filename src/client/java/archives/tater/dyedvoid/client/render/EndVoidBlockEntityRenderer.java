@@ -1,6 +1,6 @@
 package archives.tater.dyedvoid.client.render;
 
-import archives.tater.dyedvoid.EndVoidBlock.EndVoidBlockEntity;
+import archives.tater.dyedvoid.block.EndVoidBlock.EndVoidBlockEntity;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.TheEndPortalRenderer;
 
