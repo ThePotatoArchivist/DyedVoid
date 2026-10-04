@@ -10,13 +10,19 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
+import net.minecraft.data.models.blockstates.Variant;
+import net.minecraft.data.models.blockstates.VariantProperties;
 import net.minecraft.data.models.model.*;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-import static net.minecraft.data.models.BlockModelGenerators.createBooleanModelDispatch;
 import static net.minecraft.data.models.blockstates.MultiVariantGenerator.multiVariant;
+import static net.minecraft.data.models.blockstates.PropertyDispatch.property;
+import static net.minecraft.data.models.blockstates.Variant.variant;
 
 public class ModelGenerator extends FabricModelProvider {
 
@@ -36,11 +42,13 @@ public class ModelGenerator extends FabricModelProvider {
         }
         blockStateModelGenerator.createAirLikeBlock(DyedVoidBlocks.END_VOID, DyedVoid.id("block/empty"));
 
-        blockStateModelGenerator.blockStateOutput.accept(multiVariant(DyedVoidBlocks.SKY_VOID).with(createBooleanModelDispatch(
-                SkyVoidBlock.NIGHT,
-                blockStateModelGenerator.createSuffixedVariant(DyedVoidBlocks.SKY_VOID, "_night", VOID_BLOCK_MODEL, TextureMapping::cube),
-                VOID_BLOCK_FACTORY.create(DyedVoidBlocks.SKY_VOID, blockStateModelGenerator.modelOutput)
-        )));
+        var skyNight = plainVariant(blockStateModelGenerator.createSuffixedVariant(DyedVoidBlocks.SKY_VOID, "_night", VOID_BLOCK_MODEL, TextureMapping::cube));
+        var skyDay = plainVariant(VOID_BLOCK_FACTORY.create(DyedVoidBlocks.SKY_VOID, blockStateModelGenerator.modelOutput));
+        blockStateModelGenerator.blockStateOutput.accept(multiVariant(DyedVoidBlocks.SKY_VOID)
+                .with(property(SkyVoidBlock.POWER).generate(power ->
+                        power == SkyVoidBlock.Power.NONE ? skyDay : skyNight
+                ))
+        );
     }
 
     @Override
@@ -51,5 +59,9 @@ public class ModelGenerator extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DyedVoidItems.DUMMY_END_GATEWAY, VOID_BLOCK_ITEM_MODEL);
 
         itemModelGenerator.generateFlatItem(DyedVoidItems.VOID_BOTTLE_ITEM, ModelTemplates.FLAT_ITEM);
+    }
+
+    private static @NotNull Variant plainVariant(Identifier blockStateModelGenerator) {
+        return variant().with(VariantProperties.MODEL, blockStateModelGenerator);
     }
 }

@@ -73,7 +73,7 @@ public class DyedVoidBlocks {
             .sound(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
             .noTerrainParticles()
             .emissiveRendering(Blocks::always)
-            .lightLevel(state -> state.getValue(SkyVoidBlock.NIGHT) ? 0 : 15)
+            .lightLevel(state -> state.getValue(SkyVoidBlock.POWER).isPowered() ? 0 : 15)
     ));
 
     public static final Block[] VOID_BLOCKS = {

@@ -1,9 +1,27 @@
 {
   "variants": {
-    "night=false": {
+    "power=down": {
+      "model": "dyedvoid:block/sky_void_night"
+    },
+    "power=east": {
+      "model": "dyedvoid:block/sky_void_night"
+    },
+    "power=none": {
       "model": "dyedvoid:block/sky_void"
     },
-    "night=true": {
+    "power=north": {
+      "model": "dyedvoid:block/sky_void_night"
+    },
+    "power=source": {
+      "model": "dyedvoid:block/sky_void_night"
+    },
+    "power=south": {
+      "model": "dyedvoid:block/sky_void_night"
+    },
+    "power=up": {
+      "model": "dyedvoid:block/sky_void_night"
+    },
+    "power=west": {
       "model": "dyedvoid:block/sky_void_night"
     }
   }
