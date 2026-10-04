@@ -49,8 +49,10 @@ public class SkyVoidBlock extends VoidBlock {
         if (level.isClientSide) return;
 
         if (level.hasNeighborSignal(pos)) {
-            level.setBlockAndUpdate(pos, state.setValue(POWER, Power.SOURCE));
-            return;
+            if (state.getValue(POWER) != Power.SOURCE) {
+                level.setBlockAndUpdate(pos, state.setValue(POWER, Power.SOURCE));
+                return;
+            }
         } else if (state.getValue(POWER) == Power.SOURCE) {
             level.setBlockAndUpdate(pos, state.setValue(POWER, Power.NONE));
             return;
@@ -65,13 +67,16 @@ public class SkyVoidBlock extends VoidBlock {
             return;
         }
 
-        if (state.getValue(POWER) == Power.CHILD && !neighborState.getValue(POWER).isPowered())
-            level.setBlockAndUpdate(pos, state.setValue(POWER, Power.NONE));
+        if (!neighborState.getValue(POWER).isPowered())
+            if (state.getValue(POWER) == Power.CHILD)
+                level.setBlockAndUpdate(pos, state.setValue(POWER, Power.NONE));
+            else if (state.getValue(POWER) == Power.SOURCE)
+                level.scheduleTick(neighborPos, block, 1);
     }
 
     @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        level.setBlockAndUpdate(pos, getState(level, pos));
+        level.setBlockAndUpdate(pos, state.setValue(POWER, Power.CHILD));
     }
 
     public enum Power implements StringRepresentable {
