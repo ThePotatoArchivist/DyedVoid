@@ -53,6 +53,7 @@ public class DyedVoidItems {
 
     public static final Item END_VOID = registerBlockItem(DyedVoidBlocks.END_VOID);
     public static final Item SKY_VOID = registerBlockItem(DyedVoidBlocks.SKY_VOID);
+    public static final Item CLOUD_VOID = registerBlockItem(DyedVoidBlocks.CLOUD_VOID);
 
     public static final Item[] VOID_BLOCKS = {
             BLACK_VOID,
@@ -72,7 +73,8 @@ public class DyedVoidItems {
             MAGENTA_VOID,
             PINK_VOID,
             END_VOID,
-            SKY_VOID
+            SKY_VOID,
+            CLOUD_VOID
     };
 
     public static final Item VOID_BOTTLE_ITEM = register("void_bottle", new VoidBottleItem(new Item.Properties()

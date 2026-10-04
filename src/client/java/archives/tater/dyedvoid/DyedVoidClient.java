@@ -6,9 +6,11 @@ import archives.tater.dyedvoid.registry.DyedVoidBlocks;
 import archives.tater.dyedvoid.registry.DyedVoidItems;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.world.item.BlockItem;
 
 public class DyedVoidClient implements ClientModInitializer {
@@ -21,5 +23,7 @@ public class DyedVoidClient implements ClientModInitializer {
             BuiltinItemRendererRegistry.INSTANCE.register(item, item == DyedVoidItems.END_VOID ? portal : new VoidBlockItemRenderer(((BlockItem) item).getBlock().defaultBlockState()));
         BuiltinItemRendererRegistry.INSTANCE.register(DyedVoidItems.DUMMY_END_GATEWAY, portal);
         BuiltinItemRendererRegistry.INSTANCE.register(DyedVoidItems.DUMMY_END_PORTAL, portal);
+
+        BlockRenderLayerMap.INSTANCE.putBlock(DyedVoidBlocks.CLOUD_VOID, RenderType.translucent());
     }
 }

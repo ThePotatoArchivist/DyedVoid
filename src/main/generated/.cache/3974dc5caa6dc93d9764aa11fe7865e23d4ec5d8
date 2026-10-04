@@ -1,4 +1,4 @@
-// 1.21.1	2026-10-04T16:16:52.110830322	The Dyed Void/Block Loot Tables
+// 1.21.1	2026-10-04T16:35:28.232218096	The Dyed Void/Block Loot Tables
 f3e33a5d0643ceaf6a8212584e1780df670ccf2d data/dyedvoid/loot_table/blocks/white_void.json
 a0bd0f293b821f44ac0f380eb9c8f637dba033f9 data/dyedvoid/loot_table/blocks/cyan_void.json
 092c8d35eb64276d89229399f9da3c62c01c5793 data/dyedvoid/loot_table/blocks/yellow_void.json
@@ -13,6 +13,7 @@ bcb775d23936581f3c59ea499a98782caf2d53e0 data/dyedvoid/loot_table/blocks/green_v
 5d7a6887f6960ada3c64fb9776be941635f6a580 data/dyedvoid/loot_table/blocks/brown_void.json
 ebfb7c25d5c22323c314ff74ff9266e491f2961f data/dyedvoid/loot_table/blocks/gray_void.json
 285f067294713b0d351c9ccbf4fa79c67d9bd573 data/dyedvoid/loot_table/blocks/light_gray_void.json
+316ff47483dcd16a06a23b98b2c947e1b73a9528 data/dyedvoid/loot_table/blocks/cloud_void.json
 54629960a2da3a06a09063a528b32f3c5570985c data/dyedvoid/loot_table/blocks/purple_void.json
 0a9e13ad588144e2944221809ff7ee437138cc4c data/dyedvoid/loot_table/blocks/magenta_void.json
 310291ed8949e6869165bd8c4025334160b063cf data/dyedvoid/loot_table/blocks/light_blue_void.json
