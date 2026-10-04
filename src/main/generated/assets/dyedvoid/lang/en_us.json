@@ -1,6 +1,7 @@
 {
   "block.dyedvoid.blue_void": "Blue Void Block",
   "block.dyedvoid.brown_void": "Brown Void Block",
+  "block.dyedvoid.cloud_void": "Cloud Void Block",
   "block.dyedvoid.cyan_void": "Cyan Void Block",
   "block.dyedvoid.end_void": "End Void Block",
   "block.dyedvoid.gray_void": "Gray Void Block",
@@ -13,6 +14,7 @@
   "block.dyedvoid.pink_void": "Pink Void Block",
   "block.dyedvoid.purple_void": "Purple Void Block",
   "block.dyedvoid.red_void": "Red Void Block",
+  "block.dyedvoid.sky_void": "Sky Void Block",
   "block.dyedvoid.void": "Void Block",
   "block.dyedvoid.white_void": "Luminous Void Block",
   "block.dyedvoid.yellow_void": "Yellow Void Block",

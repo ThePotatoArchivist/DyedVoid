@@ -82,7 +82,7 @@ public class DyedVoidItems {
             .craftRemainder(Items.GLASS_BOTTLE)
     ));
 
-    public static final CreativeModeTab ITEM_GROUP = FabricItemGroup.builder()
+    public static final CreativeModeTab ITEM_GROUP = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, DyedVoid.id("the_dyed_void"), FabricItemGroup.builder()
             .icon(() -> new ItemStack(RED_VOID))
             .title(Component.translatable("itemGroup.dyedvoid.group"))
             .displayItems((context, entries) -> {
@@ -105,13 +105,14 @@ public class DyedVoidItems {
                 entries.accept(PINK_VOID);
                 entries.accept(END_VOID);
                 entries.accept(SKY_VOID);
+                entries.accept(CLOUD_VOID);
             })
-            .build();
+            .build()
+    );
 
     public static final Item DUMMY_END_PORTAL = register(Identifier.withDefaultNamespace("dyedvoid/dummy/end_portal"), new BlockItem(Blocks.END_PORTAL, new Item.Properties()));
     public static final Item DUMMY_END_GATEWAY = register(Identifier.withDefaultNamespace("dyedvoid/dummy/end_gateway"), new BlockItem(Blocks.END_GATEWAY, new Item.Properties()));
 
     public static void initalize() {
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, DyedVoid.id("item_group"), DyedVoidItems.ITEM_GROUP);
     }
 }

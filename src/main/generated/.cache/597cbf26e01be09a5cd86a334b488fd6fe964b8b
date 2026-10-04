@@ -1,4 +1,4 @@
-// 1.21.1	2026-10-04T16:35:28.233612076	The Dyed Void/Recipes
+// 1.21.1	2026-10-04T16:44:16.739326969	The Dyed Void/Recipes
 988c7fd6566f567087c19b37a551c7e4a33d663d data/dyedvoid/recipe/magenta_void.json
 00fc68e5d108df078055b09c925bb270887efcda data/dyedvoid/recipe/red_void.json
 7bcadea59b3fcd0c1d31e352e6a385a9112f0c40 data/dyedvoid/advancement/recipes/decorations/green_void.json
@@ -13,8 +13,8 @@ d35e236eaf1be444e3680d429a5a4bf7405d1564 data/dyedvoid/advancement/recipes/decor
 9657419d764b95cc2529e2237b4138497fbd0e2c data/dyedvoid/advancement/recipes/decorations/gray_void.json
 2e5fac5699eb5b8d29cc031cdb4eae0fa355dc39 data/dyedvoid/recipe/lime_void.json
 d024390d1868457c72de2af3df5744304c02b226 data/dyedvoid/advancement/recipes/decorations/cyan_void.json
-7730a9f9dd6a8f8486278a281d8d5cef433cefff data/dyedvoid/advancement/recipes/decorations/pink_void.json
 cc4ea455dafb6b78483aaf222c0b906137854c81 data/dyedvoid/advancement/recipes/decorations/red_void.json
+7730a9f9dd6a8f8486278a281d8d5cef433cefff data/dyedvoid/advancement/recipes/decorations/pink_void.json
 96fa0ed55872d67f740c1c342b350415a73e79cf data/dyedvoid/advancement/recipes/decorations/brown_void.json
 8907f8f6d12f9eefc4f05e49b6e10dc2eea2612e data/dyedvoid/advancement/recipes/decorations/orange_void.json
 7a89570331c3c48e42157c53a4aa33b5c5e82bb3 data/dyedvoid/advancement/recipes/decorations/magenta_void.json
@@ -26,8 +26,8 @@ f8d748144c35947d799a0c0a9ee34c60c5a557ce data/dyedvoid/recipe/white_void.json
 8954a24dc927c63b485d61ffa985995457ef2a57 data/dyedvoid/recipe/purple_void.json
 42040f18e0d296276e96e1cd9946e819014bd5c9 data/dyedvoid/recipe/pink_void.json
 338be7c5d4bdc9ad2f98996a44c111dcb41dee74 data/dyedvoid/recipe/green_void.json
-1d03c0e5d9763454e12f800e8dc68f431572a16d data/dyedvoid/advancement/recipes/decorations/lime_void.json
 f6824faced0b1bfa3f2f96558863af2c3359402d data/dyedvoid/recipe/gray_void.json
+1d03c0e5d9763454e12f800e8dc68f431572a16d data/dyedvoid/advancement/recipes/decorations/lime_void.json
 97fdf3295f7028c53b6a7588081b73b0e883b553 data/dyedvoid/recipe/brown_void.json
 54ff9c9d2cb6ad14005957fc95550cc4cafb63c1 data/dyedvoid/recipe/void.json
 67b52ae6c41c0f2803e9d640b792f3aa4b8a1fa0 data/dyedvoid/advancement/recipes/decorations/light_gray_void.json
