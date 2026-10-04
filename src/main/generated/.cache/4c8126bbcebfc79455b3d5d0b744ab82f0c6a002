@@ -1,4 +1,4 @@
-// 1.21.1	2026-10-04T15:54:09.219862524	The Dyed Void/Model Definitions
+// 1.21.1	2026-10-04T16:16:52.112740914	The Dyed Void/Model Definitions
 600dd98ddd089805554f1ec4648ee48e2abb7b8d assets/dyedvoid/models/block/light_gray_void.json
 b8a36d992f21f0074d0533b5996f011d94e182e4 assets/dyedvoid/models/item/purple_void.json
 aa05bb899ead09bbdb8d1e644055a0badb9ab464 assets/dyedvoid/models/block/sky_void_night.json
@@ -8,14 +8,14 @@ fdbc32870dc1cbf938e57ab3f6f4b6e0e53f71bd assets/dyedvoid/models/block/purple_voi
 4d51405f8904b3266d10a648e8301bd0774834ef assets/dyedvoid/blockstates/green_void.json
 65097f065550b25c78e5068f7bf819afc2d33b02 assets/dyedvoid/blockstates/purple_void.json
 b8a36d992f21f0074d0533b5996f011d94e182e4 assets/dyedvoid/models/item/magenta_void.json
-8cdc5a4ad8ce0180193b97b69e1ab5df5d903d20 assets/dyedvoid/blockstates/void.json
 b3fa98806efd2e37141ddf0f6cb0c98598fc4105 assets/dyedvoid/blockstates/cyan_void.json
+8cdc5a4ad8ce0180193b97b69e1ab5df5d903d20 assets/dyedvoid/blockstates/void.json
 e5646a506f2bd0bcda0bfb6c8e206265761845f2 assets/dyedvoid/blockstates/pink_void.json
 b8a36d992f21f0074d0533b5996f011d94e182e4 assets/dyedvoid/models/item/light_gray_void.json
 0a9325bdfbc9b11dba0d8cb53eb5161f1c41e9a7 assets/dyedvoid/models/block/yellow_void.json
 b8a36d992f21f0074d0533b5996f011d94e182e4 assets/dyedvoid/models/item/brown_void.json
 b5a4064c6acb9176555d171694c45cc9bc8ac112 assets/dyedvoid/models/block/magenta_void.json
-5bfefd97fda29dd2d2eebd882ceba8ccfb56463c assets/dyedvoid/blockstates/sky_void.json
+8a1e3438f865130f5c49d8ca2515059f12fd04d7 assets/dyedvoid/blockstates/sky_void.json
 a8d97cde32c852a1bc6f426f32e5e3b4843e3512 assets/dyedvoid/models/block/brown_void.json
 b8a36d992f21f0074d0533b5996f011d94e182e4 assets/dyedvoid/models/item/end_void.json
 b8a36d992f21f0074d0533b5996f011d94e182e4 assets/dyedvoid/models/item/red_void.json

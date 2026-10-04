@@ -46,7 +46,7 @@ public class ModelGenerator extends FabricModelProvider {
         var skyDay = plainVariant(VOID_BLOCK_FACTORY.create(DyedVoidBlocks.SKY_VOID, blockStateModelGenerator.modelOutput));
         blockStateModelGenerator.blockStateOutput.accept(multiVariant(DyedVoidBlocks.SKY_VOID)
                 .with(property(SkyVoidBlock.POWER).generate(power ->
-                        power == SkyVoidBlock.Power.NONE ? skyDay : skyNight
+                        power.isPowered() ? skyNight : skyDay
                 ))
         );
     }

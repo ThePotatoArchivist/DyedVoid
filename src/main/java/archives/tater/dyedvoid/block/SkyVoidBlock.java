@@ -2,6 +2,8 @@ package archives.tater.dyedvoid.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
@@ -31,8 +33,8 @@ public class SkyVoidBlock extends VoidBlock {
             return defaultBlockState().setValue(POWER, Power.SOURCE);
         for (var direction : Direction.values()) {
             var state = level.getBlockState(pos.relative(direction));
-            if (state.is(this) && state.getValue(POWER).isPowered() && state.getValue(POWER).direction != direction.getOpposite())
-                return defaultBlockState().setValue(POWER, Power.fromDirection(direction));
+            if (state.is(this) && state.getValue(POWER).isPowered())
+                return defaultBlockState().setValue(POWER, Power.CHILD);
         }
         return defaultBlockState();
     }
@@ -50,7 +52,7 @@ public class SkyVoidBlock extends VoidBlock {
             level.setBlockAndUpdate(pos, state.setValue(POWER, Power.SOURCE));
             return;
         } else if (state.getValue(POWER) == Power.SOURCE) {
-            level.setBlockAndUpdate(pos, getState(level, pos));
+            level.setBlockAndUpdate(pos, state.setValue(POWER, Power.NONE));
             return;
         }
 
@@ -58,36 +60,28 @@ public class SkyVoidBlock extends VoidBlock {
         if (!neighborState.is(this)) return;
 
         if (state.getValue(POWER) == Power.NONE) {
-            var offset = neighborPos.subtract(pos);
-            var direction = Direction.fromDelta(offset.getX(), offset.getY(), offset.getZ());
-            if (direction == null) return;
             if (neighborState.getValue(POWER).isPowered())
-                level.setBlockAndUpdate(pos, state.setValue(POWER, Power.fromDirection(direction)));
+                level.scheduleTick(pos, this, 1);
             return;
         }
 
-        var powerDirection = state.getValue(POWER).direction;
-        if (powerDirection == null || !pos.relative(powerDirection).equals(neighborPos)) return;
-
-        if (!neighborState.getValue(POWER).isPowered())
+        if (state.getValue(POWER) == Power.CHILD && !neighborState.getValue(POWER).isPowered())
             level.setBlockAndUpdate(pos, state.setValue(POWER, Power.NONE));
     }
 
-    public enum Power implements StringRepresentable {
-        NONE("none", null),
-        SOURCE("source", null),
-        DOWN("down", Direction.DOWN),
-        UP("up", Direction.UP),
-        NORTH("north", Direction.NORTH),
-        SOUTH("south", Direction.SOUTH),
-        WEST("west", Direction.WEST),
-        EAST("east", Direction.EAST);
+    @Override
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        level.setBlockAndUpdate(pos, getState(level, pos));
+    }
 
-        public final @Nullable Direction direction;
+    public enum Power implements StringRepresentable {
+        NONE("none"),
+        SOURCE("source"),
+        CHILD("child");
+
         private final String name;
 
-        Power(String name, @Nullable Direction direction) {
-            this.direction = direction;
+        Power(String name) {
             this.name = name;
         }
 
@@ -98,17 +92,6 @@ public class SkyVoidBlock extends VoidBlock {
         @Override
         public String getSerializedName() {
             return name;
-        }
-
-        public static Power fromDirection(Direction direction) {
-            return switch (direction) {
-                case DOWN -> DOWN;
-                case UP -> UP;
-                case NORTH -> NORTH;
-                case SOUTH -> SOUTH;
-                case WEST -> WEST;
-                case EAST -> EAST;
-            };
         }
     }
 }
