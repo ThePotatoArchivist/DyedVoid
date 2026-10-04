@@ -2,8 +2,6 @@ package archives.tater.dyedvoid.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
@@ -63,7 +61,7 @@ public class SkyVoidBlock extends VoidBlock {
 
         if (state.getValue(POWER) == Power.NONE) {
             if (neighborState.getValue(POWER).isPowered())
-                level.scheduleTick(pos, this, 1);
+                level.setBlockAndUpdate(pos, state.setValue(POWER, Power.CHILD));
             return;
         }
 
@@ -71,12 +69,7 @@ public class SkyVoidBlock extends VoidBlock {
             if (state.getValue(POWER) == Power.CHILD)
                 level.setBlockAndUpdate(pos, state.setValue(POWER, Power.NONE));
             else if (state.getValue(POWER) == Power.SOURCE)
-                level.scheduleTick(neighborPos, block, 1);
-    }
-
-    @Override
-    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        level.setBlockAndUpdate(pos, state.setValue(POWER, Power.CHILD));
+                level.setBlockAndUpdate(pos, state.setValue(POWER, Power.CHILD));
     }
 
     public enum Power implements StringRepresentable {
