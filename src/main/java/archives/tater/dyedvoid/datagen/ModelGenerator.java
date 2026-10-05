@@ -23,6 +23,7 @@ import java.util.Optional;
 import static net.minecraft.data.models.blockstates.MultiVariantGenerator.multiVariant;
 import static net.minecraft.data.models.blockstates.PropertyDispatch.property;
 import static net.minecraft.data.models.blockstates.Variant.variant;
+import static net.minecraft.data.models.model.ModelLocationUtils.getModelLocation;
 
 public class ModelGenerator extends FabricModelProvider {
 
@@ -59,6 +60,9 @@ public class ModelGenerator extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(DyedVoidItems.DUMMY_END_GATEWAY, VOID_BLOCK_ITEM_MODEL);
 
         itemModelGenerator.generateFlatItem(DyedVoidItems.VOID_BOTTLE_ITEM, ModelTemplates.FLAT_ITEM);
+
+        ModelTemplates.FLAT_ITEM.create(getModelLocation(DyedVoidItems.DUMMY_SKY), TextureMapping.layer0(DyedVoidBlocks.SKY_VOID), itemModelGenerator.output);
+        ModelTemplates.FLAT_ITEM.create(getModelLocation(DyedVoidItems.DUMMY_CLOUD), TextureMapping.layer0(DyedVoidBlocks.CLOUD_VOID), itemModelGenerator.output);
     }
 
     private static @NotNull Variant plainVariant(Identifier blockStateModelGenerator) {

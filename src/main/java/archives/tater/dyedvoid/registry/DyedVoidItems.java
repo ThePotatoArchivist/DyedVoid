@@ -8,11 +8,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
@@ -110,8 +106,10 @@ public class DyedVoidItems {
             .build()
     );
 
-    public static final Item DUMMY_END_PORTAL = register(Identifier.withDefaultNamespace("dyedvoid/dummy/end_portal"), new BlockItem(Blocks.END_PORTAL, new Item.Properties()));
-    public static final Item DUMMY_END_GATEWAY = register(Identifier.withDefaultNamespace("dyedvoid/dummy/end_gateway"), new BlockItem(Blocks.END_GATEWAY, new Item.Properties()));
+    public static final Item DUMMY_END_PORTAL = register(Identifier.withDefaultNamespace("dyedvoid/dummy/end_portal"), new BlockItem(Blocks.END_PORTAL, new Item.Properties().rarity(Rarity.EPIC)));
+    public static final Item DUMMY_END_GATEWAY = register(Identifier.withDefaultNamespace("dyedvoid/dummy/end_gateway"), new BlockItem(Blocks.END_GATEWAY, new Item.Properties().rarity(Rarity.EPIC)));
+    public static final Item DUMMY_SKY = register(Identifier.withDefaultNamespace("dyedvoid/dummy/sky"), new Item(new Item.Properties().rarity(Rarity.EPIC)));
+    public static final Item DUMMY_CLOUD = register(Identifier.withDefaultNamespace("dyedvoid/dummy/cloud"), new Item(new Item.Properties().rarity(Rarity.EPIC)));
 
     public static void initalize() {
     }

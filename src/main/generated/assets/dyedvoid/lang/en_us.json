@@ -19,6 +19,8 @@
   "block.dyedvoid.white_void": "Luminous Void Block",
   "block.dyedvoid.yellow_void": "Yellow Void Block",
   "item.dyedvoid.void_bottle": "Bottle of Void",
+  "item.minecraft.dyedvoid.dummy.cloud": "Cloud",
+  "item.minecraft.dyedvoid.dummy.sky": "Sky",
   "itemGroup.dyedvoid.group": "The Dyed Void",
   "subtitles.dyedvoid.fill_void_bottle": "Bottle truly empties"
 }
