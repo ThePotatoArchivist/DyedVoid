@@ -7,13 +7,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.TheEndPortalBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+
 import org.jetbrains.annotations.Nullable;
 
 
@@ -48,6 +48,6 @@ public class EndVoidBlock extends VoidBlock implements EntityBlock {
         if (!(entity instanceof ItemEntity itemEntity)) return;
         var stack = itemEntity.getItem();
         if (!stack.is(DyedVoidItems.BLACK_VOID)) return;
-        itemEntity.setItem(new ItemStack(DyedVoidItems.END_VOID, stack.getCount()));
+        itemEntity.setItem(stack.transmuteCopy(DyedVoidItems.END_VOID));
     }
 }
