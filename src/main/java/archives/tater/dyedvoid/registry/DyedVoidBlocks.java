@@ -83,6 +83,7 @@ public class DyedVoidBlocks {
             .destroyTime(3)
             .sound(DyedVoidSounds.VOID_BLOCK_SOUND_GROUP)
             .noTerrainParticles()
+            .emissiveRendering(Blocks::always)
             .noOcclusion()
             .isValidSpawn(Blocks::never)
             .isRedstoneConductor(Blocks::never)
