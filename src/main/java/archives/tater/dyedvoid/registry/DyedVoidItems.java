@@ -59,32 +59,27 @@ public class DyedVoidItems {
             )))
     );
 
-    private static final List<DyeColor> COLOR_ORDER = List.of(
-            DyeColor.WHITE,
-            DyeColor.LIGHT_GRAY,
-            DyeColor.GRAY,
-            DyeColor.BLACK,
-            DyeColor.BROWN,
-            DyeColor.RED,
-            DyeColor.ORANGE,
-            DyeColor.YELLOW,
-            DyeColor.LIME,
-            DyeColor.GREEN,
-            DyeColor.CYAN,
-            DyeColor.LIGHT_BLUE,
-            DyeColor.BLUE,
-            DyeColor.PURPLE,
-            DyeColor.MAGENTA,
-            DyeColor.PINK
-    );
-
     public static final CreativeModeTab ITEM_GROUP = FabricCreativeModeTab.builder()
             .icon(() -> new ItemStack(VOID.red()))
             .title(Component.translatable("itemGroup.dyedvoid.group"))
             .displayItems((_, output) -> {
                 output.accept(VOID_BOTTLE_ITEM);
-                for (var color : COLOR_ORDER)
-                    output.accept(VOID.pick(color));
+                output.accept(VOID.white());
+                output.accept(VOID.lightGray());
+                output.accept(VOID.gray());
+                output.accept(VOID.black());
+                output.accept(VOID.brown());
+                output.accept(VOID.red());
+                output.accept(VOID.orange());
+                output.accept(VOID.yellow());
+                output.accept(VOID.lime());
+                output.accept(VOID.green());
+                output.accept(VOID.cyan());
+                output.accept(VOID.lightBlue());
+                output.accept(VOID.blue());
+                output.accept(VOID.purple());
+                output.accept(VOID.magenta());
+                output.accept(VOID.pink());
                 output.accept(END_VOID);
             })
             .build();

@@ -1,9 +1,6 @@
 package archives.tater.dyedvoid;
 
-import archives.tater.dyedvoid.registry.DyedVoidBlocks;
-import archives.tater.dyedvoid.registry.DyedVoidItemTags;
-import archives.tater.dyedvoid.registry.DyedVoidItems;
-import archives.tater.dyedvoid.registry.DyedVoidSounds;
+import archives.tater.dyedvoid.registry.*;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
@@ -43,6 +40,7 @@ public class DyedVoid implements ModInitializer {
 		// Proceed with mild caution.
 		DyedVoidSounds.init();
 		DyedVoidBlocks.init();
+		DyedVoidBlockEntities.init();
 		DyedVoidItems.init();
 
 		ResourceLoader.registerBuiltinPack(

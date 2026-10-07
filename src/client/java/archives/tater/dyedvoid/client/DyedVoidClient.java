@@ -3,10 +3,12 @@ package archives.tater.dyedvoid.client;
 import archives.tater.dyedvoid.DyedVoid;
 import archives.tater.dyedvoid.client.render.EndVoidBlockEntityRenderer;
 import archives.tater.dyedvoid.client.render.VoidBlockSpecialRenderer;
+import archives.tater.dyedvoid.registry.DyedVoidBlockEntities;
 import archives.tater.dyedvoid.registry.DyedVoidBlockItemTags;
 import archives.tater.dyedvoid.registry.DyedVoidBlocks;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.BuiltInBlockModelsCallback;
 
 import net.minecraft.client.renderer.block.BuiltInBlockModels;
 import net.minecraft.client.renderer.block.model.SpecialBlockModelWrapper;
@@ -23,12 +25,6 @@ import org.jspecify.annotations.NonNull;
 import java.util.Optional;
 
 public class DyedVoidClient implements ClientModInitializer {
-    public static void initBuiltinBlockModels(BuiltInBlockModels.Builder builder) {
-        for (var block : DyedVoidBlocks.ALL_VOID_BLOCKS)
-            builder.put((BuiltInBlockModels.ModelFactory) (_, _) ->
-                    new SpecialBlockModelWrapper.Unbaked<>(getModel(block), Optional.empty()), block);
-    }
-
     public static SpecialModelRenderer.@NonNull Unbaked<Void> getModel(Block block) {
         return block == DyedVoidBlocks.END_VOID
                 ? new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.PORTAL)
@@ -45,8 +41,14 @@ public class DyedVoidClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        BlockEntityRenderers.register(DyedVoidBlocks.END_VOID_BLOCK_ENTITY, _ -> new EndVoidBlockEntityRenderer());
+        BlockEntityRenderers.register(DyedVoidBlockEntities.END_VOID_BLOCK_ENTITY, _ -> new EndVoidBlockEntityRenderer());
 
         SpecialModelRenderers.ID_MAPPER.put(DyedVoid.id("void_block"), VoidBlockSpecialRenderer.Unbaked.CODEC);
+
+        BuiltInBlockModelsCallback.EVENT.register(builder -> {
+            for (var block : DyedVoidBlocks.ALL_VOID_BLOCKS)
+                builder.put((BuiltInBlockModels.ModelFactory) (_, _) ->
+                        new SpecialBlockModelWrapper.Unbaked<>(getModel(block), Optional.empty()), block);
+        });
     }
 }

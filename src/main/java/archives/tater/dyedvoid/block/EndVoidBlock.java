@@ -1,6 +1,6 @@
 package archives.tater.dyedvoid.block;
 
-import archives.tater.dyedvoid.registry.DyedVoidBlocks;
+import archives.tater.dyedvoid.registry.DyedVoidBlockEntities;
 import archives.tater.dyedvoid.registry.DyedVoidItemTags;
 import archives.tater.dyedvoid.registry.DyedVoidItems;
 
@@ -35,7 +35,7 @@ public class EndVoidBlock extends VoidBlock implements EntityBlock {
 
     public static class EndVoidBlockEntity extends TheEndPortalBlockEntity {
         public EndVoidBlockEntity(BlockPos pos, BlockState state) {
-            super(DyedVoidBlocks.END_VOID_BLOCK_ENTITY, pos, state);
+            super(DyedVoidBlockEntities.END_VOID_BLOCK_ENTITY, pos, state);
         }
 
         @Override

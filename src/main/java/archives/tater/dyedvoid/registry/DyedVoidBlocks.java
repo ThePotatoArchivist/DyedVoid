@@ -1,10 +1,7 @@
 package archives.tater.dyedvoid.registry;
 
-import archives.tater.dyedvoid.DyedVoid;
 import archives.tater.dyedvoid.block.ColoredVoidBlock;
 import archives.tater.dyedvoid.block.EndVoidBlock;
-
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -12,7 +9,6 @@ import net.minecraft.references.BlockItemId;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ColorCollection;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.List;
@@ -49,11 +45,6 @@ public class DyedVoidBlocks {
     );
 
     public static final Block END_VOID = register(DyedVoidBlockItemIds.END_VOID, EndVoidBlock::new, voidBlock());
-    public static final BlockEntityType<EndVoidBlock.EndVoidBlockEntity> END_VOID_BLOCK_ENTITY = Registry.register(
-            BuiltInRegistries.BLOCK_ENTITY_TYPE,
-            DyedVoid.id("end_void"),
-            FabricBlockEntityTypeBuilder.create(EndVoidBlock.EndVoidBlockEntity::new, END_VOID).build()
-    );
 
     public static final List<Block> ALL_VOID_BLOCKS = Stream.concat(
             VOID.asList().stream(),
