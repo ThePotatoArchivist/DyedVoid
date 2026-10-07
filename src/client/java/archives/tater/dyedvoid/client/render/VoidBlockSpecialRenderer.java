@@ -7,9 +7,8 @@ import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.block.MovingBlockRenderState;
 import net.minecraft.client.renderer.special.NoDataSpecialModelRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.CardinalLighting;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 
 import org.joml.Vector3fc;
 
@@ -29,15 +28,15 @@ public record VoidBlockSpecialRenderer(MovingBlockRenderState state) implements 
 
     }
 
-    public record Unbaked(Block block) implements NoDataSpecialModelRenderer.Unbaked {
+    public record Unbaked(BlockState blockState) implements NoDataSpecialModelRenderer.Unbaked {
         public static final MapCodec<Unbaked> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-                BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter(Unbaked::block)
+                BlockState.CODEC.fieldOf("block").forGetter(Unbaked::blockState)
         ).apply(instance, Unbaked::new));
 
         @Override
         public SpecialModelRenderer<Void> bake(BakingContext context) {
             var state = new MovingBlockRenderState();
-            state.blockState = block.defaultBlockState();
+            state.blockState = blockState;
             state.cardinalLighting = MAX;
             return new VoidBlockSpecialRenderer(state);
         }

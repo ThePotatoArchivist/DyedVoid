@@ -64,7 +64,7 @@ public class ModelGenerator extends FabricModelProvider {
         for (var block : DyedVoidBlocks.ALL_VOID_BLOCKS) {
             itemModelGenerator.itemModelOutput.accept(block.asItem(), specialModel(
                     BLOCK_BASE,
-                    DyedVoidClient.getModel(block)
+                    DyedVoidClient.getModel(block.defaultBlockState())
             ));
         }
 

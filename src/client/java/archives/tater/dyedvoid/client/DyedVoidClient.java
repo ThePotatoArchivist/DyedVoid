@@ -17,18 +17,15 @@ import net.minecraft.client.renderer.special.EndCubeSpecialRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderers;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-
-import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;
 
 public class DyedVoidClient implements ClientModInitializer {
-    public static SpecialModelRenderer.@NonNull Unbaked<Void> getModel(Block block) {
-        return block == DyedVoidBlocks.END_VOID
+    public static SpecialModelRenderer.Unbaked<Void> getModel(BlockState state) {
+        return state.is(DyedVoidBlocks.END_VOID)
                 ? new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.PORTAL)
-                : new VoidBlockSpecialRenderer.Unbaked(block);
+                : new VoidBlockSpecialRenderer.Unbaked(state);
     }
 
     public static boolean isHiddenOutline(BlockState state) {
@@ -47,8 +44,8 @@ public class DyedVoidClient implements ClientModInitializer {
 
         BuiltInBlockModelsCallback.EVENT.register(builder -> {
             for (var block : DyedVoidBlocks.ALL_VOID_BLOCKS)
-                builder.put((BuiltInBlockModels.ModelFactory) (_, _) ->
-                        new SpecialBlockModelWrapper.Unbaked<>(getModel(block), Optional.empty()), block);
+                builder.put((BuiltInBlockModels.ModelFactory) (_, state) ->
+                        new SpecialBlockModelWrapper.Unbaked<>(getModel(state), Optional.empty()), block);
         });
     }
 }
