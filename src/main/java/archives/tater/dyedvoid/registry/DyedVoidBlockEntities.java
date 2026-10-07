@@ -2,6 +2,7 @@ package archives.tater.dyedvoid.registry;
 
 import archives.tater.dyedvoid.DyedVoid;
 import archives.tater.dyedvoid.block.EndVoidBlock;
+import archives.tater.dyedvoid.block.SkyVoidBlock;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 
@@ -22,6 +23,8 @@ public class DyedVoidBlockEntities {
     }
 
     public static final BlockEntityType<EndVoidBlock.EndVoidBlockEntity> END_VOID = register("end_void", EndVoidBlock.EndVoidBlockEntity::new, DyedVoidBlocks.END_VOID);
+
+    public static final BlockEntityType<SkyVoidBlock.SkyVoidBlockEntity> SKY_VOID = register("sky_void", SkyVoidBlock.SkyVoidBlockEntity::new, DyedVoidBlocks.SKY_VOID);
 
     public static void init() {
 

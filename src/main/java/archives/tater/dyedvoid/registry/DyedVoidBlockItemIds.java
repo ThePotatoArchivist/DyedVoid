@@ -22,10 +22,12 @@ public class DyedVoidBlockItemIds {
 
     public static final BlockItemId END_VOID = create("end_void");
 
+    public static final BlockItemId SKY_VOID = create("sky_void");
+
     public static final Identifier LEGACY_BLACK_VOID = DyedVoid.id("void");
 
     public static final BlockItemId[] ALL_VOID_BLOCKS = Stream.concat(
             VOID.asList().stream(),
-            Stream.of(END_VOID)
+            Stream.of(END_VOID, SKY_VOID)
     ).toArray(BlockItemId[]::new);
 }

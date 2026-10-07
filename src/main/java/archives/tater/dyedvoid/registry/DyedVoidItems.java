@@ -48,6 +48,8 @@ public class DyedVoidItems {
 
     public static final Item END_VOID = registerBlockItem(DyedVoidBlockItemIds.END_VOID, DyedVoidBlocks.END_VOID);
 
+    public static final Item SKY_VOID = registerBlockItem(DyedVoidBlockItemIds.SKY_VOID, DyedVoidBlocks.SKY_VOID);
+
     public static final Item VOID_BOTTLE_ITEM = register(DyedVoidItemIds.VOID_BOTTLE, new Item.Properties()
             .stacksTo(16)
             .craftRemainder(Items.GLASS_BOTTLE)
@@ -81,6 +83,7 @@ public class DyedVoidItems {
                 output.accept(VOID.magenta());
                 output.accept(VOID.pink());
                 output.accept(END_VOID);
+                output.accept(SKY_VOID);
             })
             .build();
 

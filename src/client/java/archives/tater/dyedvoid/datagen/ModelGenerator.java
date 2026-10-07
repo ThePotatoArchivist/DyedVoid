@@ -57,6 +57,7 @@ public class ModelGenerator extends FabricModelProvider {
             blockStateModelGenerator.createTrivialBlock(block, VOID_BLOCK_FACTORY);
         }
         blockStateModelGenerator.createAirLikeBlock(DyedVoidBlocks.END_VOID, new Material(DyedVoid.id("block/empty")));
+        blockStateModelGenerator.createAirLikeBlock(DyedVoidBlocks.SKY_VOID, new Material(DyedVoid.id("block/empty")));
     }
 
     @Override

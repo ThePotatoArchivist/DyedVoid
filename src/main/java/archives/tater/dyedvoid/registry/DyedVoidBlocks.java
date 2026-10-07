@@ -2,6 +2,7 @@ package archives.tater.dyedvoid.registry;
 
 import archives.tater.dyedvoid.block.ColoredVoidBlock;
 import archives.tater.dyedvoid.block.EndVoidBlock;
+import archives.tater.dyedvoid.block.SkyVoidBlock;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -46,9 +47,11 @@ public class DyedVoidBlocks {
 
     public static final Block END_VOID = register(DyedVoidBlockItemIds.END_VOID, EndVoidBlock::new, voidBlock());
 
+    public static final Block SKY_VOID = register(DyedVoidBlockItemIds.SKY_VOID, SkyVoidBlock::new, voidBlock());
+
     public static final List<Block> ALL_VOID_BLOCKS = Stream.concat(
             VOID.asList().stream(),
-            Stream.of(END_VOID)
+            Stream.of(END_VOID, SKY_VOID)
     ).toList();
 
     public static void init() {
