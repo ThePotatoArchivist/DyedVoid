@@ -35,7 +35,7 @@ public class EndVoidBlock extends VoidBlock implements EntityBlock {
 
     public static class EndVoidBlockEntity extends TheEndPortalBlockEntity {
         public EndVoidBlockEntity(BlockPos pos, BlockState state) {
-            super(DyedVoidBlockEntities.END_VOID_BLOCK_ENTITY, pos, state);
+            super(DyedVoidBlockEntities.END_VOID, pos, state);
         }
 
         @Override

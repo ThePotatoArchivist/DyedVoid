@@ -38,7 +38,7 @@ public class DyedVoidClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        BlockEntityRenderers.register(DyedVoidBlockEntities.END_VOID_BLOCK_ENTITY, _ -> new EndVoidBlockEntityRenderer());
+        BlockEntityRenderers.register(DyedVoidBlockEntities.END_VOID, _ -> new EndVoidBlockEntityRenderer());
 
         SpecialModelRenderers.ID_MAPPER.put(DyedVoid.id("void_block"), VoidBlockSpecialRenderer.Unbaked.CODEC);
 

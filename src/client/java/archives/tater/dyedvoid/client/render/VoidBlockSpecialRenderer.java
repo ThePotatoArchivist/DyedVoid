@@ -30,7 +30,7 @@ public record VoidBlockSpecialRenderer(MovingBlockRenderState state) implements 
 
     public record Unbaked(BlockState blockState) implements NoDataSpecialModelRenderer.Unbaked {
         public static final MapCodec<Unbaked> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-                BlockState.CODEC.fieldOf("block").forGetter(Unbaked::blockState)
+                BlockState.CODEC.fieldOf("state").forGetter(Unbaked::blockState)
         ).apply(instance, Unbaked::new));
 
         @Override

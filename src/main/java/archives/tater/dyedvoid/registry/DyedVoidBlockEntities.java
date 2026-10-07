@@ -21,7 +21,7 @@ public class DyedVoidBlockEntities {
         return register(DyedVoid.id(path), factory, blocks);
     }
 
-    public static final BlockEntityType<EndVoidBlock.EndVoidBlockEntity> END_VOID_BLOCK_ENTITY = register("end_void", EndVoidBlock.EndVoidBlockEntity::new, DyedVoidBlocks.END_VOID);
+    public static final BlockEntityType<EndVoidBlock.EndVoidBlockEntity> END_VOID = register("end_void", EndVoidBlock.EndVoidBlockEntity::new, DyedVoidBlocks.END_VOID);
 
     public static void init() {
 
