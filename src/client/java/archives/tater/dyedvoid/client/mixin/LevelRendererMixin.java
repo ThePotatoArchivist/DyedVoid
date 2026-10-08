@@ -16,11 +16,14 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.commands.RenderPass;
 import com.mojang.renderpearl.api.textures.FilterMode;
+import net.minecraft.client.CloudStatus;
 import net.minecraft.client.renderer.CloudRenderer;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.LevelTargetBundle;
 import net.minecraft.client.renderer.state.OptionsRenderState;
+import net.minecraft.client.renderer.state.level.LevelRenderState;
 import net.minecraft.client.renderer.state.level.SkyRenderState;
+import net.minecraft.util.ARGB;
 
 import java.util.Optional;
 import java.util.OptionalDouble;
@@ -38,6 +41,10 @@ public class LevelRendererMixin {
     @Shadow
     @Final
     private OptionsRenderState optionsRenderState;
+
+    @Shadow
+    @Final
+    private LevelRenderState levelRenderState;
 
     @WrapOperation(
             method = "lambda$addMainPass$0",
@@ -64,6 +71,9 @@ public class LevelRendererMixin {
         var skyBuffer = DyedVoidClient.getSkyBuffer();
         skyBuffer.copyColorFrom(targets.main.get());
 
+        var cloudStatus = optionsRenderState.cloudStatus;
+        if (cloudStatus == CloudStatus.OFF || ARGB.alpha(levelRenderState.cloudColor) <= 0) return;
+
         try (RenderPass renderPass = RenderSystem.getDevice()
                 .createCommandEncoder()
                 .createRenderPass(
@@ -73,7 +83,7 @@ public class LevelRendererMixin {
                         skyBuffer.getDepthTextureView(),
                         OptionalDouble.empty()
                 )) {
-            cloudRenderer.render(optionsRenderState.cloudStatus, renderPass);
+            cloudRenderer.render(cloudStatus, renderPass);
         }
     }
 }
