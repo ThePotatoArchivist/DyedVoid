@@ -3,8 +3,7 @@
     "type": "minecraft:special",
     "base": "minecraft:block/block",
     "model": {
-      "type": "dyedvoid:void_block",
-      "state": "dyedvoid:sky_void"
+      "type": "dyedvoid:sky_void"
     }
   }
 }

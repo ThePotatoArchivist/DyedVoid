@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.blockentity.state.EndPortalRenderState;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 
-public class EndVoidBlockEntityRenderer extends AbstractEndPortalRenderer<EndVoidBlockEntity, EndPortalRenderState> {
+public class EndVoidRenderer extends AbstractEndPortalRenderer<EndVoidBlockEntity, EndPortalRenderState> {
 
     @Override
     public void submit(EndPortalRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
