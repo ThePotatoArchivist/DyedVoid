@@ -1,5 +1,6 @@
 package archives.tater.dyedvoid.client.mixin;
 
+import archives.tater.dyedvoid.DyedVoid;
 import archives.tater.dyedvoid.client.DyedVoidClient;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
@@ -15,15 +16,28 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.renderpearl.api.commands.RenderPass;
 import com.mojang.renderpearl.api.textures.FilterMode;
+import net.minecraft.client.renderer.CloudRenderer;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.LevelTargetBundle;
+import net.minecraft.client.renderer.state.OptionsRenderState;
 import net.minecraft.client.renderer.state.level.SkyRenderState;
+
+import java.util.Optional;
+import java.util.OptionalDouble;
 
 @Mixin(LevelRenderer.class)
 public class LevelRendererMixin {
     @Shadow
     @Final
     private LevelTargetBundle targets;
+
+    @Shadow
+    @Final
+    private CloudRenderer cloudRenderer;
+
+    @Shadow
+    @Final
+    private OptionsRenderState optionsRenderState;
 
     @WrapOperation(
             method = "lambda$addMainPass$0",
@@ -47,6 +61,19 @@ public class LevelRendererMixin {
             at = @At("TAIL")
     )
     private void copySky(GpuBufferSlice skyFog, SkyRenderState state, CallbackInfo ci) {
-        DyedVoidClient.getSkyBuffer().copyColorFrom(targets.main.get());
+        var skyBuffer = DyedVoidClient.getSkyBuffer();
+        skyBuffer.copyColorFrom(targets.main.get());
+
+        try (RenderPass renderPass = RenderSystem.getDevice()
+                .createCommandEncoder()
+                .createRenderPass(
+                        () -> DyedVoid.MOD_ID + "_sky_clouds",
+                        skyBuffer.getColorTextureView(),
+                        Optional.empty(),
+                        skyBuffer.getDepthTextureView(),
+                        OptionalDouble.empty()
+                )) {
+            cloudRenderer.render(optionsRenderState.cloudStatus, renderPass);
+        }
     }
 }
