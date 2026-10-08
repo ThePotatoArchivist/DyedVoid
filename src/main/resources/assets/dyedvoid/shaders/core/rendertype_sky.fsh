@@ -5,7 +5,7 @@
 #include <minecraft:matrix.glsl>
 #include <minecraft:globals.glsl>
 
-uniform sampler2D Sampler0;
+uniform sampler2D dyedvoid_SkySampler;
 
 layout(location = 0) in vec4 texProj0;
 layout(location = 1) in float sphericalVertexDistance;
@@ -14,6 +14,6 @@ layout(location = 2) in float cylindricalVertexDistance;
 layout(location = 0) out vec4 fragColor;
 
 void main() {
-    vec4 color = textureProj(Sampler0, texProj0);
+    vec4 color = textureProj(dyedvoid_SkySampler, texProj0);
     fragColor = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
 }

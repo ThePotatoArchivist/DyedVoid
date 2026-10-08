@@ -18,10 +18,7 @@ import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.pipeline.TextureTarget;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.renderpearl.api.GpuFormat;
-import com.mojang.renderpearl.api.pipeline.ColorTargetState;
-import com.mojang.renderpearl.api.pipeline.DepthStencilState;
-import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
-import com.mojang.renderpearl.api.pipeline.RenderPipeline;
+import com.mojang.renderpearl.api.pipeline.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BindGroupLayouts;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -35,7 +32,6 @@ import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.special.EndCubeSpecialRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderers;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -67,9 +63,10 @@ public class DyedVoidClient implements ClientModInitializer {
             GpuFormat.D32_FLOAT
     );
 
-    public static final AccessibleTexture SKY_TEXTURE = new AccessibleTexture(DyedVoid.MOD_ID + "_sky", Minecraft.getInstance().getWindow().getWidth(), Minecraft.getInstance().getWindow().getHeight());
-
     private static @Nullable SkyRenderer skyRenderer;
+
+    public static final String SKY_SAMPLER_NAME = DyedVoid.MOD_ID + "_SkySampler";
+    public static final BindGroupLayout SKY_BIND_GROUP_LAYOUT = BindGroupLayout.builder().withUniform(SKY_SAMPLER_NAME, UniformType.COMBINED_IMAGE_SAMPLER).build();
 
     public static final RenderPipeline SKY_RENDER_PIPELINE = RenderPipelines.register(RenderPipeline.builder(RenderPipelines.GLOBALS_SNIPPET)
             .withBindGroupLayout(BindGroupLayouts.PROJECTION)
@@ -77,7 +74,7 @@ public class DyedVoidClient implements ClientModInitializer {
             .withBindGroupLayout(BindGroupLayouts.FOG)
             .withVertexShader(DyedVoid.id("core/rendertype_sky"))
             .withFragmentShader(DyedVoid.id("core/rendertype_sky"))
-            .withBindGroupLayout(BindGroupLayouts.SAMPLER0)
+            .withBindGroupLayout(SKY_BIND_GROUP_LAYOUT)
             .withVertexBinding(0, DefaultVertexFormat.POSITION)
             .withPrimitiveTopology(PrimitiveTopology.QUADS)
             .withColorTargetState(ColorTargetState.DEFAULT)
@@ -86,10 +83,7 @@ public class DyedVoidClient implements ClientModInitializer {
            .build()
     );
 
-    public static final Identifier SKY_TEXTURE_LOCATION = DyedVoid.id("buffer/sky.png");
-
     public static final RenderType SKY_RENDER_TYPE = RenderType.create(DyedVoid.MOD_ID + "_sky", RenderSetup.builder(SKY_RENDER_PIPELINE)
-            .withTexture("Sampler0", SKY_TEXTURE_LOCATION)
             .setOutline(RenderSetup.OutlineProperty.AFFECTS_OUTLINE)
             .createRenderSetup()
     );
@@ -108,8 +102,6 @@ public class DyedVoidClient implements ClientModInitializer {
                         new SpecialBlockModelWrapper.Unbaked<>(getModel(state), Optional.empty()), block);
         });
 
-        Minecraft.getInstance().getTextureManager().register(SKY_TEXTURE_LOCATION, SKY_TEXTURE);
-
         LevelRenderEvents.START_MAIN.register(context -> {
 
             if (context.levelState().shouldResetSkyRenderer || skyRenderer == null) {
@@ -127,8 +119,6 @@ public class DyedVoidClient implements ClientModInitializer {
                     ((GameRendererAccessor) context.gameRenderer()).getFogRenderer().getBuffer(FogRenderer.FogMode.NONE),
                     context.levelState().skyRenderState
             );
-
-            SKY_BUFFER.blitAndBlendToTexture(SKY_TEXTURE.getTextureView(), SKY_TEXTURE.getTextureView());
         });
     }
 }
