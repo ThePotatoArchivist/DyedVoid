@@ -12,7 +12,6 @@ import archives.tater.dyedvoid.registry.DyedVoidBlocks;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltInBlockModelsCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents;
 
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.pipeline.TextureTarget;
@@ -21,6 +20,7 @@ import com.mojang.renderpearl.api.GpuFormat;
 import com.mojang.renderpearl.api.pipeline.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BindGroupLayouts;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.SkyRenderer;
 import net.minecraft.client.renderer.block.BuiltInBlockModels;
@@ -32,6 +32,7 @@ import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.special.EndCubeSpecialRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderers;
+import net.minecraft.client.renderer.state.level.LevelRenderState;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -55,13 +56,7 @@ public class DyedVoidClient implements ClientModInitializer {
         return entity.getMainHandItem().is(DyedVoidBlockItemTags.HIDDEN_OUTLINE.item()) || entity.getOffhandItem().is(DyedVoidBlockItemTags.HIDDEN_OUTLINE.item());
     }
 
-    public static final RenderTarget SKY_BUFFER = new TextureTarget(
-            DyedVoid.MOD_ID + "_sky",
-            Minecraft.getInstance().getWindow().getWidth(),
-            Minecraft.getInstance().getWindow().getHeight(),
-            null,
-            GpuFormat.D32_FLOAT
-    );
+    public static @Nullable RenderTarget skyBuffer;
 
     private static @Nullable SkyRenderer skyRenderer;
 
@@ -88,6 +83,18 @@ public class DyedVoidClient implements ClientModInitializer {
             .createRenderSetup()
     );
 
+    public static RenderTarget getSkyBuffer() {
+        if (skyBuffer == null)
+            skyBuffer = new TextureTarget(
+                    DyedVoid.MOD_ID + "_sky",
+                    Minecraft.getInstance().getWindow().getWidth(),
+                    Minecraft.getInstance().getWindow().getHeight(),
+                    GpuFormat.RGBA8_UNORM,
+                    null
+            );
+        return skyBuffer;
+    }
+
     @Override
     public void onInitializeClient() {
         BlockEntityRenderers.register(DyedVoidBlockEntities.END_VOID, _ -> new EndVoidRenderer());
@@ -102,23 +109,26 @@ public class DyedVoidClient implements ClientModInitializer {
                         new SpecialBlockModelWrapper.Unbaked<>(getModel(state), Optional.empty()), block);
         });
 
-        LevelRenderEvents.START_MAIN.register(context -> {
+//        LevelRenderEvents.START_MAIN.register(context -> {
+//            extracted(context.levelState(), context.gameRenderer());
+//        });
+    }
 
-            if (context.levelState().shouldResetSkyRenderer || skyRenderer == null) {
-                if (skyRenderer != null)
-                    skyRenderer.close();
+    private static void extracted(LevelRenderState levelRenderState, GameRenderer gameRenderer) {
+        if (levelRenderState.shouldResetSkyRenderer || skyRenderer == null) {
+            if (skyRenderer != null)
+                skyRenderer.close();
 
-                skyRenderer = new SkyRenderer(
-                        Minecraft.getInstance().getTextureManager(),
-                        Minecraft.getInstance().getAtlasManager(),
-                        SKY_BUFFER
-                );
-            }
-
-            skyRenderer.render(
-                    ((GameRendererAccessor) context.gameRenderer()).getFogRenderer().getBuffer(FogRenderer.FogMode.NONE),
-                    context.levelState().skyRenderState
+            skyRenderer = new SkyRenderer(
+                    Minecraft.getInstance().getTextureManager(),
+                    Minecraft.getInstance().getAtlasManager(),
+                    getSkyBuffer()
             );
-        });
+        }
+
+        skyRenderer.render(
+                ((GameRendererAccessor) gameRenderer).getFogRenderer().getBuffer(FogRenderer.FogMode.NONE),
+                levelRenderState.skyRenderState
+        );
     }
 }
