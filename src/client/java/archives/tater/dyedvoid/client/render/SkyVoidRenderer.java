@@ -1,6 +1,7 @@
 package archives.tater.dyedvoid.client.render;
 
 import archives.tater.dyedvoid.block.SkyVoidBlock;
+import archives.tater.dyedvoid.client.DyedVoidClient;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -9,7 +10,6 @@ import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.state.EndPortalRenderState;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.core.Direction;
 import net.minecraft.world.phys.Vec3;
@@ -69,7 +69,7 @@ public class SkyVoidRenderer implements BlockEntityRenderer<SkyVoidBlock.SkyVoid
     private static void submitCube(final Collection<Direction> facesToShow, final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final Consumer<VertexConsumer> vertexDecorator) {
         if (facesToShow.isEmpty()) return;
 
-        submitNodeCollector.submitCustomGeometry(poseStack, RenderTypes.endGateway(), (pose, buffer) -> {
+        submitNodeCollector.submitCustomGeometry(poseStack, DyedVoidClient.SKY_RENDER_TYPE, (pose, buffer) -> {
             for (var direction : facesToShow)
                 for (Vector3fc faceVertex : FACES.get(direction))
                     vertexDecorator.accept(buffer.addVertex(pose, faceVertex));
@@ -78,9 +78,8 @@ public class SkyVoidRenderer implements BlockEntityRenderer<SkyVoidBlock.SkyVoid
 
     public static void submitSpecial(final PoseStack poseStack, final SubmitNodeCollector submitNodeCollector, final int outlineColor) {
         submitCube(ALL_FACES, poseStack, submitNodeCollector);
-//        if (outlineColor != 0) {
-//            submitCube(ALL_FACES, renderType.outline().orElseThrow(), poseStack, submitNodeCollector, (vertex) -> vertex.setUv(0.0F, 0.0F).setColor(outlineColor));
-//        }
+//        if (outlineColor != 0)
+//            submitCube(ALL_FACES, RenderTypes.endGateway().outline().orElseThrow(), poseStack, submitNodeCollector, (vertex) -> vertex.setUv(0.0F, 0.0F).setColor(outlineColor));
     }
 
     public static void getExtents(final Consumer<Vector3fc> output) {

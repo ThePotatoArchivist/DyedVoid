@@ -12,12 +12,22 @@ import archives.tater.dyedvoid.registry.DyedVoidBlocks;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltInBlockModelsCallback;
 
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import com.mojang.renderpearl.api.pipeline.ColorTargetState;
+import com.mojang.renderpearl.api.pipeline.DepthStencilState;
+import com.mojang.renderpearl.api.pipeline.PrimitiveTopology;
+import com.mojang.renderpearl.api.pipeline.RenderPipeline;
+import net.minecraft.client.renderer.BindGroupLayouts;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.block.BuiltInBlockModels;
 import net.minecraft.client.renderer.block.model.SpecialBlockModelWrapper;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.rendertype.RenderSetup;
+import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.special.EndCubeSpecialRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderers;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -38,6 +48,27 @@ public class DyedVoidClient implements ClientModInitializer {
     public static boolean seesHiddenOutlines(LivingEntity entity) {
         return entity.getMainHandItem().is(DyedVoidBlockItemTags.HIDDEN_OUTLINE.item()) || entity.getOffhandItem().is(DyedVoidBlockItemTags.HIDDEN_OUTLINE.item());
     }
+
+    public static final RenderPipeline SKY_RENDER_PIPELINE = RenderPipelines.register(RenderPipeline.builder(RenderPipelines.GLOBALS_SNIPPET)
+            .withBindGroupLayout(BindGroupLayouts.PROJECTION)
+            .withBindGroupLayout(BindGroupLayouts.DYNAMIC_TRANSFORMS)
+            .withBindGroupLayout(BindGroupLayouts.FOG)
+            .withVertexShader(DyedVoid.id("core/rendertype_sky"))
+            .withFragmentShader(DyedVoid.id("core/rendertype_sky"))
+            .withBindGroupLayout(BindGroupLayouts.SAMPLER0)
+            .withVertexBinding(0, DefaultVertexFormat.POSITION)
+            .withPrimitiveTopology(PrimitiveTopology.QUADS)
+            .withColorTargetState(ColorTargetState.DEFAULT)
+            .withDepthStencilState(DepthStencilState.DEFAULT)
+            .withLocation(DyedVoid.id("pipeline/sky"))
+           .build()
+    );
+
+    public static final RenderType SKY_RENDER_TYPE = RenderType.create(DyedVoid.MOD_ID + "_sky", RenderSetup.builder(SKY_RENDER_PIPELINE)
+            .withTexture("Sampler0", Identifier.withDefaultNamespace("textures/misc/unknown_server.png"))
+            .setOutline(RenderSetup.OutlineProperty.AFFECTS_OUTLINE)
+            .createRenderSetup()
+    );
 
     @Override
     public void onInitializeClient() {
