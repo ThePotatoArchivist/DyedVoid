@@ -2,6 +2,7 @@ package archives.tater.dyedvoid.datagen;
 
 import archives.tater.dyedvoid.DyedVoid;
 import archives.tater.dyedvoid.client.DyedVoidClient;
+import archives.tater.dyedvoid.client.render.SkyVoidSpecialRenderer;
 import archives.tater.dyedvoid.registry.DyedVoidBlocks;
 import archives.tater.dyedvoid.registry.DyedVoidItems;
 
@@ -19,6 +20,7 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 
+import java.util.List;
 import java.util.Optional;
 
 import static net.minecraft.client.data.models.model.ItemModelUtils.*;
@@ -63,11 +65,16 @@ public class ModelGenerator extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
         for (var block : DyedVoidBlocks.ALL_VOID_BLOCKS) {
+            if (block == DyedVoidBlocks.SKY_VOID) continue;
             itemModelGenerator.itemModelOutput.accept(block.asItem(), specialModel(
                     BLOCK_BASE,
                     DyedVoidClient.getModel(block.defaultBlockState())
             ));
         }
+
+        var flatSkyModel = VOID_BLOCK_MODEL.create(DyedVoidItems.SKY_VOID, TextureMapping.cube(DyedVoidBlocks.SKY_VOID), itemModelGenerator.modelOutput);
+        itemModelGenerator.itemModelOutput.accept(DyedVoidItems.SKY_VOID, select(new DisplayContext(), specialModel(BLOCK_BASE, new SkyVoidSpecialRenderer.Unbaked()),
+                when(List.of(ItemDisplayContext.GUI, ItemDisplayContext.FIRST_PERSON_LEFT_HAND, ItemDisplayContext.FIRST_PERSON_RIGHT_HAND), plainModel(flatSkyModel))));
 
         itemModelGenerator.itemModelOutput.accept(DyedVoidItems.DUMMY_END_GATEWAY, specialModel(BLOCK_BASE, new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.GATEWAY)));
         itemModelGenerator.itemModelOutput.accept(DyedVoidItems.DUMMY_END_PORTAL, specialModel(Identifier.withDefaultNamespace("item/generated"), new EndCubeSpecialRenderer.Unbaked(EndCubeSpecialRenderer.Type.PORTAL)));

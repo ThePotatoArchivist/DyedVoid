@@ -1,9 +1,26 @@
 {
   "model": {
-    "type": "minecraft:special",
-    "base": "minecraft:block/block",
-    "model": {
-      "type": "dyedvoid:sky_void"
-    }
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "dyedvoid:item/sky_void"
+        },
+        "when": [
+          "gui",
+          "firstperson_lefthand",
+          "firstperson_righthand"
+        ]
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:special",
+      "base": "minecraft:block/block",
+      "model": {
+        "type": "dyedvoid:sky_void"
+      }
+    },
+    "property": "minecraft:display_context"
   }
 }
