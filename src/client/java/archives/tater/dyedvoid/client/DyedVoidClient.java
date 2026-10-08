@@ -1,7 +1,6 @@
 package archives.tater.dyedvoid.client;
 
 import archives.tater.dyedvoid.DyedVoid;
-import archives.tater.dyedvoid.client.mixin.GameRendererAccessor;
 import archives.tater.dyedvoid.client.render.EndVoidRenderer;
 import archives.tater.dyedvoid.client.render.SkyVoidRenderer;
 import archives.tater.dyedvoid.client.render.SkyVoidSpecialRenderer;
@@ -20,19 +19,15 @@ import com.mojang.renderpearl.api.GpuFormat;
 import com.mojang.renderpearl.api.pipeline.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BindGroupLayouts;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.client.renderer.SkyRenderer;
 import net.minecraft.client.renderer.block.BuiltInBlockModels;
 import net.minecraft.client.renderer.block.model.SpecialBlockModelWrapper;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.client.renderer.fog.FogRenderer;
 import net.minecraft.client.renderer.rendertype.RenderSetup;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.special.EndCubeSpecialRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderers;
-import net.minecraft.client.renderer.state.level.LevelRenderState;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -57,8 +52,6 @@ public class DyedVoidClient implements ClientModInitializer {
     }
 
     public static @Nullable RenderTarget skyBuffer;
-
-    private static @Nullable SkyRenderer skyRenderer;
 
     public static final String SKY_SAMPLER_NAME = DyedVoid.MOD_ID + "_SkySampler";
     public static final BindGroupLayout SKY_BIND_GROUP_LAYOUT = BindGroupLayout.builder().withUniform(SKY_SAMPLER_NAME, UniformType.COMBINED_IMAGE_SAMPLER).build();
@@ -108,27 +101,5 @@ public class DyedVoidClient implements ClientModInitializer {
                 builder.put((BuiltInBlockModels.ModelFactory) (_, state) ->
                         new SpecialBlockModelWrapper.Unbaked<>(getModel(state), Optional.empty()), block);
         });
-
-//        LevelRenderEvents.START_MAIN.register(context -> {
-//            extracted(context.levelState(), context.gameRenderer());
-//        });
-    }
-
-    private static void extracted(LevelRenderState levelRenderState, GameRenderer gameRenderer) {
-        if (levelRenderState.shouldResetSkyRenderer || skyRenderer == null) {
-            if (skyRenderer != null)
-                skyRenderer.close();
-
-            skyRenderer = new SkyRenderer(
-                    Minecraft.getInstance().getTextureManager(),
-                    Minecraft.getInstance().getAtlasManager(),
-                    getSkyBuffer()
-            );
-        }
-
-        skyRenderer.render(
-                ((GameRendererAccessor) gameRenderer).getFogRenderer().getBuffer(FogRenderer.FogMode.NONE),
-                levelRenderState.skyRenderState
-        );
     }
 }
