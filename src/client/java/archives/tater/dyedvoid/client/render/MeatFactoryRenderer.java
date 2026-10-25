@@ -29,7 +29,7 @@ import java.util.stream.IntStream;
 
 public class MeatFactoryRenderer {
     public static final Identifier MEAT_FACTORY = DyedVoid.id("meat_factory");
-    private static List<? extends List<? extends RenderInstance<?>>> renderStates = List.of();
+    private static List<? extends RenderInstance<?>> renderStates = List.of();
 
     public static void register() {
         ResourceLoader.get(PackType.CLIENT_RESOURCES).registerReloadListener(MEAT_FACTORY, new SimplePreparableReloadListener<Void>() {
@@ -45,32 +45,47 @@ public class MeatFactoryRenderer {
                             if (entry.getValue() instanceof LivingEntityRenderer<?, ?, ?> livingEntityRenderer)
                                 yield.accept(Pair.of(entry.getKey(), livingEntityRenderer));
                         })
-                        .map(pair -> {
-                            var type = pair.first();
-                            var renderer = pair.second();
-                            return IntStream.range(0, 64).mapToObj(animationPos -> createInstance(animationPos, renderer, type)).toList();
-                        })
+                        .map(pair -> createInstance(pair.second(), pair.first()))
                         .toList();
             }
         });
 
         LevelRenderEvents.COLLECT_SUBMITS.register(context -> {
-            for (var list : renderStates)
-                for (var state : list)
-                    state.submit(context.submitNodeCollector(), context.poseStack(), context.levelState().cameraRenderState);
+            var submitNodeCollector = context.submitNodeCollector();
+            var poseStack = context.poseStack();
+            var cameraRenderState = context.levelState().cameraRenderState;
+
+            poseStack.pushPose();
+            poseStack.translate(cameraRenderState.pos.reverse());
+            poseStack.translate(0, 64, 0);
+            for (var instance : renderStates) {
+                poseStack.translate(0, 0, instance.width + 2);
+
+                instance.submit(submitNodeCollector, poseStack, cameraRenderState);
+            }
+            poseStack.popPose();
         });
     }
 
-    private static <S extends LivingEntityRenderState> RenderInstance<S> createInstance(int animationPos, LivingEntityRenderer<?, S, ? extends EntityModel<?>> renderer, EntityType<?> type) {
-        var state = renderer.createRenderState();
-        state.entityType = type;
-        state.walkAnimationPos = animationPos / 16f;
-        return new RenderInstance<>(renderer, state);
+    private static <S extends LivingEntityRenderState> RenderInstance<S> createInstance(LivingEntityRenderer<?, S, ? extends EntityModel<?>> renderer, EntityType<?> type) {
+        return new RenderInstance<>(type.getWidth(), renderer, IntStream.range(0, 64).mapToObj(animationPos -> {
+            var state = renderer.createRenderState();
+            state.entityType = type;
+            state.walkAnimationPos = animationPos / 16f;
+            state.walkAnimationSpeed = 0.3f;
+            return state;
+        }).toList());
     }
 
-    private record RenderInstance<S extends EntityRenderState>(EntityRenderer<?, S> renderer, S state) {
+    private record RenderInstance<S extends EntityRenderState>(float width, EntityRenderer<?, S> renderer, List<S> states) {
         void submit(SubmitNodeCollector submitNodeCollector, PoseStack poseStack, CameraRenderState cameraRenderState) {
-            renderer.submit(state, poseStack, submitNodeCollector, cameraRenderState);
+            poseStack.pushPose();
+            for (var state : states) {
+                poseStack.translate(width + 2, 0, 0);
+
+                renderer.submit(state, poseStack, submitNodeCollector, cameraRenderState);
+            }
+            poseStack.popPose();
         }
     }
 }
