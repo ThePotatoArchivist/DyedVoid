@@ -21,17 +21,29 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 
 import it.unimi.dsi.fastutil.Pair;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 public class MeatFactoryRenderer {
     public static final Identifier MEAT_FACTORY = DyedVoid.id("meat_factory");
-    private static List<? extends RenderInstance<?>> renderStates = List.of();
+
+    private static final Set<EntityType<?>> EXCLUDED = new HashSet<>();
+    private static List<? extends Row<?>> renderStates = List.of();
 
     public static void register() {
+        EXCLUDED.add(EntityTypes.GIANT);
+        EXCLUDED.add(EntityTypes.ILLUSIONER);
+        EXCLUDED.add(EntityTypes.GHAST);
+        EXCLUDED.add(EntityTypes.HAPPY_GHAST);
+        EXCLUDED.add(EntityTypes.WITHER);
+        EXCLUDED.add(EntityTypes.ARMOR_STAND);
+
         ResourceLoader.get(PackType.CLIENT_RESOURCES).registerReloadListener(MEAT_FACTORY, new SimplePreparableReloadListener<Void>() {
             @Override
             protected Void prepare(ResourceManager manager, ProfilerFiller profiler) {
@@ -42,7 +54,7 @@ public class MeatFactoryRenderer {
             protected void apply(Void preparations, ResourceManager manager, ProfilerFiller profiler) {
                 renderStates = ((EntityRenderDispatcherAccessor) Minecraft.getInstance().getEntityRenderDispatcher()).getRenderers().entrySet().stream()
                         .<Pair<EntityType<?>, LivingEntityRenderer<?, ?, ?>>>mapMulti((entry, yield) -> {
-                            if (entry.getValue() instanceof LivingEntityRenderer<?, ?, ?> livingEntityRenderer)
+                            if (!EXCLUDED.contains(entry.getKey()) && entry.getValue() instanceof LivingEntityRenderer<?, ?, ?> livingEntityRenderer)
                                 yield.accept(Pair.of(entry.getKey(), livingEntityRenderer));
                         })
                         .map(pair -> createInstance(pair.second(), pair.first()))
@@ -67,17 +79,17 @@ public class MeatFactoryRenderer {
         });
     }
 
-    private static <S extends LivingEntityRenderState> RenderInstance<S> createInstance(LivingEntityRenderer<?, S, ? extends EntityModel<?>> renderer, EntityType<?> type) {
-        return new RenderInstance<>(type.getWidth(), renderer, IntStream.range(0, 64).mapToObj(animationPos -> {
+    private static <S extends LivingEntityRenderState> Row<S> createInstance(LivingEntityRenderer<?, S, ? extends EntityModel<?>> renderer, EntityType<?> type) {
+        return new Row<>(type.getWidth(), renderer, IntStream.range(0, 64).mapToObj(animationPos -> {
             var state = renderer.createRenderState();
             state.entityType = type;
-            state.walkAnimationPos = animationPos / 16f;
+            state.walkAnimationPos = animationPos / 5f;
             state.walkAnimationSpeed = 0.3f;
             return state;
         }).toList());
     }
 
-    private record RenderInstance<S extends EntityRenderState>(float width, EntityRenderer<?, S> renderer, List<S> states) {
+    private record Row<S extends EntityRenderState>(float width, EntityRenderer<?, S> renderer, List<S> states) {
         void submit(SubmitNodeCollector submitNodeCollector, PoseStack poseStack, CameraRenderState cameraRenderState) {
             poseStack.pushPose();
             for (var state : states) {
