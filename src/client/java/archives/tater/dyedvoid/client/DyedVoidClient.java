@@ -2,6 +2,7 @@ package archives.tater.dyedvoid.client;
 
 import archives.tater.dyedvoid.DyedVoid;
 import archives.tater.dyedvoid.client.render.EndVoidBlockEntityRenderer;
+import archives.tater.dyedvoid.client.render.MeatFactoryRenderer;
 import archives.tater.dyedvoid.client.render.VoidBlockSpecialRenderer;
 import archives.tater.dyedvoid.registry.DyedVoidBlockEntities;
 import archives.tater.dyedvoid.registry.DyedVoidBlockItemTags;
@@ -47,5 +48,7 @@ public class DyedVoidClient implements ClientModInitializer {
                 builder.put((BuiltInBlockModels.ModelFactory) (_, state) ->
                         new SpecialBlockModelWrapper.Unbaked<>(getModel(state), Optional.empty()), block);
         });
+
+        MeatFactoryRenderer.register();
     }
 }
